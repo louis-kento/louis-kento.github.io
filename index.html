@@ -21,9 +21,9 @@
 
     <meta name="description" content="A Bioinformatics Rookie">
 <meta property="og:type" content="website">
-<meta property="og:title" content="code with kento">
+<meta property="og:title" content="kento_blog">
 <meta property="og:url" content="https://louis-kento.github.io/index.html">
-<meta property="og:site_name" content="code with kento">
+<meta property="og:site_name" content="kento_blog">
 <meta property="og:description" content="A Bioinformatics Rookie">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="liuxiao">
@@ -38,7 +38,7 @@
 <script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>code with kento</title>
+<title>kento_blog</title>
   
 
 
@@ -51,7 +51,7 @@
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
-<link rel="alternate" href="/atom.xml" title="code with kento" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="kento_blog" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
@@ -72,7 +72,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">code with kento</h1>
+      <h1 class="site-title">kento_blog</h1>
       <i class="logo-line"></i>
     </a>
       <p class="site-subtitle" itemprop="description">nice to meet you</p>
@@ -215,12 +215,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="code with kento">
+      <meta itemprop="name" content="kento_blog">
       <meta itemprop="description" content="A Bioinformatics Rookie">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | code with kento">
+      <meta itemprop="name" content="undefined | kento_blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -237,7 +237,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-04-29 00:23:12 / Modified: 00:24:48" itemprop="dateCreated datePublished" datetime="2024-04-29T00:23:12+08:00">2024-04-29</time>
+      <time title="Created: 2024-04-29 00:23:12 / Modified: 00:27:02" itemprop="dateCreated datePublished" datetime="2024-04-29T00:23:12+08:00">2024-04-29</time>
     </span>
 
   
@@ -266,30 +266,14 @@
     
     <div class="post-body" itemprop="articleBody">
           <p>在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。</p>
-<h3 id="一、加“-”符号"><a href="#一、加“-”符号" class="headerlink" title="一、加“&amp;”符号"></a>一、加“&amp;”符号</h3><p>如果想让程序在后台运行，执行程序的时候，命令的最后面加“&amp;”符号。</p>
-<p>执行文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test.py &amp;</span><br></pre></td></tr></table></figure>
-
-<p>查看是否在后台运行</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -aux | grep test</span><br></pre></td></tr></table></figure>
-
-<p>后台的程序 需要关闭时，需要kill命令停止</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill  pid</span><br></pre></td></tr></table></figure>
-
-<p>这种方法，查看运行日志很不方便</p>
-<h3 id="二、nohup命令-权限"><a href="#二、nohup命令-权限" class="headerlink" title="二、nohup命令 (权限)"></a>二、nohup命令 (权限)</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup python -u test.py &gt; test.log 2&gt;&amp;1 &amp; </span><br></pre></td></tr></table></figure>
-
-<p>日志文件追加到文件中<br>test.log: 运行的日志，或你的文件的输出内容</p>
-<p>&amp; 是一个描述符，如果1或2前不加&amp;，会被当成一个普通文件。</p>
-<p>1&gt;&amp;2 意思是把标准输出重定向到标准错误.</p>
-<p>2&gt;&amp;1 意思是把标准错误输出重定向到标准输出。</p>
-<p>&amp;&gt;filename 意思是把标准输出和标准错误输出都重定向到文件filename中</p>
-<p>在run.py的目录默认直接生成了nohup.out文件,有些系统无法执行,权限不足时 需要加sudo</p>
-<h3 id="三、screen命令"><a href="#三、screen命令" class="headerlink" title="三、screen命令"></a>三、screen命令</h3><p>Screen是一个全屏窗口管理器，</p>
-<p>它在多个进程（通常是交互式shell）之间多路传输物理终端。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">##### 安装screen</span><br><span class="line">yum install -y screen</span><br><span class="line">apt-get install screen</span><br><span class="line"># 创建一个新的窗口</span><br><span class="line">screen -S test</span><br><span class="line"># 进入窗口后 执行文件</span><br><span class="line">python test.py</span><br><span class="line"># 退出当前窗口</span><br><span class="line">ctrl+a+d   （方法1：保留当前窗口）</span><br><span class="line">screen -d  （方法2：保留当前窗口）</span><br><span class="line">exit       （方法3：退出程序，并关闭窗口）</span><br><span class="line"># 查看窗口</span><br><span class="line">screen -ls</span><br><span class="line"># 重新连接窗口</span><br><span class="line">screen -r id或窗口名称</span><br><span class="line"># 示例：</span><br><span class="line">screen -r test</span><br><span class="line"></span><br><span class="line">#快捷键</span><br><span class="line">Ctrl+a c ：创建窗口</span><br><span class="line">Ctrl+a w ：窗口列表</span><br><span class="line">Ctrl+a n ：下一个窗口</span><br><span class="line">Ctrl+a p ：上一个窗口</span><br><span class="line">Ctrl+a 0-9 ：在第0个窗口和第9个窗口之间切换</span><br><span class="line">Ctrl+a K(大写) ：关闭当前窗口，并且切换到下一个窗口</span><br><span class="line">exit ：关闭当前窗口，并且切换到下一个窗口</span><br><span class="line">Ctrl+a d ：退出当前终端，返回加载screen前的shell命令状态</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -323,12 +307,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="code with kento">
+      <meta itemprop="name" content="kento_blog">
       <meta itemprop="description" content="A Bioinformatics Rookie">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | code with kento">
+      <meta itemprop="name" content="undefined | kento_blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -415,12 +399,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="code with kento">
+      <meta itemprop="name" content="kento_blog">
       <meta itemprop="description" content="A Bioinformatics Rookie">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | code with kento">
+      <meta itemprop="name" content="undefined | kento_blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -507,12 +491,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="code with kento">
+      <meta itemprop="name" content="kento_blog">
       <meta itemprop="description" content="A Bioinformatics Rookie">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | code with kento">
+      <meta itemprop="name" content="undefined | kento_blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
@@ -599,12 +583,12 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="code with kento">
+      <meta itemprop="name" content="kento_blog">
       <meta itemprop="description" content="A Bioinformatics Rookie">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | code with kento">
+      <meta itemprop="name" content="undefined | kento_blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">

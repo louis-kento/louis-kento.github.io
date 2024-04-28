@@ -4,6 +4,8 @@
     <title>linux锁定后台进程</title>
     <url>/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[<p>在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。</p>
+<span id="more"></span>
+
 <h3 id="一、加“-”符号"><a href="#一、加“-”符号" class="headerlink" title="一、加“&amp;”符号"></a>一、加“&amp;”符号</h3><p>如果想让程序在后台运行，执行程序的时候，命令的最后面加“&amp;”符号。</p>
 <p>执行文件</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./test.py &amp;</span><br></pre></td></tr></table></figure>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>code with kento</title>
+  <title>kento_blog</title>
   
   <subtitle>nice to meet you</subtitle>
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-04-28T16:24:48.260Z</updated>
+  <updated>2024-04-28T16:27:02.069Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -21,14 +21,10 @@
     <link href="https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/"/>
     <id>https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</id>
     <published>2024-04-28T16:23:12.000Z</published>
-    <updated>2024-04-28T16:24:48.260Z</updated>
+    <updated>2024-04-28T16:27:02.069Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。&lt;/p&gt;
-&lt;h3 id=&quot;一、加“-”符号&quot;&gt;&lt;a href=&quot;#一、加“-”符号&quot; class=&quot;headerlink</summary>
-      
+    <summary type="html">&lt;p&gt;在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。&lt;/p&gt;</summary>
     
     
     
