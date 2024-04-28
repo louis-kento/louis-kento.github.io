@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-04-28T12:32:48.436Z</updated>
+  <updated>2024-04-28T16:24:48.260Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -17,17 +17,69 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>linux锁定后台进程</title>
+    <link href="https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/"/>
+    <id>https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</id>
+    <published>2024-04-28T16:23:12.000Z</published>
+    <updated>2024-04-28T16:24:48.260Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。&lt;/p&gt;
+&lt;h3 id=&quot;一、加“-”符号&quot;&gt;&lt;a href=&quot;#一、加“-”符号&quot; class=&quot;headerlink</summary>
+      
+    
+    
+    
+    
+    <category term="study &amp; linux &amp; pid" scheme="https://louis-kento.github.io/tags/study-linux-pid/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>non-zero-exit报错R</title>
+    <link href="https://louis-kento.github.io/2024/04/29/non-zero-exit%E6%8A%A5%E9%94%99R/"/>
+    <id>https://louis-kento.github.io/2024/04/29/non-zero-exit%E6%8A%A5%E9%94%99R/</id>
+    <published>2024-04-28T16:04:14.000Z</published>
+    <updated>2024-04-28T16:10:04.151Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;在 R 安装需要软件包时，”non-zero-exit” 错误通常指示程序在执行过程中出现了非零的退出代码。这通常表示程序在某个步骤中遇到了错误或异常情况。回溯安装过程，可以发现non-zero exit status 的问题不止一种，或者说所有的安装失败，都会给出 non-zero exit status 的warning。以下列出几种可能的问题类型，或许可以按照这些办法解决掉安装失败的问题。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="study &amp; R &amp; install.packages" scheme="https://louis-kento.github.io/tags/study-R-install-packages/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>one-hot编码</title>
+    <link href="https://louis-kento.github.io/2024/04/29/one-hot%E7%BC%96%E7%A0%81/"/>
+    <id>https://louis-kento.github.io/2024/04/29/one-hot%E7%BC%96%E7%A0%81/</id>
+    <published>2024-04-28T16:00:10.000Z</published>
+    <updated>2024-04-28T16:01:58.067Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;One-hot 编码是一种将分类变量转换为二进制向量表示的编码方法。它常用于机器学习和数据分析中，特别是在处理分类特征时。在 One-hot 编码中，每个分类变量的每个可能取值都被表示为一个二进制向量的形式。这个二进制向量的长度等于分类变量的取值个数，其中只有一个元素为 1，其余元素都为 0。被编码为 1 的元素对应了分类变量的实际取值，而其他元素表示该分类变量的其他取值。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="study &amp; ml&amp;dl  &amp; opencv" scheme="https://louis-kento.github.io/tags/study-ml-dl-opencv/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vcftools计算fst选择信号</title>
     <link href="https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:28:07.000Z</published>
-    <updated>2024-04-28T12:32:48.436Z</updated>
+    <updated>2024-04-28T14:21:35.296Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-群体较少&quot;&gt;&lt;a href=&quot;#1-群体较少&quot; class=&quot;headerlink&quot; title=&quot;1.群体较少&quot;&gt;&lt;/a&gt;1.&lt;strong&gt;群体较少&lt;/strong&gt;&lt;/h2&gt;&lt;figure class=&quot;highlight r&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;1-原理&quot;&gt;&lt;a href=&quot;#1-原理&quot; class=&quot;headerlink&quot; title=&quot;1.原理&quot;&gt;&lt;/a&gt;1.&lt;strong&gt;原理&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。&lt;/p&gt;</summary>
     
     
     
@@ -41,13 +93,10 @@
     <link href="https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:26:57.000Z</published>
-    <updated>2024-04-28T12:32:50.372Z</updated>
+    <updated>2024-04-28T14:20:41.720Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-群体较少的情况&quot;&gt;&lt;a href=&quot;#1-群体较少的情况&quot; class=&quot;headerlink&quot; title=&quot;1.群体较少的情况&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.群体较少的情况&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;分染色体填充数据&quot;&gt;&lt;a href=&quot;#</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;1-原理&quot;&gt;&lt;a href=&quot;#1-原理&quot; class=&quot;headerlink&quot; title=&quot;1.原理&quot;&gt;&lt;/a&gt;1.&lt;strong&gt;原理&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;xpehh (Cross Population Extended Haplotype Homozygosity) 是一种用于选择信号检测的统计方法，用于寻找遗传变异与自然选择之间的关联。它基于单核苷酸多态性（SNP）在不同群体之间的扩展单倍型同质性差异。通过计算目标群体与参考群体之间的扩展单倍型同质性差异，并进行统计检验，xpehh 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在遗传学和人类进化研究中得到了广泛应用。&lt;/p&gt;</summary>
     
     
     
