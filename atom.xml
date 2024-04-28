@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>code with kento</title>
+  
+  <subtitle>nice to meet you</subtitle>
+  <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://louis-kento.github.io/"/>
+  <updated>2024-04-28T12:32:48.436Z</updated>
+  <id>https://louis-kento.github.io/</id>
+  
+  <author>
+    <name>liuxiao</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vcftools计算fst选择信号</title>
+    <link href="https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
+    <id>https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
+    <published>2024-04-28T12:28:07.000Z</published>
+    <updated>2024-04-28T12:32:48.436Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-群体较少&quot;&gt;&lt;a href=&quot;#1-群体较少&quot; class=&quot;headerlink&quot; title=&quot;1.群体较少&quot;&gt;&lt;/a&gt;1.&lt;strong&gt;群体较少&lt;/strong&gt;&lt;/h2&gt;&lt;figure class=&quot;highlight r&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="study &amp; vcftools &amp; fst" scheme="https://louis-kento.github.io/tags/study-vcftools-fst/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算xpehh选择信号</title>
+    <link href="https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
+    <id>https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
+    <published>2024-04-28T12:26:57.000Z</published>
+    <updated>2024-04-28T12:32:50.372Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-群体较少的情况&quot;&gt;&lt;a href=&quot;#1-群体较少的情况&quot; class=&quot;headerlink&quot; title=&quot;1.群体较少的情况&quot;&gt;&lt;/a&gt;&lt;strong&gt;1.群体较少的情况&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;分染色体填充数据&quot;&gt;&lt;a href=&quot;#</summary>
+      
+    
+    
+    
+    
+    <category term="study &amp; selscan &amp; xpehh" scheme="https://louis-kento.github.io/tags/study-selscan-xpehh/"/>
+    
+  </entry>
+  
+</feed>
