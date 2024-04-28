@@ -72,10 +72,10 @@
     <link href="https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:28:07.000Z</published>
-    <updated>2024-04-28T14:21:35.296Z</updated>
+    <updated>2024-04-28T18:03:04.827Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;1-原理&quot;&gt;&lt;a href=&quot;#1-原理&quot; class=&quot;headerlink&quot; title=&quot;1.原理&quot;&gt;&lt;/a&gt;1.&lt;strong&gt;原理&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。&lt;/p&gt;</summary>
     
     
     
@@ -89,10 +89,10 @@
     <link href="https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:26:57.000Z</published>
-    <updated>2024-04-28T14:20:41.720Z</updated>
+    <updated>2024-04-28T18:03:35.613Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;1-原理&quot;&gt;&lt;a href=&quot;#1-原理&quot; class=&quot;headerlink&quot; title=&quot;1.原理&quot;&gt;&lt;/a&gt;1.&lt;strong&gt;原理&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;xpehh (Cross Population Extended Haplotype Homozygosity) 是一种用于选择信号检测的统计方法，用于寻找遗传变异与自然选择之间的关联。它基于单核苷酸多态性（SNP）在不同群体之间的扩展单倍型同质性差异。通过计算目标群体与参考群体之间的扩展单倍型同质性差异，并进行统计检验，xpehh 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在遗传学和人类进化研究中得到了广泛应用。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;xpehh (Cross Population Extended Haplotype Homozygosity) 是一种用于选择信号检测的统计方法，用于寻找遗传变异与自然选择之间的关联。它基于单核苷酸多态性（SNP）在不同群体之间的扩展单倍型同质性差异。通过计算目标群体与参考群体之间的扩展单倍型同质性差异，并进行统计检验，xpehh 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在遗传学和人类进化研究中得到了广泛应用。&lt;/p&gt;</summary>
     
     
     
