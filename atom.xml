@@ -81,6 +81,38 @@
   </entry>
   
   <entry>
+    <title>aaa</title>
+    <link href="https://louis-kento.github.io/2024/05/01/aaa/"/>
+    <id>https://louis-kento.github.io/2024/05/01/aaa/</id>
+    <published>2024-05-01T13:48:57.000Z</published>
+    <updated>2024-05-08T11:32:35.036Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;写在前面：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;window的分发很方便，适合做一些简单分析，简单的炼丹&lt;/li&gt;
+&lt;li&gt;一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。&lt;/li&gt;
+&lt;li&gt;win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用&lt;/li&gt;
+&lt;li&gt;安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹&lt;/li&gt;
+&lt;li&gt;后续配置bashrc、安装conda、安装docker&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
+    
+    
+    
+    <category term="linux" scheme="https://louis-kento.github.io/categories/linux/"/>
+    
+    <category term="WSL" scheme="https://louis-kento.github.io/categories/linux/WSL/"/>
+    
+    
+    <category term="Conda" scheme="https://louis-kento.github.io/tags/Conda/"/>
+    
+    <category term="docker" scheme="https://louis-kento.github.io/tags/docker/"/>
+    
+    <category term="WSL" scheme="https://louis-kento.github.io/tags/WSL/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux锁定后台进程</title>
     <link href="https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/"/>
     <id>https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</id>

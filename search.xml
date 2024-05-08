@@ -173,6 +173,92 @@
       </tags>
   </entry>
   <entry>
+    <title>aaa</title>
+    <url>/2024/05/01/aaa/</url>
+    <content><![CDATA[<p>写在前面：</p>
+<ul>
+<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
+<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
+<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
+<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
+<li>后续配置bashrc、安装conda、安装docker</li>
+<li><span id="more"></span></li>
+</ul>
+<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
+<p><img src="/./aaa/image-20240501201255575-1715166756505-1.png" alt="image-20240501201255575"></p>
+<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
+<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
+<p><img src="/./aaa/image-20240501201628669-1715166756506-2.png" alt="image-20240501201628669"></p>
+<p><img src="/./aaa/image-20240501201720393-1715166756506-5.png" alt="image-20240501201720393"></p>
+<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
+<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
+<p>这个就是下载的是Ubuntu的系统镜像</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./aaa/image-20240501202353751-1715166756506-6.png" alt="image-20240501202353751"></p>
+<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
+<p><img src="/./aaa/image-20240501202900922-1715166756506-3.png" alt="image-20240501202900922"></p>
+<p><img src="/./aaa/image-20240501203109317-1715166756506-4.png" alt="image-20240501203109317"></p>
+<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/./aaa/image-20240501205933201-1715166756506-10.png" alt="image-20240501205933201"></p>
+<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
+<hr>
+<p>给出一个报错解决思路：如果没有可以跳过</p>
+<p>win +x选择终端（管理员），输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+<p>然后继续在Windows PowerShell（管理员）输入：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
+<p><img src="/./aaa/ubuntuinstall-1715166756506-7.png" alt="Ubuntu unpacking in the Windows console"></p>
+<p>进入系统修改用户密码和su密码：</p>
+<p><img src="/./aaa/image-20240501210939654-1715166756506-8.png" alt="image-20240501210939654"></p>
+<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
+<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
+<p>文件内容格式如下，在txt写好另存为这样子：</p>
+<p><img src="/./aaa/image-20240501205823170-1715166756506-9.png" alt="image-20240501205823170"></p>
+<p>.wslconfig内容</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
+
+<p>清华源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>conda安装建议miniconda</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>conda换源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>docker安装：点击下载</p>
+<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
+<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>WSL</category>
+      </categories>
+      <tags>
+        <tag>Conda</tag>
+        <tag>docker</tag>
+        <tag>WSL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>linux锁定后台进程</title>
     <url>/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[<p>在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。</p>
