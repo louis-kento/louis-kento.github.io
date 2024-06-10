@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-05-08T11:12:37.674Z</updated>
+  <updated>2024-05-08T12:47:46.067Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>win11配置wsl2</title>
-    <link href="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/"/>
-    <id>https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/</id>
-    <published>2024-05-01T13:48:57.000Z</published>
-    <updated>2024-05-08T11:12:37.674Z</updated>
+    <title>wsl2配置</title>
+    <link href="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/"/>
+    <id>https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/</id>
+    <published>2024-05-08T12:37:30.000Z</published>
+    <updated>2024-05-08T12:47:46.067Z</updated>
     
     
     <summary type="html">&lt;p&gt;写在前面：&lt;/p&gt;
@@ -35,16 +35,6 @@
     
     
     
-    <category term="linux" scheme="https://louis-kento.github.io/categories/linux/"/>
-    
-    <category term="WSL" scheme="https://louis-kento.github.io/categories/linux/WSL/"/>
-    
-    
-    <category term="Conda" scheme="https://louis-kento.github.io/tags/Conda/"/>
-    
-    <category term="docker" scheme="https://louis-kento.github.io/tags/docker/"/>
-    
-    <category term="WSL" scheme="https://louis-kento.github.io/tags/WSL/"/>
     
   </entry>
   
@@ -53,7 +43,7 @@
     <link href="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/"/>
     <id>https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/</id>
     <published>2024-05-01T13:48:57.000Z</published>
-    <updated>2024-05-08T11:17:32.921Z</updated>
+    <updated>2024-05-08T12:37:45.414Z</updated>
     
     
     <summary type="html">&lt;p&gt;写在前面：&lt;/p&gt;
@@ -72,20 +62,20 @@
     <category term="WSL" scheme="https://louis-kento.github.io/categories/linux/WSL/"/>
     
     
+    <category term="WSL" scheme="https://louis-kento.github.io/tags/WSL/"/>
+    
     <category term="Conda" scheme="https://louis-kento.github.io/tags/Conda/"/>
     
     <category term="docker" scheme="https://louis-kento.github.io/tags/docker/"/>
-    
-    <category term="WSL" scheme="https://louis-kento.github.io/tags/WSL/"/>
     
   </entry>
   
   <entry>
-    <title>aaa</title>
-    <link href="https://louis-kento.github.io/2024/05/01/aaa/"/>
-    <id>https://louis-kento.github.io/2024/05/01/aaa/</id>
+    <title>win11配置wsl2</title>
+    <link href="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/"/>
+    <id>https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/</id>
     <published>2024-05-01T13:48:57.000Z</published>
-    <updated>2024-05-08T11:32:35.036Z</updated>
+    <updated>2024-05-08T12:32:25.080Z</updated>
     
     
     <summary type="html">&lt;p&gt;写在前面：&lt;/p&gt;
@@ -104,11 +94,11 @@
     <category term="WSL" scheme="https://louis-kento.github.io/categories/linux/WSL/"/>
     
     
+    <category term="WSL" scheme="https://louis-kento.github.io/tags/WSL/"/>
+    
     <category term="Conda" scheme="https://louis-kento.github.io/tags/Conda/"/>
     
     <category term="docker" scheme="https://louis-kento.github.io/tags/docker/"/>
-    
-    <category term="WSL" scheme="https://louis-kento.github.io/tags/WSL/"/>
     
   </entry>
   
@@ -182,17 +172,21 @@
     <link href="https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:28:07.000Z</published>
-    <updated>2024-05-07T05:10:56.029Z</updated>
+    <updated>2024-05-08T14:55:35.556Z</updated>
     
     
     <summary type="html">&lt;p&gt;fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。&lt;/p&gt;</summary>
     
     
     
-    <category term="selection_signature" scheme="https://louis-kento.github.io/categories/selection-signature/"/>
+    <category term="Genome" scheme="https://louis-kento.github.io/categories/Genome/"/>
+    
+    <category term="Selection_signature" scheme="https://louis-kento.github.io/categories/Genome/Selection-signature/"/>
     
     
-    <category term="vcftools fst" scheme="https://louis-kento.github.io/tags/vcftools-fst/"/>
+    <category term="Vcftools" scheme="https://louis-kento.github.io/tags/Vcftools/"/>
+    
+    <category term="Fst" scheme="https://louis-kento.github.io/tags/Fst/"/>
     
   </entry>
   

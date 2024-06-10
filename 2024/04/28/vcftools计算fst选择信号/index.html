@@ -27,9 +27,10 @@
 <meta property="og:description" content="fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-04-28T12:28:07.000Z">
-<meta property="article:modified_time" content="2024-05-07T05:10:56.029Z">
+<meta property="article:modified_time" content="2024-05-08T14:55:35.556Z">
 <meta property="article:author" content="liuxiao">
-<meta property="article:tag" content="vcftools fst">
+<meta property="article:tag" content="Vcftools">
+<meta property="article:tag" content="Fst">
 <meta name="twitter:card" content="summary">
 
 
@@ -162,12 +163,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -253,7 +254,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-05-07 13:10:56" itemprop="dateModified" datetime="2024-05-07T13:10:56+08:00">2024-05-07</time>
+      <time title="Modified: 2024-05-08 22:55:35" itemprop="dateModified" datetime="2024-05-08T22:55:35+08:00">2024-05-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -261,7 +262,11 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/selection-signature/" itemprop="url" rel="index"><span itemprop="name">selection_signature</span></a>
+          <a href="/categories/Genome/" itemprop="url" rel="index"><span itemprop="name">Genome</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Genome/Selection-signature/" itemprop="url" rel="index"><span itemprop="name">Selection_signature</span></a>
         </span>
     </span>
 
@@ -321,7 +326,8 @@
 <li>统计显著性检验：计算得到的 fst 值可以与理论空模型进行比较来进行统计显著性检验。常用的检验方法包括置换检验、Bootstrap 方法和模拟方法。</li>
 </ol>
 <p>在群体遗传学中衡量群体间的遗传分化的程度的指标有许多种，较为常见的就是遗传分化指数（Fst），fst是由F统计量演变而来，F统计量主要有三种（FIS，FIF，FST）。Fst是针对一对等位基因，如果基因座上存在复等位基因，则需要用Gst衡量，基因差异分化系数（gene differentiation coefficient，Gst）。假定有s个地方群体，第k个地方群体相对大小为wk，第k个地方群体中第i个等位基因频率为qk(i)，杂合体频率观察值为hk，那么整个群体中观察到的杂合体频率平均值HI，地方群体为理想群体的期望杂合体频率平均值HS，整个群体为理想群体的期望杂合体频率HT，分别为：</p>
-<p>FIS，是HI相对于HS减少量的比值，即地方群体的平均近交系数。<br>FST，是HS相对于HT减少量的比值，即有亲缘关系地方群体间的平均近交系数。<br>FIT，是HI相对于HT减少量的比值，即整个群体的平均近交系数。<br>Fst值的取值范围是【0,1】，最大值为1表明两个群体完全分化，最小值为0表明群体间无分化。<br>在实际的研究中Fst值为0–0.05时说明群体间遗传分化很小，可以不做考虑；<br>0.05–0.15时，表明群体间存在中等程度的遗传分化；<br>0.15–0.25时群体间存在较大的遗传分化；<br>0.25以上的时候群体间就存在很大的遗传分化了。</p>
+<p>FIS，是HI相对于HS减少量的比值，即地方群体的平均近交系数。<br>FST，是HS相对于HT减少量的比值，即有亲缘关系地方群体间的平均近交系数。<br>FIT，是HI相对于HT减少量的比值，即整个群体的平均近交系数。<br>Fst值的取值范围是【0,1】，最大值为1表明两个群体完全分化，最小值为0表明群体间无分化。</p>
+<p>在实际的研究中Fst值为0–0.05时说明群体间遗传分化很小，可以不做考虑；<br>0.05–0.15时，表明群体间存在中等程度的遗传分化；<br>0.15–0.25时群体间存在较大的遗传分化；<br>0.25以上的时候群体间就存在很大的遗传分化了。</p>
 <p>目前主要使用的是vcftools来计算：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">conda install -c bioconda vcftools</span><br><span class="line"><span class="comment">#单点计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popb.txt --out a_b.fst</span><br><span class="line"><span class="comment">#窗口计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popa.txt --out a_b.fst --fst-window-size 150000</span><br><span class="line"><span class="comment">#滑动窗口计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popa.txt --out a_b.fst --fst-window-size 150000 --fst-window-step 75000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -357,7 +363,8 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/vcftools-fst/" rel="tag"># vcftools fst</a>
+              <a href="/tags/Vcftools/" rel="tag"># Vcftools</a>
+              <a href="/tags/Fst/" rel="tag"># Fst</a>
           </div>
 
         

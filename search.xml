@@ -1,264 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>win11配置wsl2</title>
-    <url>/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/</url>
-    <content><![CDATA[<p>写在前面：</p>
-<ul>
-<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
-<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
-<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
-<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
-<li>后续配置bashrc、安装conda、安装docker</li>
-<li><span id="more"></span></li>
-</ul>
-<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501201255575-1715166756505-1.png" alt="image-20240501201255575"></p>
-<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
-<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501201628669-1715166756506-2.png" alt="image-20240501201628669"></p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501201720393-1715166756506-5.png" alt="image-20240501201720393"></p>
-<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
-<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
-<p>这个就是下载的是Ubuntu的系统镜像</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501202353751-1715166756506-6.png" alt="image-20240501202353751"></p>
-<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501202900922-1715166756506-3.png" alt="image-20240501202900922"></p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501203109317-1715166756506-4.png" alt="image-20240501203109317"></p>
-<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501205933201-1715166756506-10.png" alt="image-20240501205933201"></p>
-<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
-<hr>
-<p>给出一个报错解决思路：如果没有可以跳过</p>
-<p>win +x选择终端（管理员），输入：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-
-
-<p>然后继续在Windows PowerShell（管理员）输入：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\ubuntuinstall-1715166756506-7.png" alt="Ubuntu unpacking in the Windows console"></p>
-<p>进入系统修改用户密码和su密码：</p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501210939654-1715166756506-8.png" alt="image-20240501210939654"></p>
-<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
-<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
-<p>文件内容格式如下，在txt写好另存为这样子：</p>
-<p><img src="/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/Users\liuxiao\Desktop\web\blog\source_posts\win配置wsl\image-20240501205823170-1715166756506-9.png" alt="image-20240501205823170"></p>
-<p>.wslconfig内容</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
-
-<p>清华源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>conda安装建议miniconda</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<p>conda换源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>docker安装：点击下载</p>
-<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
-<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>WSL</category>
-      </categories>
-      <tags>
-        <tag>Conda</tag>
-        <tag>docker</tag>
-        <tag>WSL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>win11配置wsl2</title>
-    <url>/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/</url>
-    <content><![CDATA[<p>写在前面：</p>
-<ul>
-<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
-<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
-<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
-<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
-<li>后续配置bashrc、安装conda、安装docker</li>
-<li><span id="more"></span></li>
-</ul>
-<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501201255575-1715166756505-1.png" alt="image-20240501201255575"></p>
-<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
-<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501201628669-1715166756506-2.png" alt="image-20240501201628669"></p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501201720393-1715166756506-5.png" alt="image-20240501201720393"></p>
-<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
-<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
-<p>这个就是下载的是Ubuntu的系统镜像</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501202353751-1715166756506-6.png" alt="image-20240501202353751"></p>
-<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501202900922-1715166756506-3.png" alt="image-20240501202900922"></p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501203109317-1715166756506-4.png" alt="image-20240501203109317"></p>
-<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501205933201-1715166756506-10.png" alt="image-20240501205933201"></p>
-<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
-<hr>
-<p>给出一个报错解决思路：如果没有可以跳过</p>
-<p>win +x选择终端（管理员），输入：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-
-
-<p>然后继续在Windows PowerShell（管理员）输入：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\ubuntuinstall-1715166756506-7.png" alt="Ubuntu unpacking in the Windows console"></p>
-<p>进入系统修改用户密码和su密码：</p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501210939654-1715166756506-8.png" alt="image-20240501210939654"></p>
-<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
-<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
-<p>文件内容格式如下，在txt写好另存为这样子：</p>
-<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/Users\liuxiao\Desktop\web\blog\source_posts\win11配置wsl2\image-20240501205823170-1715166756506-9.png" alt="image-20240501205823170"></p>
-<p>.wslconfig内容</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
-
-<p>清华源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>conda安装建议miniconda</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<p>conda换源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>docker安装：点击下载</p>
-<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
-<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>WSL</category>
-      </categories>
-      <tags>
-        <tag>Conda</tag>
-        <tag>docker</tag>
-        <tag>WSL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>aaa</title>
-    <url>/2024/05/01/aaa/</url>
-    <content><![CDATA[<p>写在前面：</p>
-<ul>
-<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
-<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
-<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
-<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
-<li>后续配置bashrc、安装conda、安装docker</li>
-<li><span id="more"></span></li>
-</ul>
-<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
-<p><img src="/./aaa/image-20240501201255575-1715166756505-1.png" alt="image-20240501201255575"></p>
-<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
-<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
-<p><img src="/./aaa/image-20240501201628669-1715166756506-2.png" alt="image-20240501201628669"></p>
-<p><img src="/./aaa/image-20240501201720393-1715166756506-5.png" alt="image-20240501201720393"></p>
-<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
-<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
-<p>这个就是下载的是Ubuntu的系统镜像</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
-
-<p><img src="/./aaa/image-20240501202353751-1715166756506-6.png" alt="image-20240501202353751"></p>
-<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
-<p><img src="/./aaa/image-20240501202900922-1715166756506-3.png" alt="image-20240501202900922"></p>
-<p><img src="/./aaa/image-20240501203109317-1715166756506-4.png" alt="image-20240501203109317"></p>
-<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/./aaa/image-20240501205933201-1715166756506-10.png" alt="image-20240501205933201"></p>
-<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
-<hr>
-<p>给出一个报错解决思路：如果没有可以跳过</p>
-<p>win +x选择终端（管理员），输入：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-
-
-<p>然后继续在Windows PowerShell（管理员）输入：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
-<p><img src="/./aaa/ubuntuinstall-1715166756506-7.png" alt="Ubuntu unpacking in the Windows console"></p>
-<p>进入系统修改用户密码和su密码：</p>
-<p><img src="/./aaa/image-20240501210939654-1715166756506-8.png" alt="image-20240501210939654"></p>
-<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
-<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
-<p>文件内容格式如下，在txt写好另存为这样子：</p>
-<p><img src="/./aaa/image-20240501205823170-1715166756506-9.png" alt="image-20240501205823170"></p>
-<p>.wslconfig内容</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
-
-<p>清华源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>conda安装建议miniconda</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<p>conda换源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>docker安装：点击下载</p>
-<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
-<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>WSL</category>
-      </categories>
-      <tags>
-        <tag>Conda</tag>
-        <tag>docker</tag>
-        <tag>WSL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux锁定后台进程</title>
     <url>/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</url>
     <content><![CDATA[<p>在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。</p>
@@ -295,6 +37,41 @@
       <tags>
         <tag>Linux</tag>
         <tag>Pid</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vcftools计算fst选择信号</title>
+    <url>/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</url>
+    <content><![CDATA[<p>fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。</p>
+<span id="more"></span>
+
+<p>fst 的选择信号原理如下：</p>
+<ol>
+<li>遗传差异的衡量：fst 通过计算群体间和群体内的遗传差异来衡量基因组水平上的遗传变异。它使用基因频率或基因型频率作为指标来评估群体间的遗传差异。</li>
+<li>群体间遗传差异：fst 使用群体间的遗传差异来测量选择信号。群体间遗传差异是指在不同群体中，相同基因座上基因型或等位基因频率的差异。如果在某个基因座上，不同群体之间的遗传差异显著高于群体内的遗传差异，可能表明该基因座受到选择的影响。</li>
+<li>统计计算：fst 的计算通常基于基因频率或基因型频率的方差分析。常用的 fst 计算方法包括 Weir and Cockerham 方法、Hudson’s unbiased estimator 和 AMOVA (Analysis of Molecular Variance) 方法。这些方法使用群体间和群体内的遗传差异来计算 fst 值。</li>
+<li>统计显著性检验：计算得到的 fst 值可以与理论空模型进行比较来进行统计显著性检验。常用的检验方法包括置换检验、Bootstrap 方法和模拟方法。</li>
+</ol>
+<p>在群体遗传学中衡量群体间的遗传分化的程度的指标有许多种，较为常见的就是遗传分化指数（Fst），fst是由F统计量演变而来，F统计量主要有三种（FIS，FIF，FST）。Fst是针对一对等位基因，如果基因座上存在复等位基因，则需要用Gst衡量，基因差异分化系数（gene differentiation coefficient，Gst）。假定有s个地方群体，第k个地方群体相对大小为wk，第k个地方群体中第i个等位基因频率为qk(i)，杂合体频率观察值为hk，那么整个群体中观察到的杂合体频率平均值HI，地方群体为理想群体的期望杂合体频率平均值HS，整个群体为理想群体的期望杂合体频率HT，分别为：</p>
+<p>FIS，是HI相对于HS减少量的比值，即地方群体的平均近交系数。<br>FST，是HS相对于HT减少量的比值，即有亲缘关系地方群体间的平均近交系数。<br>FIT，是HI相对于HT减少量的比值，即整个群体的平均近交系数。<br>Fst值的取值范围是【0,1】，最大值为1表明两个群体完全分化，最小值为0表明群体间无分化。</p>
+<p>在实际的研究中Fst值为0–0.05时说明群体间遗传分化很小，可以不做考虑；<br>0.05–0.15时，表明群体间存在中等程度的遗传分化；<br>0.15–0.25时群体间存在较大的遗传分化；<br>0.25以上的时候群体间就存在很大的遗传分化了。</p>
+<p>目前主要使用的是vcftools来计算：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">conda install -c bioconda vcftools</span><br><span class="line"><span class="comment">#单点计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popb.txt --out a_b.fst</span><br><span class="line"><span class="comment">#窗口计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popa.txt --out a_b.fst --fst-window-size 150000</span><br><span class="line"><span class="comment">#滑动窗口计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popa.txt --out a_b.fst --fst-window-size 150000 --fst-window-step 75000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a><strong>计算</strong></h2><h3 id="1群体较少"><a href="#1群体较少" class="headerlink" title="1群体较少"></a>1<strong>群体较少</strong></h3><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /bin/bash</span></span><br><span class="line"><span class="comment">#crate by lx</span></span><br><span class="line"><span class="keyword">if</span> <span class="punctuation">[</span> <span class="operator">$</span><span class="comment"># -ne 6 ]; then</span></span><br><span class="line"> echo <span class="string">&quot;error.. need args&quot;</span></span><br><span class="line"> echo <span class="string">&quot;command:$0 &lt;VCF&gt; &lt;Pop1&gt; &lt;Pop2&gt; &lt;Win&gt; &lt;Step&gt; &lt;Out&gt;&quot;</span></span><br><span class="line"> exit <span class="number">1</span></span><br><span class="line">fi</span><br><span class="line">VCF<span class="operator">=</span><span class="operator">$</span><span class="number">1</span></span><br><span class="line">Pop1<span class="operator">=</span><span class="operator">$</span><span class="number">2</span></span><br><span class="line">Pop2<span class="operator">=</span><span class="operator">$</span><span class="number">3</span></span><br><span class="line">Win<span class="operator">=</span><span class="operator">$</span><span class="number">4</span></span><br><span class="line">Step<span class="operator">=</span><span class="operator">$</span><span class="number">5</span></span><br><span class="line">Out<span class="operator">=</span><span class="operator">$</span><span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="punctuation">[[</span> <span class="string">&quot;$&#123;file##*.&#125;&quot;</span> <span class="operator">=</span> <span class="string">&quot;vcf.gz&quot;</span> <span class="punctuation">]</span><span class="punctuation">]</span>; then</span><br><span class="line">  vcftools <span class="operator">-</span><span class="operator">-</span>gzvcf <span class="operator">$</span><span class="punctuation">&#123;</span>VCF<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop1<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop2<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>size <span class="operator">$</span><span class="punctuation">&#123;</span>Win<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>step <span class="operator">$</span><span class="punctuation">&#123;</span>Step<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>out <span class="operator">$</span><span class="punctuation">&#123;</span>Out<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span><span class="built_in">max</span><span class="operator">-</span><span class="built_in">missing</span> <span class="number">0.9</span> <span class="operator">-</span><span class="operator">-</span>maf <span class="number">0.05</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  vcftools <span class="operator">-</span><span class="operator">-</span>vcf <span class="operator">$</span><span class="punctuation">&#123;</span>VCF<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop1<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop2<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>size <span class="operator">$</span><span class="punctuation">&#123;</span>Win<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>step <span class="operator">$</span><span class="punctuation">&#123;</span>Step<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>out <span class="operator">$</span><span class="punctuation">&#123;</span>Out<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span><span class="built_in">max</span><span class="operator">-</span><span class="built_in">missing</span> <span class="number">0.9</span> <span class="operator">-</span><span class="operator">-</span>maf <span class="number">0.05</span></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="2流水线"><a href="#2流水线" class="headerlink" title="2流水线"></a>2<strong>流水线</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#crate by lx</span></span><br><span class="line">vcf_file=<span class="string">&quot;/home/liuxiao/1254/miss0.8.recode.vcf&quot;</span></span><br><span class="line">hu_file=<span class="string">&quot;/home/liuxiao/1254/group/group/txt/Hu.txt&quot;</span></span><br><span class="line">group_folder=<span class="string">&quot;/home/liuxiao/1254/group/group/txt/&quot;</span></span><br><span class="line">out_folder=<span class="string">&#x27;/home/liuxiao/1254/result/fst_snp/&#x27;</span></span><br><span class="line"></span><br><span class="line">txt_files=$(<span class="built_in">ls</span> <span class="string">&quot;<span class="variable">$group_folder</span>&quot;</span>/*.txt | grep -v <span class="string">&quot;Hu.txt&quot;</span>)</span><br><span class="line">pids=()</span><br><span class="line"><span class="keyword">for</span> hu_group_file <span class="keyword">in</span> <span class="variable">$hu_file</span>; <span class="keyword">do</span></span><br><span class="line">  hu_group_name=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$hu_group_file</span>&quot;</span> .txt)</span><br><span class="line">  <span class="keyword">for</span> txt_file <span class="keyword">in</span> <span class="variable">$txt_files</span>; <span class="keyword">do</span></span><br><span class="line">    group_name=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$txt_file</span>&quot;</span> .txt)</span><br><span class="line">    output_file=<span class="string">&quot;<span class="variable">$&#123;hu_group_name&#125;</span>_<span class="variable">$&#123;group_name&#125;</span>_8miss.fst&quot;</span></span><br><span class="line">    vcftools --vcf <span class="string">&quot;<span class="variable">$vcf_file</span>&quot;</span> --weir-fst-pop <span class="string">&quot;<span class="variable">$hu_group_file</span>&quot;</span> --weir-fst-pop <span class="string">&quot;<span class="variable">$txt_file</span>&quot;</span> --out <span class="string">&quot;<span class="variable">$out_folder</span>/<span class="variable">$output_file</span>&quot;</span>  &amp;</span><br><span class="line">    pids+=($!)</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;pids[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">wait</span> <span class="string">&quot;<span class="variable">$pid</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;所有计算完成&quot;</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Genome</category>
+        <category>Selection_signature</category>
+      </categories>
+      <tags>
+        <tag>Vcftools</tag>
+        <tag>Fst</tag>
       </tags>
   </entry>
   <entry>
@@ -375,36 +152,253 @@
       </tags>
   </entry>
   <entry>
-    <title>vcftools计算fst选择信号</title>
-    <url>/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</url>
-    <content><![CDATA[<p>fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。</p>
-<span id="more"></span>
+    <title>win11配置wsl2</title>
+    <url>/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/</url>
+    <content><![CDATA[<p>写在前面：</p>
+<ul>
+<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
+<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
+<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
+<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
+<li>后续配置bashrc、安装conda、安装docker</li>
+<li><span id="more"></span></li>
+</ul>
+<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="image-20240501201255575"></p>
+<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
+<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
+<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
+<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
+<p>这个就是下载的是Ubuntu的系统镜像</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
 
-<p>fst 的选择信号原理如下：</p>
-<ol>
-<li>遗传差异的衡量：fst 通过计算群体间和群体内的遗传差异来衡量基因组水平上的遗传变异。它使用基因频率或基因型频率作为指标来评估群体间的遗传差异。</li>
-<li>群体间遗传差异：fst 使用群体间的遗传差异来测量选择信号。群体间遗传差异是指在不同群体中，相同基因座上基因型或等位基因频率的差异。如果在某个基因座上，不同群体之间的遗传差异显著高于群体内的遗传差异，可能表明该基因座受到选择的影响。</li>
-<li>统计计算：fst 的计算通常基于基因频率或基因型频率的方差分析。常用的 fst 计算方法包括 Weir and Cockerham 方法、Hudson’s unbiased estimator 和 AMOVA (Analysis of Molecular Variance) 方法。这些方法使用群体间和群体内的遗传差异来计算 fst 值。</li>
-<li>统计显著性检验：计算得到的 fst 值可以与理论空模型进行比较来进行统计显著性检验。常用的检验方法包括置换检验、Bootstrap 方法和模拟方法。</li>
-</ol>
-<p>在群体遗传学中衡量群体间的遗传分化的程度的指标有许多种，较为常见的就是遗传分化指数（Fst），fst是由F统计量演变而来，F统计量主要有三种（FIS，FIF，FST）。Fst是针对一对等位基因，如果基因座上存在复等位基因，则需要用Gst衡量，基因差异分化系数（gene differentiation coefficient，Gst）。假定有s个地方群体，第k个地方群体相对大小为wk，第k个地方群体中第i个等位基因频率为qk(i)，杂合体频率观察值为hk，那么整个群体中观察到的杂合体频率平均值HI，地方群体为理想群体的期望杂合体频率平均值HS，整个群体为理想群体的期望杂合体频率HT，分别为：</p>
-<p>FIS，是HI相对于HS减少量的比值，即地方群体的平均近交系数。<br>FST，是HS相对于HT减少量的比值，即有亲缘关系地方群体间的平均近交系数。<br>FIT，是HI相对于HT减少量的比值，即整个群体的平均近交系数。<br>Fst值的取值范围是【0,1】，最大值为1表明两个群体完全分化，最小值为0表明群体间无分化。<br>在实际的研究中Fst值为0–0.05时说明群体间遗传分化很小，可以不做考虑；<br>0.05–0.15时，表明群体间存在中等程度的遗传分化；<br>0.15–0.25时群体间存在较大的遗传分化；<br>0.25以上的时候群体间就存在很大的遗传分化了。</p>
-<p>目前主要使用的是vcftools来计算：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">conda install -c bioconda vcftools</span><br><span class="line"><span class="comment">#单点计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popb.txt --out a_b.fst</span><br><span class="line"><span class="comment">#窗口计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popa.txt --out a_b.fst --fst-window-size 150000</span><br><span class="line"><span class="comment">#滑动窗口计算</span></span><br><span class="line">vcftools --vcf test.vcf --weir-fst-pop popa.txt --weir-fst-pop popa.txt --out a_b.fst --fst-window-size 150000 --fst-window-step 75000</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
+<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
+<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
+<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
+<hr>
+<p>给出一个报错解决思路：如果没有可以跳过</p>
+<p>win +x选择终端（管理员），输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+<p>然后继续在Windows PowerShell（管理员）输入：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
+<p>进入系统修改用户密码和su密码：</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
+<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a><strong>计算</strong></h2><h3 id="1群体较少"><a href="#1群体较少" class="headerlink" title="1群体较少"></a>1<strong>群体较少</strong></h3><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">#! /bin/bash</span></span><br><span class="line"><span class="comment">#crate by lx</span></span><br><span class="line"><span class="keyword">if</span> <span class="punctuation">[</span> <span class="operator">$</span><span class="comment"># -ne 6 ]; then</span></span><br><span class="line"> echo <span class="string">&quot;error.. need args&quot;</span></span><br><span class="line"> echo <span class="string">&quot;command:$0 &lt;VCF&gt; &lt;Pop1&gt; &lt;Pop2&gt; &lt;Win&gt; &lt;Step&gt; &lt;Out&gt;&quot;</span></span><br><span class="line"> exit <span class="number">1</span></span><br><span class="line">fi</span><br><span class="line">VCF<span class="operator">=</span><span class="operator">$</span><span class="number">1</span></span><br><span class="line">Pop1<span class="operator">=</span><span class="operator">$</span><span class="number">2</span></span><br><span class="line">Pop2<span class="operator">=</span><span class="operator">$</span><span class="number">3</span></span><br><span class="line">Win<span class="operator">=</span><span class="operator">$</span><span class="number">4</span></span><br><span class="line">Step<span class="operator">=</span><span class="operator">$</span><span class="number">5</span></span><br><span class="line">Out<span class="operator">=</span><span class="operator">$</span><span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="punctuation">[[</span> <span class="string">&quot;$&#123;file##*.&#125;&quot;</span> <span class="operator">=</span> <span class="string">&quot;vcf.gz&quot;</span> <span class="punctuation">]</span><span class="punctuation">]</span>; then</span><br><span class="line">  vcftools <span class="operator">-</span><span class="operator">-</span>gzvcf <span class="operator">$</span><span class="punctuation">&#123;</span>VCF<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop1<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop2<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>size <span class="operator">$</span><span class="punctuation">&#123;</span>Win<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>step <span class="operator">$</span><span class="punctuation">&#123;</span>Step<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>out <span class="operator">$</span><span class="punctuation">&#123;</span>Out<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span><span class="built_in">max</span><span class="operator">-</span><span class="built_in">missing</span> <span class="number">0.9</span> <span class="operator">-</span><span class="operator">-</span>maf <span class="number">0.05</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">  vcftools <span class="operator">-</span><span class="operator">-</span>vcf <span class="operator">$</span><span class="punctuation">&#123;</span>VCF<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop1<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>weir<span class="operator">-</span>fst<span class="operator">-</span>pop <span class="operator">$</span><span class="punctuation">&#123;</span>Pop2<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>size <span class="operator">$</span><span class="punctuation">&#123;</span>Win<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>fst<span class="operator">-</span>window<span class="operator">-</span>step <span class="operator">$</span><span class="punctuation">&#123;</span>Step<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span>out <span class="operator">$</span><span class="punctuation">&#123;</span>Out<span class="punctuation">&#125;</span> <span class="operator">-</span><span class="operator">-</span><span class="built_in">max</span><span class="operator">-</span><span class="built_in">missing</span> <span class="number">0.9</span> <span class="operator">-</span><span class="operator">-</span>maf <span class="number">0.05</span></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
+<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
+<p>文件内容格式如下，在txt写好另存为这样子：</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
+<p>.wslconfig内容</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="2流水线"><a href="#2流水线" class="headerlink" title="2流水线"></a>2<strong>流水线</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#crate by lx</span></span><br><span class="line">vcf_file=<span class="string">&quot;/home/liuxiao/1254/miss0.8.recode.vcf&quot;</span></span><br><span class="line">hu_file=<span class="string">&quot;/home/liuxiao/1254/group/group/txt/Hu.txt&quot;</span></span><br><span class="line">group_folder=<span class="string">&quot;/home/liuxiao/1254/group/group/txt/&quot;</span></span><br><span class="line">out_folder=<span class="string">&#x27;/home/liuxiao/1254/result/fst_snp/&#x27;</span></span><br><span class="line"></span><br><span class="line">txt_files=$(<span class="built_in">ls</span> <span class="string">&quot;<span class="variable">$group_folder</span>&quot;</span>/*.txt | grep -v <span class="string">&quot;Hu.txt&quot;</span>)</span><br><span class="line">pids=()</span><br><span class="line"><span class="keyword">for</span> hu_group_file <span class="keyword">in</span> <span class="variable">$hu_file</span>; <span class="keyword">do</span></span><br><span class="line">  hu_group_name=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$hu_group_file</span>&quot;</span> .txt)</span><br><span class="line">  <span class="keyword">for</span> txt_file <span class="keyword">in</span> <span class="variable">$txt_files</span>; <span class="keyword">do</span></span><br><span class="line">    group_name=$(<span class="built_in">basename</span> <span class="string">&quot;<span class="variable">$txt_file</span>&quot;</span> .txt)</span><br><span class="line">    output_file=<span class="string">&quot;<span class="variable">$&#123;hu_group_name&#125;</span>_<span class="variable">$&#123;group_name&#125;</span>_8miss.fst&quot;</span></span><br><span class="line">    vcftools --vcf <span class="string">&quot;<span class="variable">$vcf_file</span>&quot;</span> --weir-fst-pop <span class="string">&quot;<span class="variable">$hu_group_file</span>&quot;</span> --weir-fst-pop <span class="string">&quot;<span class="variable">$txt_file</span>&quot;</span> --out <span class="string">&quot;<span class="variable">$out_folder</span>/<span class="variable">$output_file</span>&quot;</span>  &amp;</span><br><span class="line">    pids+=($!)</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pid <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;pids[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">wait</span> <span class="string">&quot;<span class="variable">$pid</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;所有计算完成&quot;</span></span><br></pre></td></tr></table></figure>
+<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
 
+<p>清华源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>conda安装建议miniconda</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>conda换源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>docker安装：点击下载</p>
+<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
+<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
 ]]></content>
       <categories>
-        <category>selection_signature</category>
+        <category>linux</category>
+        <category>WSL</category>
       </categories>
       <tags>
-        <tag>vcftools fst</tag>
+        <tag>WSL</tag>
+        <tag>Conda</tag>
+        <tag>docker</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>win11配置wsl2</title>
+    <url>/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/</url>
+    <content><![CDATA[<p>写在前面：</p>
+<ul>
+<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
+<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
+<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
+<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
+<li>后续配置bashrc、安装conda、安装docker</li>
+<li><span id="more"></span></li>
+</ul>
+<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="image-20240501201255575"></p>
+<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
+<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
+<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
+<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
+<p>这个就是下载的是Ubuntu的系统镜像</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
+<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
+<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
+<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
+<hr>
+<p>给出一个报错解决思路：如果没有可以跳过</p>
+<p>win +x选择终端（管理员），输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+<p>然后继续在Windows PowerShell（管理员）输入：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
+<p>进入系统修改用户密码和su密码：</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
+<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
+<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
+<p>文件内容格式如下，在txt写好另存为这样子：</p>
+<p><img src="https://louis-kento.github.io/2024/05/01/win%E9%85%8D%E7%BD%AEwsl/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
+<p>.wslconfig内容</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
+
+<p>清华源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>conda安装建议miniconda</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>conda换源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>docker安装：点击下载</p>
+<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
+<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>WSL</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>Conda</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wsl2配置</title>
+    <url>/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>写在前面：</p>
+<ul>
+<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
+<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
+<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
+<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
+<li>后续配置bashrc、安装conda、安装docker</li>
+<li><span id="more"></span></li>
+</ul>
+<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="a"></p>
+<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
+<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
+<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
+<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
+<p>这个就是下载的是Ubuntu的系统镜像</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
+<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
+<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
+<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
+<hr>
+<p>给出一个报错解决思路：如果没有可以跳过</p>
+<p>win +x选择终端（管理员），输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+<p>然后继续在Windows PowerShell（管理员）输入：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
+<p>进入系统修改用户密码和su密码：</p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
+<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
+<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
+<p>文件内容格式如下，在txt写好另存为这样子：</p>
+<p><img src="https://louis-kento.github.io/2024/05/08/wsl2%E9%85%8D%E7%BD%AE/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
+<p>.wslconfig内容</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
+
+<p>清华源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>conda安装建议miniconda</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>conda换源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>docker安装：点击下载</p>
+<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
+<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
+]]></content>
   </entry>
   <entry>
     <title>计算xpehh选择信号</title>
