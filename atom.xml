@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-07-01T09:39:19.812Z</updated>
+  <updated>2024-07-01T09:45:45.194Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/"/>
     <id>https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/</id>
     <published>2024-07-01T09:38:08.000Z</published>
-    <updated>2024-07-01T09:39:19.812Z</updated>
+    <updated>2024-07-01T09:45:45.194Z</updated>
     
     
       
@@ -35,11 +35,35 @@
   </entry>
   
   <entry>
+    <title>群论学习1</title>
+    <link href="https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/"/>
+    <id>https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/</id>
+    <published>2024-07-01T07:08:45.000Z</published>
+    <updated>2024-07-01T09:44:24.020Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;群论&quot;&gt;&lt;a href=&quot;#群论&quot; class=&quot;headerlink&quot; title=&quot;群论&quot;&gt;&lt;/a&gt;群论&lt;/h2&gt;&lt;p&gt;群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;t</summary>
+      
+    
+    
+    
+    
+    <category term="群论" scheme="https://louis-kento.github.io/tags/%E7%BE%A4%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SNP数据计算距离矩阵</title>
     <link href="https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/"/>
     <id>https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/</id>
     <published>2024-06-16T14:13:34.000Z</published>
-    <updated>2024-06-16T14:16:28.391Z</updated>
+    <updated>2024-07-01T09:45:31.300Z</updated>
     
     
       

@@ -153,7 +153,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -164,7 +164,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -351,6 +351,13 @@ document.addEventListener('page:loaded', () => {
     NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
   ).then(() => 
     Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>
+
   );
 });
 </script>
