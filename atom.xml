@@ -76,16 +76,16 @@
   </entry>
   
   <entry>
-    <title>文献学习-BSAlign: A Library for Nucleotide Sequence Alignment</title>
+    <title>文献学习-BSAlign比对算法</title>
     <link href="https://louis-kento.github.io/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/"/>
     <id>https://louis-kento.github.io/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/</id>
     <published>2024-05-31T10:49:09.000Z</published>
-    <updated>2024-05-31T14:34:12.413Z</updated>
+    <updated>2024-07-01T09:25:25.834Z</updated>
     
     
       
       
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531185054495.png&quot; alt=&quot;i</summary>
+    <summary type="html">&lt;h3 id=&quot;文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot;&gt;&lt;a href=&quot;#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot; class=</summary>
       
     
     
@@ -150,7 +150,7 @@
 &lt;li&gt;win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用&lt;/li&gt;
 &lt;li&gt;安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹&lt;/li&gt;
 &lt;li&gt;后续配置bashrc、安装conda、安装docker&lt;/li&gt;
-&lt;li&gt;</summary>
+&lt;li&gt;&lt;/li&gt;&lt;/ul&gt;</summary>
     
     
     

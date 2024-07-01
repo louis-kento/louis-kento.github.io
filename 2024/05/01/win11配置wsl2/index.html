@@ -26,16 +26,16 @@
 <meta property="og:site_name" content="kento_blog">
 <meta property="og:description" content="写在前面：  window的分发很方便，适合做一些简单分析，简单的炼丹 一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。 win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用 安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹 后续配置bashrc、安装conda、安装docker">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png">
-<meta property="og:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png">
 <meta property="article:published_time" content="2024-05-01T13:48:57.000Z">
 <meta property="article:modified_time" content="2024-05-08T12:37:45.414Z">
 <meta property="article:author" content="liuxiao">
@@ -43,7 +43,7 @@
 <meta property="article:tag" content="Conda">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://louis-kento.github.io/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png">
+<meta name="twitter:image" content="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png">
 
 
 <link rel="canonical" href="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/">
@@ -337,23 +337,23 @@
 <li><span id="more"></span></li>
 </ul>
 <h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="image-20240501201255575"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="image-20240501201255575"></p>
 <h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
 <p>勾选并确定，Windows11 会自动下载重启<br>​</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
 <h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
 <p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
 <p>这个就是下载的是Ubuntu的系统镜像</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
 
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
 <h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
 <h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a target="_blank" rel="noopener" href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
 <p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
 <hr>
 <p>给出一个报错解决思路：如果没有可以跳过</p>
@@ -366,9 +366,9 @@
 
 <hr>
 <p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
 <p>进入系统修改用户密码和su密码：</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
 <h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
 
 
@@ -376,7 +376,7 @@
 <h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
 <p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
 <p>文件内容格式如下，在txt写好另存为这样子：</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
+<p><img src="/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
 <p>.wslconfig内容</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
