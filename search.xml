@@ -1,126 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SNP数据计算距离矩阵</title>
-    <url>/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/</url>
-    <content><![CDATA[<p>用到的工具是 <strong>VCF2Dis</strong></p>
-<p>工具对应的github主页 <a href="https://github.com/BGI-shenzhen/VCF2Dis">https://github.com/BGI-shenzhen/VCF2Dis</a></p>
-<p>按照软件主页的帮助文档 下载安装，没有遇到问题</p>
-<h1 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h1><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
-<h3 id="1）-安装"><a href="#1）-安装" class="headerlink" title="1） 安装"></a>1） 安装</h3><hr>
-<p><strong>新版本</strong>将在 <strong><a href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong> 中更新和维护，请点击下方链接下载最新版本</p>
-<p><strong><a href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong></p>
-<p><strong><a href="https://github.com/hewm2008/VCF2Dis/archive/v1.51.tar.gz">下载</a></strong></p>
-<p>只需 [make] 或 [sh make.sh ] 来编译此软件，最终软件可以在 Dir <strong>[bin&#x2F;VCF2Dis]</strong><br>For <strong>linux &#x2F;Unix</strong> 和 <strong>macOS</strong> 中找到</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf  VCF2DisXXX.tar.gz            # if Link do not work ,Try re-install [zlib]library</span><br><span class="line">cd VCF2DisXXX;                          # [zlib] and copy them to the library Dir</span><br><span class="line">sh make.sh;                             # VCF2Dis-xx/src/include/zlib</span><br><span class="line">./bin/VCF2Dis</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong>如果链接失败，请尝试<strong>重新安装</strong>库 <a href="https://zlib.net/">*<strong>zlib*</strong></a><br><strong>注意：</strong>：建议使用 <a href="https://cran.r-project.org/web/packages/ape/index.html">ape</a> 和 <a href="https://www.bioconductor.org/packages/release/bioc/html/ggtree.html">ggtree</a> <a href="https://www.r-project.org/">的 R</a></p>
-<h3 id="2）-没有-boostrap-的-nj-tree-示例"><a href="#2）-没有-boostrap-的-nj-tree-示例" class="headerlink" title="2） 没有 boostrap 的 nj-tree 示例"></a>2） 没有 boostrap 的 nj-tree 示例</h3><hr>
-<ul>
-<li><ol>
-<li>参数说明：</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: VCF2Dis -InPut  &lt;in.vcf&gt;  -OutPut  &lt;p_dis.mat&gt;</span><br><span class="line"></span><br><span class="line">	-InPut     &lt;str&gt;     Input one or muti GATK VCF genotype File</span><br><span class="line">	-OutPut    &lt;str&gt;     OutPut Sample p-Distance matrix</span><br><span class="line"></span><br><span class="line">	-InList    &lt;str&gt;     Input GATK muti-chr VCF Path List</span><br><span class="line">	-SubPop    &lt;str&gt;     SubGroup SampleList of VCFFile [ALLsample]</span><br><span class="line">	-Rand      &lt;float&gt;   Probability (0-1] for each site to join Calculation [1]</span><br><span class="line">	-KeepMF              Keep the Middle File diff &amp; Use matrix</span><br><span class="line"></span><br><span class="line">	-help                Show more help [hewm2008 v1.51s]</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>创建p_distance矩阵并构造 nj-tree newick 树</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 2.1) To new all the sample p_distance matrix and newick tree based VCF, run VCF2Dis directly</span><br><span class="line">      ./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis.mat</span><br><span class="line">      #  ./bin/VCF2Dis     -InPut  in.fa.gz	-OutPut p_dis.mat -InFormat  FA</span><br><span class="line"></span><br><span class="line"># 2.2) To new sub group sample p_distance matrix and and newick tree ; put their sample name into File sample.list</span><br><span class="line">      ./bin/VCF2Dis	-InPut	chr1.vcf.gz chr2.vcf.gz	-OutPut p_dis.mat  -SubPop  sample.list</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>可视化和美化它（需要处理其他软件），<br>您将在 VCF2Dis 之后获得 p_dis.nwk 树文件。<br>运行 MEGA # <a href="http://www.megasoftware.net/">MEGA</a> 用于显示基于此文件的系统发育树 [p_dis.nwk]<br>，您可以看到相邻连接树并将其保存为 PDF 格式</li>
-</ol>
-</li>
-</ul>
-<p>如果无法获取 <strong>p_dis.nwk</strong> 树文件，以下是获取树文件的 3 种方法。</p>
-<h4 id="其他构建-nj-tree-的方法：方法-1-在线"><a href="#其他构建-nj-tree-的方法：方法-1-在线" class="headerlink" title="其他构建 nj-tree 的方法：方法 1 在线"></a>其他构建 nj-tree 的方法：方法 1 在线</h4><p>选择 <strong>A&#x2F;B</strong><br><strong>A 之一。</strong> 上传 web <a href="http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional=1">fneighbor（http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional&#x3D;1），</a>单击 <strong>Run fneighbor</strong> 底部。那么你可以得到输出文件<strong>datafile.tree文件</strong><br><strong>B.<strong>将</strong>p_dis.mat</strong>上传到<a href="http://www.atgc-montpellier.fr/fastme/">fastme（http://www.atgc-montpellier.fr/fastme/）</a>网站，选择<strong>数据类型</strong>到<strong>距离矩阵</strong>，点击底部的捻<strong>线执行&amp;email结果</strong>。您将获得 <strong>p_dis_mat_fastme-tree.nwk</strong> ，并且电子邮件不是强制性的;</p>
-<p>运行 MEGA # MEGA （<a href="http://www.megasoftware.net/%EF%BC%89">http://www.megasoftware.net/）</a> 用于显示基于此文件的系统发育树 [p_dis_mat_fastme-tree.nwk]</p>
-<h4 id="其他构造-nj-tree-的方法-：-方法-2-：-PHYLIPNEW"><a href="#其他构造-nj-tree-的方法-：-方法-2-：-PHYLIPNEW" class="headerlink" title="其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW"></a>其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW</h4><p>使用 PHYLIPNEW 构建 nj-tree<br>如何安装 PHYLIPNEW 请 点击**<a href="https://github.com/hewm2008/VCF2Dis/blob/main/Install.NJ.en.md">这里</a>** 或 点击**<a href="https://github.com/hewm2008/VCF2Dis/blob/main/Install.NJ.cn.md">这里（中文）</a>**</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#    3.1 Run  PHYLIP</span><br><span class="line">#   After p_distance done , software PHYLIPNEW 3.69 (http://evolution.genetics.washington.edu/phylip.html) ,with neighbor-joining method can was used to construct the phylogenetic tree on the basis of this  p_distance matrix;</span><br><span class="line"> </span><br><span class="line">     PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis.matrix  -outfile tree.out1.txt -matrixtype s -treetype n -outtreefile tree.out2.tre</span><br><span class="line"></span><br><span class="line">#    3.2 Run  MEGA</span><br><span class="line">#    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file [tree.out2.tre]</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="其他构造-nj-tree-的方法：方法-3-R-脚本"><a href="#其他构造-nj-tree-的方法：方法-3-R-脚本" class="headerlink" title="其他构造 nj-tree 的方法：方法 3 R 脚本"></a>其他构造 nj-tree 的方法：方法 3 R 脚本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    #    3.1 Run  R Rscript</span><br><span class="line">Rscript  exemple/vistreecode.r    p_dis.mat</span><br><span class="line">    #    3.2 Run  MEGA</span><br><span class="line">    #    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file [tree.out2.tre]</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>您可以查看相邻连接树并将其保存为 PDF 格式</li>
-</ol>
-</li>
-</ul>
-<h3 id="3）-带有-boostrap-的-nj-tree-示例"><a href="#3）-带有-boostrap-的-nj-tree-示例" class="headerlink" title="3） 带有 boostrap 的 nj-tree 示例"></a>3） 带有 boostrap 的 nj-tree 示例</h3><ul>
-<li><ol>
-<li>使用回放采样对 nj-tree 进行多运行。 如上所述，使用站点和新的nj树部分。重复 <strong>NN</strong> 时间。X&#x3D;（1,2….NN）;</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis_X.mat    -Rand     0.25</span><br><span class="line">PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis_X.matrix  -outfile tree.out1_X.txt -matrixtype s -treetype n -outtreefile tree.out2_X.tre </span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>合并所有回放采样 NJ-tree 并构造 boostrap nj-tree。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat   tree.out2_*.tre   &gt;  ALLtree_merge.tre</span><br><span class="line">PHYLIPNEW-3.69.650/bin/fconsense   -intreefile   ALLtree_merge.tre  -outfile out  -treeprint Y</span><br><span class="line">perl  ./bin/percentageboostrapTree.pl    ALLtree_merge.treefile    NN    Final_boostrap.tre</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>构建 nj-tree 并呈现它（需要处理其他软件）</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file Final_boostrap.tre] </span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="4）-引言"><a href="#4）-引言" class="headerlink" title="4） 引言"></a>4） 引言</h3><hr>
-<p>要新建p_distance矩阵，请添加 VCF 文件。有关p_distance矩阵的详细信息，请参阅**<a href="https://phylipweb.github.io/phylip/doc/distance.html">此网站。</a>**采用VCF SNPs数据集计算个体间的p距离，按照以下公式计算样本i和样本j的遗传距离：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D_ij=(1/L) * [(sum(d(l)_ij))]</span><br></pre></td></tr></table></figure>
-
-
-
-
-<p>其中 L 是可以识别 SNP 的区域的长度，给定位置 l 处的等位基因是 A&#x2F;C：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d(l)_ij=0.0     if the genotypes of the two individuals were AA and AA;</span><br><span class="line">d(l)_ij=0.5     if the genotypes of the two individuals were AA and AC;</span><br><span class="line">d(l)_ij=0.0     if the genotypes of the two individuals were AC and AC;</span><br><span class="line">d(l)_ij=1.0     if the genotypes of the two individuals were AA and CC;</span><br><span class="line">d(l)_ij=0.0     if the genotypes of the two individuals were CC and CC;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>distance</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>R语言绘制组合图</title>
-    <url>/2024/06/08/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%88%B6%E7%BB%84%E5%90%88%E5%9B%BE/</url>
-    <content><![CDATA[<p>在用R语言做完图之后要想放在论文里，就需要把不同的图组合起来，尝试过用PPT，以及在Word里，效果都不太好，因此试着在R里组图（它的优势在于调图片清晰度比较方便）</p>
-<p>如标题所示，包括①R里面做出的图以及②已经导出为PNG格式的图片</p>
-<p>首先说第一种</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#加载包</span><br><span class="line">library(ggpubr) </span><br><span class="line">library(ggplot2) </span><br><span class="line">#组图</span><br><span class="line">figure &lt;- ggarrange(pp1,pp2,pp3, #需要组合的图</span><br><span class="line">                    ncol = 3, nrow = 1)   #ncol是一行放几个，nrow是放几列</span><br><span class="line">figure</span><br><span class="line"></span><br><span class="line">#这个是看要不要给组图加横纵标题什么的。&quot;left&quot;就是加在左边，其他的top,bottom等同理</span><br><span class="line">figure2=annotate_figure(figure,left = text_grob(&quot;Normal nitrogen&quot;,color = &quot;black&quot;,  </span><br><span class="line">                        size = 36,x = 0.5,y=0.5,rot=90))  #rot是旋转的角度</span><br><span class="line">figure2</span><br><span class="line">#这个是导出图片的</span><br><span class="line">ggsave(filename=&quot;merge_Normal.png&quot;,</span><br><span class="line">       figure2,</span><br><span class="line">       width=30,   </span><br><span class="line">       heigh=16.4,   </span><br><span class="line">       dpi = 1000)  #能设置dpi值，越大的话就越清晰，相应的也就越占内存</span><br></pre></td></tr></table></figure>
-
-<p>然后如果图片已经导出了的话，就再导进来改一下格式就好啦，如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm(list=ls())  #清一下运行环境，不然图片多容易卡</span><br><span class="line">#导入图片</span><br><span class="line">library(png) </span><br><span class="line">setwd(&quot;D:/WU G.J/共现图/共现网络图片&quot;)  #图片存储路径</span><br><span class="line">#导入图片</span><br><span class="line">img1 &lt;- readPNG(&quot;Pic1.png&quot;)</span><br><span class="line">img2 &lt;- readPNG(&quot;Pic2.png&quot;)</span><br><span class="line">#改格式</span><br><span class="line">p1&lt;-ggplot()+background_image(img1)+theme_void()</span><br><span class="line">p2&lt;-ggplot()+background_image(img2)+theme_void()</span><br><span class="line"></span><br><span class="line">#之后就和上面的一样啦</span><br><span class="line"></span><br><span class="line">figure &lt;- ggarrange(pp1,pp2,pp3, #需要组合的图</span><br><span class="line">                    ncol = 6, nrow = 3)   #ncol是一行放几个，nrow是放几列</span><br><span class="line">figure</span><br><span class="line"></span><br><span class="line">#这个是看要不要给组图加横纵标题什么的。&quot;left&quot;就是加在左边，其他的top,bottom等同理</span><br><span class="line">figure2=annotate_figure(figure,left = text_grob(&quot;Normal nitrogen&quot;,color = &quot;black&quot;,  </span><br><span class="line">                        size = 36,x = 0.5,y=0.5,rot=90))  #rot是旋转的角度</span><br><span class="line">figure2</span><br><span class="line">#这个是导出图片的</span><br><span class="line">ggsave(filename=&quot;merge_Normal.png&quot;,</span><br><span class="line">       figure2,</span><br><span class="line">       width=30,   </span><br><span class="line">       heigh=16.4,   </span><br><span class="line">       dpi = 1000)  #能设置dpi值，越大的话就越清晰，相应的也就越占内存</span><br></pre></td></tr></table></figure>
-
-<p>在做的过程中我觉得比较有趣的一点就是①先组图再加标题还是②先加标题再组图 ，或者③加标题再组图，再加总的标题</p>
-<p>总而言之，涉及的代码就是ggarrange函数（作用是组图）和annotate_figure函数(作用是加标题)这两句，灵活反复运用就行了</p>
-]]></content>
-  </entry>
-  <entry>
     <title>jupyter notebook 安装字体解决可视化时字体不显示</title>
     <url>/2024/06/02/jupyter-notebook-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%86%E5%8C%96%E6%97%B6%E5%AD%97%E4%BD%93%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
     <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[<span class="string">&#x27;figure.figsize&#x27;</span>] = (12.0, 8.0) <span class="comment"># 调整大小，可根据自实际情况进行设置</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;image.interpolation&#x27;</span>] = <span class="string">&#x27;nearest&#x27;</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;image.cmap&#x27;</span>] = <span class="string">&#x27;gray&#x27;</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=[<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 下面这两个是设置乱码的</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=False</span><br><span class="line">plt.style.use(<span class="string">&#x27;ggplot&#x27;</span>)  <span class="comment"># 使用&#x27;ggplot&#x27;风格美化显示的图表</span></span><br></pre></td></tr></table></figure>
@@ -146,253 +26,19 @@
 ]]></content>
   </entry>
   <entry>
-    <title>文献学习-BSAlign: A Library for Nucleotide Sequence Alignment</title>
-    <url>/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/</url>
-    <content><![CDATA[<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531185054495.png" alt="image-20240531185054495"></p>
-<p>文献题目：A Library for Nucleotide Sequence Alignment</p>
-<p>doi:<a href="https://doi.org/10.1093/gpbjnl/qzae025">https://doi.org/10.1093/gpbjnl/qzae025</a></p>
-<p>背景：中国农业科学院深圳农业基因组研究所（岭南现代农业科学与技术广东省实验室深圳分中心）阮珏团队和邵浩靖团队开发了一种DNA比对新技术“BSAlign”，相比较同类并行算法，该算法可更快生成最优比对结果，且准确性更高。相关研究成果以题为“BSAlign: A Library for Nucleotide Sequence Alignment”发表在《基因组蛋白质组与生物信息学报（*Genomics, Proteomics &amp; Bioinformatics（GPB）*）》上</p>
-<p>主题：经典的动态规划算法，如史密斯-沃特曼算法和尼德曼-翁施算法，常用于处理序列比对，但由于其时间复杂度呈二次函数式增长，当序列长度增加时，算法的处理时间也随之变长，导致其在处理大规模序列比对时效率低下，严重阻碍了其在大规模序列比对中的应用。目前并行加速比对的最优算法有三种方法：通过增加数据并行度获得加速的条纹法；通过减少计算单元的字节数从而增加并行度的差分法；通过减少整体计算量获得加速的带宽法。然而，目前并没有任何方法可以高效地结合这三种方法，获得更快速的比对算法。研究人员提出了条纹移动法，该算法在带宽环境下实现了高效运算，并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题。这一创新显著提高了比对速度。与现有并行算法相比，BSAlign比对算法的速度提升了2倍，在长序列比对方面，其效率较基于编辑距离的比对算法提高了1.5到4倍。</p>
-<hr>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><p>目前加速比对方法：</p>
-<ul>
-<li>通过增加数据并行度获得加速的条纹法；</li>
-<li>通过减少计算单元的字节数从而增加并行度的差分法；</li>
-<li>通过减少整体计算量获得加速的带宽法。</li>
-</ul>
-<p>BSAlign创新点：</p>
-<ul>
-<li><p>提出了条纹移动法，该算法在带宽环境下实现了高效运算</p>
-</li>
-<li><p>并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题</p>
-</li>
-<li><p>速度有优势</p>
-<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531213449507.png" alt="image-20240531213449507"></p>
-</li>
-</ul>
-<h3 id="经典算法："><a href="#经典算法：" class="headerlink" title="经典算法："></a>经典算法：</h3><p>Needleman-Wunsch算法和Smith-Waterman算法。他们通过解决 动态规划 (DP) 问题来处理序列比对，其中计算评分矩阵并返回来自具有最大分数的单元的最佳路径。虽然这两种方法在寻找最佳比对结果方面表现出了很强的能力，但它们需要二次方的时间复杂度并且快速退化，尤其是在处理长序列时。（具体参考生物信息学课本讲解，如果没记错两种算法大致是全局和局部的画箭头规划走路，再加上空位罚分之类的）</p>
-<h3 id="准确性："><a href="#准确性：" class="headerlink" title="准确性："></a>准确性：</h3><p>相比其他几种算法准确性较高</p>
-<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215701260.png" alt="image-20240531215701260"></p>
-<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215726562.png" alt="image-20240531215726562"></p>
-<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215740916.png" alt="image-20240531215740916"></p>
-<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215906528.png" alt="image-20240531215906528"></p>
-<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215940363.png" alt="image-20240531215940363"></p>
-<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215954247.png" alt="image-20240531215954247"></p>
-<p>单指令多数据（SIMD）：  第一个优化类别是重新设计评分矩阵计算的数据结构，解决相邻单元之间的数据依赖关系，从而消除 DP 算法内循环内的条件分支，SIMD 等并行化技术更加高效。</p>
-<p>在该类别的最初 个试验中，Wozniak 提出了一种与次对角线平行存储值 的实现，以消除 个传统实现的内循环中的条件分支，并实现了 2 倍的加速。</p>
-<p>在另一项试验中，Rognes 等人。 引入了另一种实现来存储与查询 序列并行的值。与 Wozniak 的实现相比，Rognes 的设计 的一个优点是它只需要为整个参考序列计算一次查询配置文件。然而，缺点是在计算 F 矩阵时，条件分支被放置在内部循环中。</p>
-<p>对于最近的工具，例如 BGSA 、SeqAn  和 AnySeq ，单个指令的长度范围从 128 位到 512位。</p>
-<h3 id="F-evaluation"><a href="#F-evaluation" class="headerlink" title="F evaluation"></a>F evaluation</h3><p>为了结合 Wozniak  和 Rognes 的优点，Farrar 修复了这些内容，引入与 SIMD 寄存器并行但以条带模式访问的查询序列布局的缺点，该布局仅计算查询配置文件一次 并将条件 F 矩阵评估移至内部之外环形。结果，Farrar 的条纹矢量化成功地加速了 Smith–Waterman 算法 并被许多对准器采用，例如 Burrows–Wheeler Alignment Smith–Waterman (BWA-SW) 、Bowtie2  和条纹史密斯-沃特曼 (SSW) 库 。然而，同一寄存器中的单元并不总是彼此独立的。  Farrar  通过为每个 F 元素添加一个校正循环解决了这个问题，当插入&#x2F;缺失足够长时，该循环可能会迭代多次。</p>
-<hr>
-<h1 id="bsalign"><a href="#bsalign" class="headerlink" title="bsalign"></a>bsalign</h1><p><a href="https://github.com/ruanjue/bsalign">ruanjue&#x2F;bsalign: Banded Striped DNA Sequence Alignment (github.com)</a></p>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ruanjue/bsalign.git</span><br><span class="line">cd bsalign</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+    <title>R语言绘制组合图</title>
+    <url>/2024/06/08/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%88%B6%E7%BB%84%E5%90%88%E5%9B%BE/</url>
+    <content><![CDATA[<p>在用R语言做完图之后要想放在论文里，就需要把不同的图组合起来，尝试过用PPT，以及在Word里，效果都不太好，因此试着在R里组图（它的优势在于调图片清晰度比较方便）</p>
+<p>如标题所示，包括①R里面做出的图以及②已经导出为PNG格式的图片</p>
+<p>首先说第一种</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#加载包</span><br><span class="line">library(ggpubr) </span><br><span class="line">library(ggplot2) </span><br><span class="line">#组图</span><br><span class="line">figure &lt;- ggarrange(pp1,pp2,pp3, #需要组合的图</span><br><span class="line">                    ncol = 3, nrow = 1)   #ncol是一行放几个，nrow是放几列</span><br><span class="line">figure</span><br><span class="line"></span><br><span class="line">#这个是看要不要给组图加横纵标题什么的。&quot;left&quot;就是加在左边，其他的top,bottom等同理</span><br><span class="line">figure2=annotate_figure(figure,left = text_grob(&quot;Normal nitrogen&quot;,color = &quot;black&quot;,  </span><br><span class="line">                        size = 36,x = 0.5,y=0.5,rot=90))  #rot是旋转的角度</span><br><span class="line">figure2</span><br><span class="line">#这个是导出图片的</span><br><span class="line">ggsave(filename=&quot;merge_Normal.png&quot;,</span><br><span class="line">       figure2,</span><br><span class="line">       width=30,   </span><br><span class="line">       heigh=16.4,   </span><br><span class="line">       dpi = 1000)  #能设置dpi值，越大的话就越清晰，相应的也就越占内存</span><br></pre></td></tr></table></figure>
 
-<h1 id="run-bsalign"><a href="#run-bsalign" class="headerlink" title="run bsalign"></a>run bsalign</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bsalign</span><br></pre></td></tr></table></figure>
+<p>然后如果图片已经导出了的话，就再导进来改一下格式就好啦，如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm(list=ls())  #清一下运行环境，不然图片多容易卡</span><br><span class="line">#导入图片</span><br><span class="line">library(png) </span><br><span class="line">setwd(&quot;D:/WU G.J/共现图/共现网络图片&quot;)  #图片存储路径</span><br><span class="line">#导入图片</span><br><span class="line">img1 &lt;- readPNG(&quot;Pic1.png&quot;)</span><br><span class="line">img2 &lt;- readPNG(&quot;Pic2.png&quot;)</span><br><span class="line">#改格式</span><br><span class="line">p1&lt;-ggplot()+background_image(img1)+theme_void()</span><br><span class="line">p2&lt;-ggplot()+background_image(img2)+theme_void()</span><br><span class="line"></span><br><span class="line">#之后就和上面的一样啦</span><br><span class="line"></span><br><span class="line">figure &lt;- ggarrange(pp1,pp2,pp3, #需要组合的图</span><br><span class="line">                    ncol = 6, nrow = 3)   #ncol是一行放几个，nrow是放几列</span><br><span class="line">figure</span><br><span class="line"></span><br><span class="line">#这个是看要不要给组图加横纵标题什么的。&quot;left&quot;就是加在左边，其他的top,bottom等同理</span><br><span class="line">figure2=annotate_figure(figure,left = text_grob(&quot;Normal nitrogen&quot;,color = &quot;black&quot;,  </span><br><span class="line">                        size = 36,x = 0.5,y=0.5,rot=90))  #rot是旋转的角度</span><br><span class="line">figure2</span><br><span class="line">#这个是导出图片的</span><br><span class="line">ggsave(filename=&quot;merge_Normal.png&quot;,</span><br><span class="line">       figure2,</span><br><span class="line">       width=30,   </span><br><span class="line">       heigh=16.4,   </span><br><span class="line">       dpi = 1000)  #能设置dpi值，越大的话就越清晰，相应的也就越占内存</span><br></pre></td></tr></table></figure>
 
-
-
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commands:</span><br><span class="line"> align       Pairwise alignment implemented by 8-bit encoded Banded Striped SIMD</span><br><span class="line"> edit        Pairwise alignment using edit distance implemented by 2-bit encoded banded Striped algorithm</span><br><span class="line"> poa         Multiple alignment implemented by 8-bit encoded Banded Striped SIMD Partial Order Alignment</span><br><span class="line"> cat         Concatenate pieces of seqs into one seq by overlaping</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd example</span><br><span class="line">sh run.sh</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Result-Example"><a href="#Result-Example" class="headerlink" title="Result Example"></a>Result Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">29.1	75	+	0	75	29.2	76	+	0	76	128	0.934	71	4	0	1</span><br><span class="line">TGTTACTTTTCTTCCCTGCTGTATAAACCC-CAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br><span class="line">||||||*|||||||||||||**||||||||-*||||||||||||||||||||||||||||||||||||||||||||</span><br><span class="line">TGTTACATTTCTTCCCTGCTACATAAACCCTTAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Result-Format"><a href="#Result-Format" class="headerlink" title="Result Format"></a>Result Format</h2><p>Each result is 4 lines. Line 1 :col1-RefName; col2-RefLength; col3-RefStrand; col4-RefStart; col5-RefEnd; col6-QueryName; col7-QueryLength; col8-QueryStrand; col9-QueryStart; col10-QueryEnd; col11-AlignmentScore; col12-Identity; col13-NumberOfMatch; col14-NumberOfMismatch; col15-NumberOfDeletion; col16-NumberOfInsertion Line 2 :Reference Sequence Line 3 :’|’, ‘*’ and ‘-‘ mean match, mismatch and indel, respectively. Line 4 :Query Sequence</p>
-<h1 id="use-bsalign-library"><a href="#use-bsalign-library" class="headerlink" title="use bsalign library"></a>use bsalign library</h1><p>copy bsalign directory into your code <code>cp -r /path/to/bsalign .</code></p>
-<h2 id="Pairwise-Alignment-Example"><a href="#Pairwise-Alignment-Example" class="headerlink" title="Pairwise Alignment Example"></a>Pairwise Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;bsalign/bsalign.h&quot;</span><br><span class="line"></span><br><span class="line">int verbose = 0; // be quiet in alignment</span><br><span class="line">b1i mtx[16]; // score matrix, 4 * 4</span><br><span class="line">banded_striped_epi8_seqalign_set_score_matrix(mtx, sc_mat=2, sc_mis=-6); // init score matrix</span><br><span class="line">b1v *memp = adv_init_b1v(1024, 0, WORDSIZE, 0); // it needs a WORDSIZE(16 bytes)-aligned memory block to perform SIMD alignment</span><br><span class="line">u4v *cigars = init_u4v(32); // use to store alignment cigars (SAM-like), or NULL if useless</span><br><span class="line">int bandwidth = 128; // Or 0 if disable banded alignment</span><br><span class="line">// perform pairwise global alignment (8-bits)</span><br><span class="line">seqalign_result_t rs = banded_striped_epi8_seqalign_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, SEQALIGN_MODE_GLOBAL, bandwidth, mtx, sc_gapo=-3, sc_gape=-2, 0, 0, verbose);</span><br><span class="line">// perform pairwise global edit (2-bits), using edit-distance in alignment, much faster than 8-bits alignment</span><br><span class="line">seqalign_result_t rs = striped_seqedit_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, SEQALIGN_MODE_GLOBAL, bandwidth, memp, cigars, verbose);</span><br><span class="line">// perform pairwise kmer-guided edit (2-bits), it is better for two strange reads, because it infers the outline of alignment by kmer-matching-synteny</span><br><span class="line">seqalign_result_t rs = kmer_striped_seqedit_pairwise(ksize=13, (u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, verbose);</span><br><span class="line">// print alignment information</span><br><span class="line">fprintf(stdout, &quot;QRY\t%d\t%d\tREF\t%d\t%d\tmat=%d\tmis=%d\tins=%d\tdel=%d\n&quot;, rs.qb, rs.qe, rs.tb, rs.te, rs.mat, rs.mis, rs.ins, rs.del);</span><br><span class="line">char *alnstr[3];</span><br><span class="line">alnstr[0] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[1] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[2] = malloc(rs.aln + 1);</span><br><span class="line">seqalign_cigar2alnstr(qseq, tseq, &amp;rs, cigars, alnstr, rs.aln);</span><br><span class="line">// print alignment string</span><br><span class="line">fprintf(stdout, &quot;%s\n%s\n%s\n&quot;, alnstr[0], alnstr[2], alnstr[1]);</span><br><span class="line">free(alnstr[0]); free(alnstr[1]); free(alnstr[2]);</span><br><span class="line">free_u4v(cigars);</span><br><span class="line">free_b1v(memp);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Multiple-Alignment-Example"><a href="#Multiple-Alignment-Example" class="headerlink" title="Multiple Alignment Example"></a>Multiple Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;bsalign/bspoa.h&quot;</span><br><span class="line"></span><br><span class="line">BSPOAPar par = DEFAULT_BSPOA_PAR; // change par.xxx if you want</span><br><span class="line">BSPOA *g = init_bspoa(par);</span><br><span class="line">beg_bspoa(g); // prepare to accept reads</span><br><span class="line">for(...) push_bspoa(g, (char*)rdseq, (int)rdlen); // push reads one by one</span><br><span class="line">end_bspoa(g); // MSA generated</span><br><span class="line">tidy_msa_bspoa(g); // polish MSA to call more SNVs</span><br><span class="line">call_snvs_bspoa(g); // call SNVs on the polished MSA</span><br><span class="line">// print MSA, linewidth=0 to output each read in a single line</span><br><span class="line">// colorful=1 to output friendly terminal characters, pipe to &#x27;less -S -R&#x27; if no color in your screen</span><br><span class="line">print_msa_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, 0, 0, linewidth=100, colorful=1, stdout);</span><br><span class="line">print_snvs_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, stdout);</span><br><span class="line">// Or write binary MSA (no SNVs) to save disk space</span><br><span class="line">dump_binary_msa_bspoa(g, &quot;Welcome to AGIS&quot;, 15, file);</span><br><span class="line">// Load a binary MSA instead of beg/push/end_bspoa, Note: invoke call_snvs_bspoa if you want SNVs</span><br><span class="line">String *metainfo = init_string(32);</span><br><span class="line">load_binary_msa_bspoa(g, file, metainfo);</span><br><span class="line">free_bspoa(g);</span><br></pre></td></tr></table></figure>
+<p>在做的过程中我觉得比较有趣的一点就是①先组图再加标题还是②先加标题再组图 ，或者③加标题再组图，再加总的标题</p>
+<p>总而言之，涉及的代码就是ggarrange函数（作用是组图）和annotate_figure函数(作用是加标题)这两句，灵活反复运用就行了</p>
 ]]></content>
-      <categories>
-        <category>文献学习</category>
-      </categories>
-      <tags>
-        <tag>文献学习</tag>
-        <tag>比对算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>wdl学习心得</title>
-    <url>/2024/05/23/wdl%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<h3 id="WDL官网简介："><a href="#WDL官网简介：" class="headerlink" title="WDL官网简介："></a>WDL官网简介：</h3><p>工作流描述语言（WDL）是一种开放标准，用于以人类可读可写的语法描述数据处理工作流。WDL 可以直接定义分析任务，在工作流中将它们连接起来，并并行执行。该语言力求让所有用户（包括程序员、分析师和生产系统的操作员）都能理解和使用。这种语言可以简单地表达常见的模式，如分散收集和条件执行。WDL 专为可移植性而设计，有多种实现方式可供选择，可在包括 HPC 系统和云平台在内的各种环境中运行。</p>
-<hr>
-<p>WDL主要有5个核心组件，WDL不是顺序执行的，所以workflow、task、call在脚本内的排列顺序并不重要。</p>
-<table>
-<thead>
-<tr>
-<th>组件</th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>workflow</td>
-<td>定义了整个工作流程，类似于main</td>
-</tr>
-<tr>
-<td>task</td>
-<td>定义了单独的每个子任务，位于workflow模块外部，类似于函数</td>
-</tr>
-<tr>
-<td>call</td>
-<td>位于workflow模块内部，表示执行一个特定的函数（task）</td>
-</tr>
-<tr>
-<td>command</td>
-<td>字面意思</td>
-</tr>
-<tr>
-<td>output</td>
-<td>字面意思</td>
-</tr>
-</tbody></table>
-<h3 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h3><h4 id="task"><a href="#task" class="headerlink" title="task:"></a>task:</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task my_task &#123;</span><br><span class="line">  String input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    cat $&#123;input_file&#125; &gt; $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File output = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="workflow"><a href="#workflow" class="headerlink" title="workflow"></a>workflow</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">workflow my_workflow &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    File input_file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  call my_task &#123;</span><br><span class="line">    input: input_file = input_file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File output_file = my_task.output</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="完整的例子："><a href="#完整的例子：" class="headerlink" title="完整的例子："></a>完整的例子：</h3><h4 id="文件合并："><a href="#文件合并：" class="headerlink" title="文件合并："></a>文件合并：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task merge_files &#123;</span><br><span class="line">  File file1</span><br><span class="line">  File file2</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    cat $&#123;file1&#125; $&#123;file2&#125; &gt; $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File merged_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow merge_workflow &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    File file1</span><br><span class="line">    File file2</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  call merge_files &#123;</span><br><span class="line">    input: file1 = file1, file2 = file2, output_file = &quot;merged.txt&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File merged_file = merge_files.merged_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="排序例子："><a href="#排序例子：" class="headerlink" title="排序例子："></a>排序例子：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task sort_file &#123;</span><br><span class="line">  File input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    sort $&#123;input_file&#125; &gt; $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File sorted_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow sort_workflow &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    File input_file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  call sort_file &#123;</span><br><span class="line">    input: input_file = input_file, output_file = &quot;sorted.txt&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File sorted_file = sort_file.sorted_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="条件语句："><a href="#条件语句：" class="headerlink" title="条件语句："></a>条件语句：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task process_file &#123;</span><br><span class="line">  File input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    # 处理文件</span><br><span class="line">    # ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File processed_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow process_files &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    Array[File] input_files</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  scatter (file in input_files) &#123;</span><br><span class="line">    call process_file &#123;</span><br><span class="line">      input: input_file = file, output_file = &quot;$&#123;file&#125;.processed&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    Array[File] processed_files = process_file.processed_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
-    <title>wsl配置jupyter</title>
-    <url>/2024/05/21/wsl%E9%85%8D%E7%BD%AEjupyter/</url>
-    <content><![CDATA[<h2 id="1-jupyter-notebook安装"><a href="#1-jupyter-notebook安装" class="headerlink" title="1.jupyter notebook安装"></a>1.jupyter notebook安装</h2><h3 id="1-1-本文档适用的情况"><a href="#1-1-本文档适用的情况" class="headerlink" title="1.1 本文档适用的情况"></a>1.1 本文档适用的情况</h3><p>Windows10环境已安装WSL2下的Ubuntu20.04<br>WSL2<br>Ubuntu20.04</p>
-<h3 id="1-2-Jupyternotebook安装流程"><a href="#1-2-Jupyternotebook安装流程" class="headerlink" title="1.2 Jupyternotebook安装流程"></a>1.2 Jupyternotebook安装流程</h3><p>PS：这里推荐安装jupyter notebook而非jupyter lab，</p>
-<p>以下为安装步骤：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br><span class="line"></span><br><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
-
-<p>这一步会生成一个jupyternotebook的配置文件文件位置在(如果是root用户登录)：’&#x2F;home&#x2F;usrname&#x2F;.jupyter&#x2F;jupyter_notebook_config.py’</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook password </span><br></pre></td></tr></table></figure>
-
-
-<p>复制里面引号的哈希码，那个就是加密后的密码</p>
-<p>设置你windows电脑的浏览器能打开jupyternotebook<br>创建软连接：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo ln -sf /mnt/c/&#x27;Program Files \(x86\)&#x27;/Microsoft/Edge\ Dev/Application/msedge.exe /usr/bin/msedge</span><br></pre></td></tr></table></figure>
-
-
-
-<p>test: 终端里直接输入msedge能直接打开你的Windows的EDGE DEV浏览器</p>
-<p>vim &#x2F;root&#x2F;.jupyter&#x2F;jupyter_notebook_config.py </p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">c.ServerApp.ip = <span class="string">&#x27;&#x27;</span></span><br><span class="line">c.ServerApp.allow_remote_access = True <span class="comment"># 允许远程访问</span></span><br><span class="line">c.ServerApp.allow_root = True <span class="comment"># 允许root用户登录</span></span><br><span class="line">c.ServerApp.notebook_dir = <span class="string">&#x27;/root/Projects&#x27;</span> <span class="comment"># 里面的文件夹可以自定义为自己想要的项目文件夹</span></span><br><span class="line">c.ServerApp.use_redirect_file = False</span><br><span class="line">c.ServerApp.password = <span class="string">&#x27;此处填写3-2-1步骤生成的password&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>把Windows的EDGE DEV作为Ubuntu的默认浏览器,找到这行</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># c.ServerApp.browser = &#x27;&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>不取消注释，在下面添加</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import webbrowser</span><br><span class="line">webbrowser.register(&#x27;msedge&#x27;,None,webbrowser.GenericBrowser(&#x27;/usr/bin/msedge&#x27;))</span><br><span class="line">c.NotebookApp.browser=&#x27;msedge&#x27;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="2-多虚拟环境下jupyter-notebook的配置"><a href="#2-多虚拟环境下jupyter-notebook的配置" class="headerlink" title="2 多虚拟环境下jupyter notebook的配置"></a>2 多虚拟环境下jupyter notebook的配置</h2><p>在这之前可以进行apt换源，pip换源的操作，详情BING搜一下就可以了。</p>
-<p>这里不推荐安装virtualenvwrapper，一切为了降低学习成本，而且安装了jupyter notebook之后也不需要频繁激活虚拟环境。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install virtualenv </span><br><span class="line"></span><br><span class="line"># 在/root（这里笔者以root用户登录的）文件夹下新建一个Virtualevs的文件夹用来存放虚拟环境</span><br><span class="line"></span><br><span class="line">mkdir /root/Virtualenvs</span><br><span class="line">cd /root/Virtualenvs</span><br><span class="line"></span><br><span class="line"># 建立虚拟环境名字为‘tensorflow’</span><br><span class="line"></span><br><span class="line">virtualenv -p /usr/bin/python3.8 tensorflow</span><br><span class="line"></span><br><span class="line"># 激活虚拟环境配置jupyter notebook</span><br><span class="line"></span><br><span class="line">source /root/Virtualenvs/tensorflow/bin/avtivate</span><br><span class="line"></span><br><span class="line"># 这里终端应该是类似（tensorflow）...# 这种的形式，就说明进入到了虚拟环境，可以pip list查看一下安装的包，应该是 之后setuptools什么的</span><br><span class="line"></span><br><span class="line">pip install ipykernel</span><br><span class="line">python -m ipykernel install --name tensorflow（这里是实际的虚拟环境的名字） --display-name tensorflow（这里是你想要显示的名字）</span><br><span class="line"></span><br><span class="line"># 或下边这句</span><br><span class="line"></span><br><span class="line">python -m ipykernel install --user </span><br><span class="line"></span><br><span class="line"># 再打开jupyter notebook之后就可以在new那里看到新建的虚拟环境了</span><br><span class="line"></span><br><span class="line">jupyter notebook</span><br><span class="line"></span><br><span class="line"># 而且这样之后即使deactivate虚拟环境之后，在基础的那个环境里面打开jupyter notebook之后也可以选择虚拟环境</span><br></pre></td></tr></table></figure>
-
-
-<p>扩展安装</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions</span><br><span class="line">jupyter contrib nbextension install --user</span><br><span class="line">这之后就可以看到Nbextension，复选框选择哪个就是激活哪个</span><br></pre></td></tr></table></figure>
-
-
-
-
-]]></content>
-  </entry>
-  <entry>
-    <title>win11配置wsl2</title>
-    <url>/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/</url>
-    <content><![CDATA[<p>写在前面：</p>
-<ul>
-<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
-<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
-<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
-<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
-<li>后续配置bashrc、安装conda、安装docker</li>
-<li><span id="more"></span></li>
-</ul>
-<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="image-20240501201255575"></p>
-<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
-<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
-<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
-<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
-<p>这个就是下载的是Ubuntu的系统镜像</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
-
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
-<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
-<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
-<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
-<hr>
-<p>给出一个报错解决思路：如果没有可以跳过</p>
-<p>win +x选择终端（管理员），输入：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
-
-
-<p>然后继续在Windows PowerShell（管理员）输入：</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
-<p>进入系统修改用户密码和su密码：</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
-<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
-<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
-<p>文件内容格式如下，在txt写好另存为这样子：</p>
-<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
-<p>.wslconfig内容</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
-
-<p>清华源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<p>conda安装建议miniconda</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
-
-<p>conda换源</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>docker安装：点击下载</p>
-<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
-<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
-]]></content>
-      <categories>
-        <category>linux</category>
-        <category>WSL</category>
-      </categories>
-      <tags>
-        <tag>WSL</tag>
-        <tag>Conda</tag>
-        <tag>docker</tag>
-      </tags>
   </entry>
   <entry>
     <title>linux锁定后台进程</title>
@@ -546,6 +192,181 @@
       </tags>
   </entry>
   <entry>
+    <title>wdl学习心得</title>
+    <url>/2024/05/23/wdl%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<h3 id="WDL官网简介："><a href="#WDL官网简介：" class="headerlink" title="WDL官网简介："></a>WDL官网简介：</h3><p>工作流描述语言（WDL）是一种开放标准，用于以人类可读可写的语法描述数据处理工作流。WDL 可以直接定义分析任务，在工作流中将它们连接起来，并并行执行。该语言力求让所有用户（包括程序员、分析师和生产系统的操作员）都能理解和使用。这种语言可以简单地表达常见的模式，如分散收集和条件执行。WDL 专为可移植性而设计，有多种实现方式可供选择，可在包括 HPC 系统和云平台在内的各种环境中运行。</p>
+<hr>
+<p>WDL主要有5个核心组件，WDL不是顺序执行的，所以workflow、task、call在脚本内的排列顺序并不重要。</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>workflow</td>
+<td>定义了整个工作流程，类似于main</td>
+</tr>
+<tr>
+<td>task</td>
+<td>定义了单独的每个子任务，位于workflow模块外部，类似于函数</td>
+</tr>
+<tr>
+<td>call</td>
+<td>位于workflow模块内部，表示执行一个特定的函数（task）</td>
+</tr>
+<tr>
+<td>command</td>
+<td>字面意思</td>
+</tr>
+<tr>
+<td>output</td>
+<td>字面意思</td>
+</tr>
+</tbody></table>
+<h3 id="例如："><a href="#例如：" class="headerlink" title="例如："></a>例如：</h3><h4 id="task"><a href="#task" class="headerlink" title="task:"></a>task:</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task my_task &#123;</span><br><span class="line">  String input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    cat $&#123;input_file&#125; &gt; $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File output = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="workflow"><a href="#workflow" class="headerlink" title="workflow"></a>workflow</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">workflow my_workflow &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    File input_file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  call my_task &#123;</span><br><span class="line">    input: input_file = input_file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File output_file = my_task.output</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整的例子："><a href="#完整的例子：" class="headerlink" title="完整的例子："></a>完整的例子：</h3><h4 id="文件合并："><a href="#文件合并：" class="headerlink" title="文件合并："></a>文件合并：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task merge_files &#123;</span><br><span class="line">  File file1</span><br><span class="line">  File file2</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    cat $&#123;file1&#125; $&#123;file2&#125; &gt; $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File merged_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow merge_workflow &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    File file1</span><br><span class="line">    File file2</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  call merge_files &#123;</span><br><span class="line">    input: file1 = file1, file2 = file2, output_file = &quot;merged.txt&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File merged_file = merge_files.merged_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="排序例子："><a href="#排序例子：" class="headerlink" title="排序例子："></a>排序例子：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task sort_file &#123;</span><br><span class="line">  File input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    sort $&#123;input_file&#125; &gt; $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File sorted_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow sort_workflow &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    File input_file</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  call sort_file &#123;</span><br><span class="line">    input: input_file = input_file, output_file = &quot;sorted.txt&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File sorted_file = sort_file.sorted_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="条件语句："><a href="#条件语句：" class="headerlink" title="条件语句："></a>条件语句：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task process_file &#123;</span><br><span class="line">  File input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    # 处理文件</span><br><span class="line">    # ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File processed_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow process_files &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    Array[File] input_files</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  scatter (file in input_files) &#123;</span><br><span class="line">    call process_file &#123;</span><br><span class="line">      input: input_file = file, output_file = &quot;$&#123;file&#125;.processed&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    Array[File] processed_files = process_file.processed_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>win11配置wsl2</title>
+    <url>/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/</url>
+    <content><![CDATA[<p>写在前面：</p>
+<ul>
+<li>window的分发很方便，适合做一些简单分析，简单的炼丹</li>
+<li>一定要确保是wsl2下面按照linux子系统，wsl2较wsl提升巨大，具体可以百度。</li>
+<li>win10和win11都可以使用wsl安装子系统，个人感觉win11的powershell更好用</li>
+<li>安装后修改默认mem,swap，修改安装路径（迁移子系统），创建交换目录文件夹</li>
+<li>后续配置bashrc、安装conda、安装docker</li>
+<li><span id="more"></span></li>
+</ul>
+<h2 id="1-电脑设置"><a href="#1-电脑设置" class="headerlink" title="1. 电脑设置"></a>1. 电脑设置</h2><h3 id="1-1-虚拟化设置"><a href="#1-1-虚拟化设置" class="headerlink" title="1.1 虚拟化设置"></a>1.1 虚拟化设置</h3><p>确保虚拟化选项开启。这个如果没有开启的话，需要进电脑的BIOS设置里开启，各家平台进bios不一样，常见的有enter、F2、F12等，具体可以搜索下。开启后可以在任务管理器查看</p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201255575-1715166756505-1-1715171543854-2.png" alt="image-20240501201255575"></p>
+<h3 id="1-2-系统设置"><a href="#1-2-系统设置" class="headerlink" title="1.2 系统设置"></a>1.2 系统设置</h3><p>任务栏搜索 <strong>启用或关闭 windows 功能</strong>，开启<strong>Hyper-V</strong>、<strong>适用于Linux的Windows子系统</strong></p>
+<p>勾选并确定，Windows11 会自动下载重启<br>​</p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201628669-1715166756506-2-1715171543854-1.png" alt="image-20240501201628669"></p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501201720393-1715166756506-5-1715171543854-4.png" alt="image-20240501201720393"></p>
+<h2 id="2-系统安装（选一个方式安装就可以）"><a href="#2-系统安装（选一个方式安装就可以）" class="headerlink" title="2. 系统安装（选一个方式安装就可以）"></a>2. 系统安装（选一个方式安装就可以）</h2><h3 id="2-1-命令行安装"><a href="#2-1-命令行安装" class="headerlink" title="2.1 命令行安装"></a>2.1 命令行安装</h3><p><strong>命令行</strong>和<strong>微软商店</strong>哪个安装方式都可以，二选一即可。</p>
+<p>使用PowerShell，以管理员权限启动，输入下方命令执行：</p>
+<p>这个就是下载的是Ubuntu的系统镜像</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#设置默认wsl2</span></span><br><span class="line">wsl --set-default-version 2</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看是否修改wsl版本</span></span><br><span class="line">wsl -l -v <span class="comment">#VERSION显示的2</span></span><br><span class="line">wsl -v <span class="comment">#wsl版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#安装ubuntu20.04，可以选择22.04等lts长期支持版本，也可选择新版，看个人喜好。</span></span><br><span class="line">wsl --install -d Ubuntu-20.04</span><br></pre></td></tr></table></figure>
+
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202353751-1715166756506-6-1715171543854-3.png" alt="image-20240501202353751"></p>
+<h3 id="2-2-微软商店安装"><a href="#2-2-微软商店安装" class="headerlink" title="2.2 微软商店安装"></a>2.2 微软商店安装</h3><p>打开 <a href="https://link.zhihu.com/?target=https://aka.ms/wslstore">Microsoft Store</a>，并选择你偏好的 Linux（ubuntu） 版本。</p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501202900922-1715166756506-3-1715171543855-6.png" alt="image-20240501202900922"></p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501203109317-1715166756506-4-1715171543855-7.png" alt="image-20240501203109317"></p>
+<h2 id="3-系统登录"><a href="#3-系统登录" class="headerlink" title="3. 系统登录"></a>3. 系统登录</h2><h3 id="3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！"><a href="#3-1、点击下载内核-WSL-2-Linux-内核-，别光下啊，安装啊！！" class="headerlink" title="3.1、点击下载内核 **WSL 2 Linux 内核****，别光下啊，安装啊！！"></a>3.1、点击下载内核 **<a href="https://github.com/microsoft/WSL2-Linux-Kernel">WSL 2 Linux 内核</a>****，别光下啊，安装啊！！</h3><h3 id="3-2、安装后powershell执行，查看是否有ubuntu分发版本"><a href="#3-2、安装后powershell执行，查看是否有ubuntu分发版本" class="headerlink" title="3.2、安装后powershell执行，查看是否有ubuntu分发版本"></a>3.2、安装后powershell执行，查看是否有ubuntu分发版本</h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wsl -l -v </span><br><span class="line"><span class="comment">#如果没有可能是你的powershell一直开着，重启一下shell</span></span><br><span class="line">wsl -l -shutdown</span><br><span class="line"><span class="comment">#如果显示有ubuntu分发就可以继续了</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205933201-1715166756506-10-1715171543854-5.png" alt="image-20240501205933201"></p>
+<p>搜索到点进去就可以，这一步因为已安装不展示（我也没有这个页面啊），<strong>一句话：报错事故高发地</strong>，根据个人电脑不一样，报错自行百度或者联系博主咨询。</p>
+<hr>
+<p>给出一个报错解决思路：如果没有可以跳过</p>
+<p>win +x选择终端（管理员），输入：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart</span><br><span class="line">dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart</span><br></pre></td></tr></table></figure>
+
+
+<p>然后继续在Windows PowerShell（管理员）输入：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#重新设置一下分发及wsl版本</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 2</span><br><span class="line">wsl -l -v</span><br><span class="line"><span class="comment">######如果wsl2还是不行，那你凑合用用wsl1</span></span><br><span class="line">wsl --set-version Ubuntu-20.04 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>恭喜你没有报错，你应该可以看到页面:设置用户名啥的</p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/ubuntuinstall-1715166756506-7-1715171543855-9.png" alt="Ubuntu unpacking in the Windows console"></p>
+<p>进入系统修改用户密码和su密码：</p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501210939654-1715166756506-8-1715171543855-8.png" alt="image-20240501210939654"></p>
+<h3 id="3-3WSL2迁移至其他目录"><a href="#3-3WSL2迁移至其他目录" class="headerlink" title="3.3WSL2迁移至其他目录"></a>3.3<strong>WSL2迁移至其他目录</strong></h3><figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#停止正在运行的wsl</span></span><br><span class="line">wsl --shutdown</span><br><span class="line"><span class="comment">#将需要迁移的Linux，进行导出这个路径是包存放的路径不重要</span></span><br><span class="line">wsl --<span class="built_in">export</span> Ubuntu D:/export.tar</span><br><span class="line"><span class="comment">#导出完成之后，将原有的Linux卸载</span></span><br><span class="line">wsl --unregister Ubuntu</span><br><span class="line"><span class="comment">#然后安装导出的包 PATH不要无脑照抄，这个是你需要安装的路径，要修改成路径执行，不改的话c盘以后顶不住</span></span><br><span class="line">wsl --import Ubuntu PATH D:\export.tar --version 2</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="4-4-配置一下"><a href="#4-4-配置一下" class="headerlink" title="4.4 配置一下"></a>4.4 配置一下</h2><p>Windows + R 键，输入 %UserProfile% 并运行进入用户文件夹,新建文件 .wslconfig</p>
+<p>说人话就是这个路径 C:\Users\username ,username是你计算机的名字</p>
+<p>文件内容格式如下，在txt写好另存为这样子：</p>
+<p><img src="/./win11%E9%85%8D%E7%BD%AEwsl2/image-20240501205823170-1715166756506-9-1715171543855-10.png" alt="image-20240501205823170"></p>
+<p>.wslconfig内容</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">[wsl2]</span><br><span class="line">memory=48GB  <span class="comment"># 限制最大使用内存，这里分配根据你的电脑</span></span><br><span class="line">swap=96GB  <span class="comment"># 限制最大使用虚拟内存，一般为实际的2倍好像，怕程序跑不动可以把你剩余硬盘容量的30%加入</span></span><br><span class="line"><span class="comment">#下面的抄就可以</span></span><br><span class="line">localhostForwarding=<span class="literal">true</span></span><br><span class="line">autoMemoryReclaim=gradual  </span><br><span class="line">networkingMode=mirrored</span><br><span class="line">dnsTunneling=<span class="literal">true</span></span><br><span class="line">firewall=<span class="literal">true</span></span><br><span class="line">autoProxy=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>进入wsl分发的ubuntu换源吧（开启ubuntu之旅）sudo命令要输密码，自己前面设置的哦</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/apt </span><br><span class="line"><span class="built_in">ls</span> <span class="comment">##查看应该有sources.list</span></span><br><span class="line"><span class="built_in">cp</span> sources.list sources.list.old <span class="comment">#备份一下</span></span><br><span class="line">sudo vim sources.list <span class="comment">#小白按一下i才能输入哦</span></span><br><span class="line"><span class="comment">#小白是不是不知道咋保存退出，先‘ q ’再‘ ：’ 最后‘ wq ’按一下enter</span></span><br><span class="line"><span class="built_in">source</span> ./sources.list <span class="comment">#告诉系统用修改后的</span></span><br><span class="line">sudo apt-get update <span class="comment">#可以看到已经在使用清华大学镜像 更新软件列表</span></span><br><span class="line">sudo apt-get upgrade  <span class="comment">#更新软件</span></span><br></pre></td></tr></table></figure>
+
+<p>清华源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment">#默认注释了源码镜像以提高 apt update 速度，如有需要可自行取消注释</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-updates main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-backports main restricted universe multiverse</span></span><br><span class="line">deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 预发布软件源，不建议启用</span></span><br><span class="line"><span class="comment"># deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"><span class="comment"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ focal-proposed main restricted universe multiverse</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>conda安装建议miniconda</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line">bash Miniconda3-latest-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+
+<p>conda换源</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">sudo vim .condarc <span class="comment">#下面那个</span></span><br><span class="line">conda update conda</span><br><span class="line">conda update --all</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">channels:</span><br><span class="line">  - defaults</span><br><span class="line">show_channel_urls: <span class="literal">true</span></span><br><span class="line">default_channels:</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span><br><span class="line">  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span><br><span class="line">custom_channels:</span><br><span class="line">  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line">  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>docker安装：点击下载</p>
+<p><a href="https://www.docker.com/products/docker-desktop/">Docker Desktop: The #1 Containerization Tool for Developers | Docker</a></p>
+<p>这个在windows安装的哈，安装后在settings &gt; resources &gt; WSL INTEGRATION 勾选，选择ubuntu版本应用即可。</p>
+]]></content>
+      <categories>
+        <category>linux</category>
+        <category>WSL</category>
+      </categories>
+      <tags>
+        <tag>WSL</tag>
+        <tag>Conda</tag>
+        <tag>docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>wsl配置jupyter</title>
+    <url>/2024/05/21/wsl%E9%85%8D%E7%BD%AEjupyter/</url>
+    <content><![CDATA[<h2 id="1-jupyter-notebook安装"><a href="#1-jupyter-notebook安装" class="headerlink" title="1.jupyter notebook安装"></a>1.jupyter notebook安装</h2><h3 id="1-1-本文档适用的情况"><a href="#1-1-本文档适用的情况" class="headerlink" title="1.1 本文档适用的情况"></a>1.1 本文档适用的情况</h3><p>Windows10环境已安装WSL2下的Ubuntu20.04<br>WSL2<br>Ubuntu20.04</p>
+<h3 id="1-2-Jupyternotebook安装流程"><a href="#1-2-Jupyternotebook安装流程" class="headerlink" title="1.2 Jupyternotebook安装流程"></a>1.2 Jupyternotebook安装流程</h3><p>PS：这里推荐安装jupyter notebook而非jupyter lab，</p>
+<p>以下为安装步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br><span class="line"></span><br><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+
+<p>这一步会生成一个jupyternotebook的配置文件文件位置在(如果是root用户登录)：’&#x2F;home&#x2F;usrname&#x2F;.jupyter&#x2F;jupyter_notebook_config.py’</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jupyter notebook password </span><br></pre></td></tr></table></figure>
+
+
+<p>复制里面引号的哈希码，那个就是加密后的密码</p>
+<p>设置你windows电脑的浏览器能打开jupyternotebook<br>创建软连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo ln -sf /mnt/c/&#x27;Program Files \(x86\)&#x27;/Microsoft/Edge\ Dev/Application/msedge.exe /usr/bin/msedge</span><br></pre></td></tr></table></figure>
+
+
+
+<p>test: 终端里直接输入msedge能直接打开你的Windows的EDGE DEV浏览器</p>
+<p>vim &#x2F;root&#x2F;.jupyter&#x2F;jupyter_notebook_config.py </p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">c.ServerApp.ip = <span class="string">&#x27;&#x27;</span></span><br><span class="line">c.ServerApp.allow_remote_access = True <span class="comment"># 允许远程访问</span></span><br><span class="line">c.ServerApp.allow_root = True <span class="comment"># 允许root用户登录</span></span><br><span class="line">c.ServerApp.notebook_dir = <span class="string">&#x27;/root/Projects&#x27;</span> <span class="comment"># 里面的文件夹可以自定义为自己想要的项目文件夹</span></span><br><span class="line">c.ServerApp.use_redirect_file = False</span><br><span class="line">c.ServerApp.password = <span class="string">&#x27;此处填写3-2-1步骤生成的password&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>把Windows的EDGE DEV作为Ubuntu的默认浏览器,找到这行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># c.ServerApp.browser = &#x27;&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>不取消注释，在下面添加</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import webbrowser</span><br><span class="line">webbrowser.register(&#x27;msedge&#x27;,None,webbrowser.GenericBrowser(&#x27;/usr/bin/msedge&#x27;))</span><br><span class="line">c.NotebookApp.browser=&#x27;msedge&#x27;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="2-多虚拟环境下jupyter-notebook的配置"><a href="#2-多虚拟环境下jupyter-notebook的配置" class="headerlink" title="2 多虚拟环境下jupyter notebook的配置"></a>2 多虚拟环境下jupyter notebook的配置</h2><p>在这之前可以进行apt换源，pip换源的操作，详情BING搜一下就可以了。</p>
+<p>这里不推荐安装virtualenvwrapper，一切为了降低学习成本，而且安装了jupyter notebook之后也不需要频繁激活虚拟环境。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install virtualenv </span><br><span class="line"></span><br><span class="line"># 在/root（这里笔者以root用户登录的）文件夹下新建一个Virtualevs的文件夹用来存放虚拟环境</span><br><span class="line"></span><br><span class="line">mkdir /root/Virtualenvs</span><br><span class="line">cd /root/Virtualenvs</span><br><span class="line"></span><br><span class="line"># 建立虚拟环境名字为‘tensorflow’</span><br><span class="line"></span><br><span class="line">virtualenv -p /usr/bin/python3.8 tensorflow</span><br><span class="line"></span><br><span class="line"># 激活虚拟环境配置jupyter notebook</span><br><span class="line"></span><br><span class="line">source /root/Virtualenvs/tensorflow/bin/avtivate</span><br><span class="line"></span><br><span class="line"># 这里终端应该是类似（tensorflow）...# 这种的形式，就说明进入到了虚拟环境，可以pip list查看一下安装的包，应该是 之后setuptools什么的</span><br><span class="line"></span><br><span class="line">pip install ipykernel</span><br><span class="line">python -m ipykernel install --name tensorflow（这里是实际的虚拟环境的名字） --display-name tensorflow（这里是你想要显示的名字）</span><br><span class="line"></span><br><span class="line"># 或下边这句</span><br><span class="line"></span><br><span class="line">python -m ipykernel install --user </span><br><span class="line"></span><br><span class="line"># 再打开jupyter notebook之后就可以在new那里看到新建的虚拟环境了</span><br><span class="line"></span><br><span class="line">jupyter notebook</span><br><span class="line"></span><br><span class="line"># 而且这样之后即使deactivate虚拟环境之后，在基础的那个环境里面打开jupyter notebook之后也可以选择虚拟环境</span><br></pre></td></tr></table></figure>
+
+
+<p>扩展安装</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyter_contrib_nbextensions</span><br><span class="line">jupyter contrib nbextension install --user</span><br><span class="line">这之后就可以看到Nbextension，复选框选择哪个就是激活哪个</span><br></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
     <title>计算xpehh选择信号</title>
     <url>/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</url>
     <content><![CDATA[<p>xpehh (Cross Population Extended Haplotype Homozygosity) 是一种用于选择信号检测的统计方法，用于寻找遗传变异与自然选择之间的关联。它基于单核苷酸多态性（SNP）在不同群体之间的扩展单倍型同质性差异。通过计算目标群体与参考群体之间的扩展单倍型同质性差异，并进行统计检验，xpehh 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在遗传学和人类进化研究中得到了广泛应用。</p>
@@ -576,6 +397,185 @@
       <tags>
         <tag>xpehh</tag>
         <tag>selscan</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>文献学习-BSAlign: A Library for Nucleotide Sequence Alignment</title>
+    <url>/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/</url>
+    <content><![CDATA[<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531185054495.png" alt="image-20240531185054495"></p>
+<p>文献题目：A Library for Nucleotide Sequence Alignment</p>
+<p>doi:<a href="https://doi.org/10.1093/gpbjnl/qzae025">https://doi.org/10.1093/gpbjnl/qzae025</a></p>
+<p>背景：中国农业科学院深圳农业基因组研究所（岭南现代农业科学与技术广东省实验室深圳分中心）阮珏团队和邵浩靖团队开发了一种DNA比对新技术“BSAlign”，相比较同类并行算法，该算法可更快生成最优比对结果，且准确性更高。相关研究成果以题为“BSAlign: A Library for Nucleotide Sequence Alignment”发表在《基因组蛋白质组与生物信息学报（*Genomics, Proteomics &amp; Bioinformatics（GPB）*）》上</p>
+<p>主题：经典的动态规划算法，如史密斯-沃特曼算法和尼德曼-翁施算法，常用于处理序列比对，但由于其时间复杂度呈二次函数式增长，当序列长度增加时，算法的处理时间也随之变长，导致其在处理大规模序列比对时效率低下，严重阻碍了其在大规模序列比对中的应用。目前并行加速比对的最优算法有三种方法：通过增加数据并行度获得加速的条纹法；通过减少计算单元的字节数从而增加并行度的差分法；通过减少整体计算量获得加速的带宽法。然而，目前并没有任何方法可以高效地结合这三种方法，获得更快速的比对算法。研究人员提出了条纹移动法，该算法在带宽环境下实现了高效运算，并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题。这一创新显著提高了比对速度。与现有并行算法相比，BSAlign比对算法的速度提升了2倍，在长序列比对方面，其效率较基于编辑距离的比对算法提高了1.5到4倍。</p>
+<hr>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><p>目前加速比对方法：</p>
+<ul>
+<li>通过增加数据并行度获得加速的条纹法；</li>
+<li>通过减少计算单元的字节数从而增加并行度的差分法；</li>
+<li>通过减少整体计算量获得加速的带宽法。</li>
+</ul>
+<p>BSAlign创新点：</p>
+<ul>
+<li><p>提出了条纹移动法，该算法在带宽环境下实现了高效运算</p>
+</li>
+<li><p>并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题</p>
+</li>
+<li><p>速度有优势</p>
+<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531213449507.png" alt="image-20240531213449507"></p>
+</li>
+</ul>
+<h3 id="经典算法："><a href="#经典算法：" class="headerlink" title="经典算法："></a>经典算法：</h3><p>Needleman-Wunsch算法和Smith-Waterman算法。他们通过解决 动态规划 (DP) 问题来处理序列比对，其中计算评分矩阵并返回来自具有最大分数的单元的最佳路径。虽然这两种方法在寻找最佳比对结果方面表现出了很强的能力，但它们需要二次方的时间复杂度并且快速退化，尤其是在处理长序列时。（具体参考生物信息学课本讲解，如果没记错两种算法大致是全局和局部的画箭头规划走路，再加上空位罚分之类的）</p>
+<h3 id="准确性："><a href="#准确性：" class="headerlink" title="准确性："></a>准确性：</h3><p>相比其他几种算法准确性较高</p>
+<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215701260.png" alt="image-20240531215701260"></p>
+<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215726562.png" alt="image-20240531215726562"></p>
+<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215740916.png" alt="image-20240531215740916"></p>
+<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215906528.png" alt="image-20240531215906528"></p>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215940363.png" alt="image-20240531215940363"></p>
+<p><img src="/./%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215954247.png" alt="image-20240531215954247"></p>
+<p>单指令多数据（SIMD）：  第一个优化类别是重新设计评分矩阵计算的数据结构，解决相邻单元之间的数据依赖关系，从而消除 DP 算法内循环内的条件分支，SIMD 等并行化技术更加高效。</p>
+<p>在该类别的最初 个试验中，Wozniak 提出了一种与次对角线平行存储值 的实现，以消除 个传统实现的内循环中的条件分支，并实现了 2 倍的加速。</p>
+<p>在另一项试验中，Rognes 等人。 引入了另一种实现来存储与查询 序列并行的值。与 Wozniak 的实现相比，Rognes 的设计 的一个优点是它只需要为整个参考序列计算一次查询配置文件。然而，缺点是在计算 F 矩阵时，条件分支被放置在内部循环中。</p>
+<p>对于最近的工具，例如 BGSA 、SeqAn  和 AnySeq ，单个指令的长度范围从 128 位到 512位。</p>
+<h3 id="F-evaluation"><a href="#F-evaluation" class="headerlink" title="F evaluation"></a>F evaluation</h3><p>为了结合 Wozniak  和 Rognes 的优点，Farrar 修复了这些内容，引入与 SIMD 寄存器并行但以条带模式访问的查询序列布局的缺点，该布局仅计算查询配置文件一次 并将条件 F 矩阵评估移至内部之外环形。结果，Farrar 的条纹矢量化成功地加速了 Smith–Waterman 算法 并被许多对准器采用，例如 Burrows–Wheeler Alignment Smith–Waterman (BWA-SW) 、Bowtie2  和条纹史密斯-沃特曼 (SSW) 库 。然而，同一寄存器中的单元并不总是彼此独立的。  Farrar  通过为每个 F 元素添加一个校正循环解决了这个问题，当插入&#x2F;缺失足够长时，该循环可能会迭代多次。</p>
+<hr>
+<h1 id="bsalign"><a href="#bsalign" class="headerlink" title="bsalign"></a>bsalign</h1><p><a href="https://github.com/ruanjue/bsalign">ruanjue&#x2F;bsalign: Banded Striped DNA Sequence Alignment (github.com)</a></p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/ruanjue/bsalign.git</span><br><span class="line">cd bsalign</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<h1 id="run-bsalign"><a href="#run-bsalign" class="headerlink" title="run bsalign"></a>run bsalign</h1><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bsalign</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">commands:</span><br><span class="line"> align       Pairwise alignment implemented by 8-bit encoded Banded Striped SIMD</span><br><span class="line"> edit        Pairwise alignment using edit distance implemented by 2-bit encoded banded Striped algorithm</span><br><span class="line"> poa         Multiple alignment implemented by 8-bit encoded Banded Striped SIMD Partial Order Alignment</span><br><span class="line"> cat         Concatenate pieces of seqs into one seq by overlaping</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd example</span><br><span class="line">sh run.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Result-Example"><a href="#Result-Example" class="headerlink" title="Result Example"></a>Result Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">29.1	75	+	0	75	29.2	76	+	0	76	128	0.934	71	4	0	1</span><br><span class="line">TGTTACTTTTCTTCCCTGCTGTATAAACCC-CAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br><span class="line">||||||*|||||||||||||**||||||||-*||||||||||||||||||||||||||||||||||||||||||||</span><br><span class="line">TGTTACATTTCTTCCCTGCTACATAAACCCTTAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Result-Format"><a href="#Result-Format" class="headerlink" title="Result Format"></a>Result Format</h2><p>Each result is 4 lines. Line 1 :col1-RefName; col2-RefLength; col3-RefStrand; col4-RefStart; col5-RefEnd; col6-QueryName; col7-QueryLength; col8-QueryStrand; col9-QueryStart; col10-QueryEnd; col11-AlignmentScore; col12-Identity; col13-NumberOfMatch; col14-NumberOfMismatch; col15-NumberOfDeletion; col16-NumberOfInsertion Line 2 :Reference Sequence Line 3 :’|’, ‘*’ and ‘-‘ mean match, mismatch and indel, respectively. Line 4 :Query Sequence</p>
+<h1 id="use-bsalign-library"><a href="#use-bsalign-library" class="headerlink" title="use bsalign library"></a>use bsalign library</h1><p>copy bsalign directory into your code <code>cp -r /path/to/bsalign .</code></p>
+<h2 id="Pairwise-Alignment-Example"><a href="#Pairwise-Alignment-Example" class="headerlink" title="Pairwise Alignment Example"></a>Pairwise Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;bsalign/bsalign.h&quot;</span><br><span class="line"></span><br><span class="line">int verbose = 0; // be quiet in alignment</span><br><span class="line">b1i mtx[16]; // score matrix, 4 * 4</span><br><span class="line">banded_striped_epi8_seqalign_set_score_matrix(mtx, sc_mat=2, sc_mis=-6); // init score matrix</span><br><span class="line">b1v *memp = adv_init_b1v(1024, 0, WORDSIZE, 0); // it needs a WORDSIZE(16 bytes)-aligned memory block to perform SIMD alignment</span><br><span class="line">u4v *cigars = init_u4v(32); // use to store alignment cigars (SAM-like), or NULL if useless</span><br><span class="line">int bandwidth = 128; // Or 0 if disable banded alignment</span><br><span class="line">// perform pairwise global alignment (8-bits)</span><br><span class="line">seqalign_result_t rs = banded_striped_epi8_seqalign_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, SEQALIGN_MODE_GLOBAL, bandwidth, mtx, sc_gapo=-3, sc_gape=-2, 0, 0, verbose);</span><br><span class="line">// perform pairwise global edit (2-bits), using edit-distance in alignment, much faster than 8-bits alignment</span><br><span class="line">seqalign_result_t rs = striped_seqedit_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, SEQALIGN_MODE_GLOBAL, bandwidth, memp, cigars, verbose);</span><br><span class="line">// perform pairwise kmer-guided edit (2-bits), it is better for two strange reads, because it infers the outline of alignment by kmer-matching-synteny</span><br><span class="line">seqalign_result_t rs = kmer_striped_seqedit_pairwise(ksize=13, (u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, verbose);</span><br><span class="line">// print alignment information</span><br><span class="line">fprintf(stdout, &quot;QRY\t%d\t%d\tREF\t%d\t%d\tmat=%d\tmis=%d\tins=%d\tdel=%d\n&quot;, rs.qb, rs.qe, rs.tb, rs.te, rs.mat, rs.mis, rs.ins, rs.del);</span><br><span class="line">char *alnstr[3];</span><br><span class="line">alnstr[0] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[1] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[2] = malloc(rs.aln + 1);</span><br><span class="line">seqalign_cigar2alnstr(qseq, tseq, &amp;rs, cigars, alnstr, rs.aln);</span><br><span class="line">// print alignment string</span><br><span class="line">fprintf(stdout, &quot;%s\n%s\n%s\n&quot;, alnstr[0], alnstr[2], alnstr[1]);</span><br><span class="line">free(alnstr[0]); free(alnstr[1]); free(alnstr[2]);</span><br><span class="line">free_u4v(cigars);</span><br><span class="line">free_b1v(memp);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Multiple-Alignment-Example"><a href="#Multiple-Alignment-Example" class="headerlink" title="Multiple Alignment Example"></a>Multiple Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &quot;bsalign/bspoa.h&quot;</span><br><span class="line"></span><br><span class="line">BSPOAPar par = DEFAULT_BSPOA_PAR; // change par.xxx if you want</span><br><span class="line">BSPOA *g = init_bspoa(par);</span><br><span class="line">beg_bspoa(g); // prepare to accept reads</span><br><span class="line">for(...) push_bspoa(g, (char*)rdseq, (int)rdlen); // push reads one by one</span><br><span class="line">end_bspoa(g); // MSA generated</span><br><span class="line">tidy_msa_bspoa(g); // polish MSA to call more SNVs</span><br><span class="line">call_snvs_bspoa(g); // call SNVs on the polished MSA</span><br><span class="line">// print MSA, linewidth=0 to output each read in a single line</span><br><span class="line">// colorful=1 to output friendly terminal characters, pipe to &#x27;less -S -R&#x27; if no color in your screen</span><br><span class="line">print_msa_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, 0, 0, linewidth=100, colorful=1, stdout);</span><br><span class="line">print_snvs_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, stdout);</span><br><span class="line">// Or write binary MSA (no SNVs) to save disk space</span><br><span class="line">dump_binary_msa_bspoa(g, &quot;Welcome to AGIS&quot;, 15, file);</span><br><span class="line">// Load a binary MSA instead of beg/push/end_bspoa, Note: invoke call_snvs_bspoa if you want SNVs</span><br><span class="line">String *metainfo = init_string(32);</span><br><span class="line">load_binary_msa_bspoa(g, file, metainfo);</span><br><span class="line">free_bspoa(g);</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>文献学习</category>
+      </categories>
+      <tags>
+        <tag>文献学习</tag>
+        <tag>比对算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SNP数据计算距离矩阵</title>
+    <url>/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<p>用到的工具是 <strong>VCF2Dis</strong></p>
+<p>工具对应的github主页 <a href="https://github.com/BGI-shenzhen/VCF2Dis">https://github.com/BGI-shenzhen/VCF2Dis</a></p>
+<p>按照软件主页的帮助文档 下载安装，没有遇到问题</p>
+<h1 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h1><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
+<h3 id="1）-安装"><a href="#1）-安装" class="headerlink" title="1） 安装"></a>1） 安装</h3><hr>
+<p><strong>新版本</strong>将在 <strong><a href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong> 中更新和维护，请点击下方链接下载最新版本</p>
+<p><strong><a href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong></p>
+<p><strong><a href="https://github.com/hewm2008/VCF2Dis/archive/v1.51.tar.gz">下载</a></strong></p>
+<p>只需 [make] 或 [sh make.sh ] 来编译此软件，最终软件可以在 Dir <strong>[bin&#x2F;VCF2Dis]</strong><br>For <strong>linux &#x2F;Unix</strong> 和 <strong>macOS</strong> 中找到</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">tar -zxvf  VCF2DisXXX.tar.gz            # if Link do not work ,Try re-install [zlib]library</span><br><span class="line">cd VCF2DisXXX;                          # [zlib] and copy them to the library Dir</span><br><span class="line">sh make.sh;                             # VCF2Dis-xx/src/include/zlib</span><br><span class="line">./bin/VCF2Dis</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong>如果链接失败，请尝试<strong>重新安装</strong>库 <a href="https://zlib.net/">*<strong>zlib*</strong></a><br><strong>注意：</strong>：建议使用 <a href="https://cran.r-project.org/web/packages/ape/index.html">ape</a> 和 <a href="https://www.bioconductor.org/packages/release/bioc/html/ggtree.html">ggtree</a> <a href="https://www.r-project.org/">的 R</a></p>
+<h3 id="2）-没有-boostrap-的-nj-tree-示例"><a href="#2）-没有-boostrap-的-nj-tree-示例" class="headerlink" title="2） 没有 boostrap 的 nj-tree 示例"></a>2） 没有 boostrap 的 nj-tree 示例</h3><hr>
+<ul>
+<li><ol>
+<li>参数说明：</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Usage: VCF2Dis -InPut  &lt;in.vcf&gt;  -OutPut  &lt;p_dis.mat&gt;</span><br><span class="line"></span><br><span class="line">	-InPut     &lt;str&gt;     Input one or muti GATK VCF genotype File</span><br><span class="line">	-OutPut    &lt;str&gt;     OutPut Sample p-Distance matrix</span><br><span class="line"></span><br><span class="line">	-InList    &lt;str&gt;     Input GATK muti-chr VCF Path List</span><br><span class="line">	-SubPop    &lt;str&gt;     SubGroup SampleList of VCFFile [ALLsample]</span><br><span class="line">	-Rand      &lt;float&gt;   Probability (0-1] for each site to join Calculation [1]</span><br><span class="line">	-KeepMF              Keep the Middle File diff &amp; Use matrix</span><br><span class="line"></span><br><span class="line">	-help                Show more help [hewm2008 v1.51s]</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><ol>
+<li>创建p_distance矩阵并构造 nj-tree newick 树</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 2.1) To new all the sample p_distance matrix and newick tree based VCF, run VCF2Dis directly</span><br><span class="line">      ./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis.mat</span><br><span class="line">      #  ./bin/VCF2Dis     -InPut  in.fa.gz	-OutPut p_dis.mat -InFormat  FA</span><br><span class="line"></span><br><span class="line"># 2.2) To new sub group sample p_distance matrix and and newick tree ; put their sample name into File sample.list</span><br><span class="line">      ./bin/VCF2Dis	-InPut	chr1.vcf.gz chr2.vcf.gz	-OutPut p_dis.mat  -SubPop  sample.list</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><ol>
+<li>可视化和美化它（需要处理其他软件），<br>您将在 VCF2Dis 之后获得 p_dis.nwk 树文件。<br>运行 MEGA # <a href="http://www.megasoftware.net/">MEGA</a> 用于显示基于此文件的系统发育树 [p_dis.nwk]<br>，您可以看到相邻连接树并将其保存为 PDF 格式</li>
+</ol>
+</li>
+</ul>
+<p>如果无法获取 <strong>p_dis.nwk</strong> 树文件，以下是获取树文件的 3 种方法。</p>
+<h4 id="其他构建-nj-tree-的方法：方法-1-在线"><a href="#其他构建-nj-tree-的方法：方法-1-在线" class="headerlink" title="其他构建 nj-tree 的方法：方法 1 在线"></a>其他构建 nj-tree 的方法：方法 1 在线</h4><p>选择 <strong>A&#x2F;B</strong><br><strong>A 之一。</strong> 上传 web <a href="http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional=1">fneighbor（http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional&#x3D;1），</a>单击 <strong>Run fneighbor</strong> 底部。那么你可以得到输出文件<strong>datafile.tree文件</strong><br><strong>B.<strong>将</strong>p_dis.mat</strong>上传到<a href="http://www.atgc-montpellier.fr/fastme/">fastme（http://www.atgc-montpellier.fr/fastme/）</a>网站，选择<strong>数据类型</strong>到<strong>距离矩阵</strong>，点击底部的捻<strong>线执行&amp;email结果</strong>。您将获得 <strong>p_dis_mat_fastme-tree.nwk</strong> ，并且电子邮件不是强制性的;</p>
+<p>运行 MEGA # MEGA （<a href="http://www.megasoftware.net/%EF%BC%89">http://www.megasoftware.net/）</a> 用于显示基于此文件的系统发育树 [p_dis_mat_fastme-tree.nwk]</p>
+<h4 id="其他构造-nj-tree-的方法-：-方法-2-：-PHYLIPNEW"><a href="#其他构造-nj-tree-的方法-：-方法-2-：-PHYLIPNEW" class="headerlink" title="其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW"></a>其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW</h4><p>使用 PHYLIPNEW 构建 nj-tree<br>如何安装 PHYLIPNEW 请 点击**<a href="https://github.com/hewm2008/VCF2Dis/blob/main/Install.NJ.en.md">这里</a>** 或 点击**<a href="https://github.com/hewm2008/VCF2Dis/blob/main/Install.NJ.cn.md">这里（中文）</a>**</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#    3.1 Run  PHYLIP</span><br><span class="line">#   After p_distance done , software PHYLIPNEW 3.69 (http://evolution.genetics.washington.edu/phylip.html) ,with neighbor-joining method can was used to construct the phylogenetic tree on the basis of this  p_distance matrix;</span><br><span class="line"> </span><br><span class="line">     PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis.matrix  -outfile tree.out1.txt -matrixtype s -treetype n -outtreefile tree.out2.tre</span><br><span class="line"></span><br><span class="line">#    3.2 Run  MEGA</span><br><span class="line">#    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file [tree.out2.tre]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="其他构造-nj-tree-的方法：方法-3-R-脚本"><a href="#其他构造-nj-tree-的方法：方法-3-R-脚本" class="headerlink" title="其他构造 nj-tree 的方法：方法 3 R 脚本"></a>其他构造 nj-tree 的方法：方法 3 R 脚本</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">    #    3.1 Run  R Rscript</span><br><span class="line">Rscript  exemple/vistreecode.r    p_dis.mat</span><br><span class="line">    #    3.2 Run  MEGA</span><br><span class="line">    #    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file [tree.out2.tre]</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><ol>
+<li>您可以查看相邻连接树并将其保存为 PDF 格式</li>
+</ol>
+</li>
+</ul>
+<h3 id="3）-带有-boostrap-的-nj-tree-示例"><a href="#3）-带有-boostrap-的-nj-tree-示例" class="headerlink" title="3） 带有 boostrap 的 nj-tree 示例"></a>3） 带有 boostrap 的 nj-tree 示例</h3><ul>
+<li><ol>
+<li>使用回放采样对 nj-tree 进行多运行。 如上所述，使用站点和新的nj树部分。重复 <strong>NN</strong> 时间。X&#x3D;（1,2….NN）;</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis_X.mat    -Rand     0.25</span><br><span class="line">PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis_X.matrix  -outfile tree.out1_X.txt -matrixtype s -treetype n -outtreefile tree.out2_X.tre </span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><ol>
+<li>合并所有回放采样 NJ-tree 并构造 boostrap nj-tree。</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cat   tree.out2_*.tre   &gt;  ALLtree_merge.tre</span><br><span class="line">PHYLIPNEW-3.69.650/bin/fconsense   -intreefile   ALLtree_merge.tre  -outfile out  -treeprint Y</span><br><span class="line">perl  ./bin/percentageboostrapTree.pl    ALLtree_merge.treefile    NN    Final_boostrap.tre</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><ol>
+<li>构建 nj-tree 并呈现它（需要处理其他软件）</li>
+</ol>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file Final_boostrap.tre] </span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="4）-引言"><a href="#4）-引言" class="headerlink" title="4） 引言"></a>4） 引言</h3><hr>
+<p>要新建p_distance矩阵，请添加 VCF 文件。有关p_distance矩阵的详细信息，请参阅**<a href="https://phylipweb.github.io/phylip/doc/distance.html">此网站。</a>**采用VCF SNPs数据集计算个体间的p距离，按照以下公式计算样本i和样本j的遗传距离：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">D_ij=(1/L) * [(sum(d(l)_ij))]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>其中 L 是可以识别 SNP 的区域的长度，给定位置 l 处的等位基因是 A&#x2F;C：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">d(l)_ij=0.0     if the genotypes of the two individuals were AA and AA;</span><br><span class="line">d(l)_ij=0.5     if the genotypes of the two individuals were AA and AC;</span><br><span class="line">d(l)_ij=0.0     if the genotypes of the two individuals were AC and AC;</span><br><span class="line">d(l)_ij=1.0     if the genotypes of the two individuals were AA and CC;</span><br><span class="line">d(l)_ij=0.0     if the genotypes of the two individuals were CC and CC;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>distance</tag>
       </tags>
   </entry>
 </search>
