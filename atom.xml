@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-06-16T14:16:28.391Z</updated>
+  <updated>2024-07-01T09:39:19.812Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -15,6 +15,24 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文献学习2024-BSAlign比对算法</title>
+    <link href="https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/"/>
+    <id>https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/</id>
+    <published>2024-07-01T09:38:08.000Z</published>
+    <updated>2024-07-01T09:39:19.812Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot;&gt;&lt;a href=&quot;#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot; class=</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>SNP数据计算距离矩阵</title>
@@ -72,30 +90,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>文献学习-BSAlign比对算法</title>
-    <link href="https://louis-kento.github.io/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/"/>
-    <id>https://louis-kento.github.io/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/</id>
-    <published>2024-05-31T10:49:09.000Z</published>
-    <updated>2024-07-01T09:25:25.834Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;h3 id=&quot;文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot;&gt;&lt;a href=&quot;#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot; class=</summary>
-      
-    
-    
-    
-    <category term="文献学习" scheme="https://louis-kento.github.io/categories/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-    <category term="文献学习" scheme="https://louis-kento.github.io/tags/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0/"/>
-    
-    <category term="比对算法" scheme="https://louis-kento.github.io/tags/%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

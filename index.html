@@ -159,12 +159,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -204,6 +204,166 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="liuxiao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kento_blog">
+      <meta itemprop="description" content="A Bioinformatics Rookie">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | kento_blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">文献学习2024-BSAlign比对算法</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-01 17:38:08 / Modified: 17:39:19" itemprop="dateCreated datePublished" datetime="2024-07-01T17:38:08+08:00">2024-07-01</time>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline: </span>
+  
+    <a title="waline" href="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>5.6k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>10 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment"><a href="#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment" class="headerlink" title="文献学习-BSAlign: A Library for Nucleotide Sequence Alignment"></a>文献学习-BSAlign: A Library for Nucleotide Sequence Alignment</h3><p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531185054495.png" alt="image-20240531185054495"></p>
+<p>文献题目：A Library for Nucleotide Sequence Alignment</p>
+<p>doi:<a target="_blank" rel="noopener" href="https://doi.org/10.1093/gpbjnl/qzae025">https://doi.org/10.1093/gpbjnl/qzae025</a></p>
+<p>背景：中国农业科学院深圳农业基因组研究所（岭南现代农业科学与技术广东省实验室深圳分中心）阮珏团队和邵浩靖团队开发了一种DNA比对新技术“BSAlign”，相比较同类并行算法，该算法可更快生成最优比对结果，且准确性更高。相关研究成果以题为“BSAlign: A Library for Nucleotide Sequence Alignment”发表在《基因组蛋白质组与生物信息学报（*Genomics, Proteomics &amp; Bioinformatics（GPB）*）》上</p>
+<p>主题：经典的动态规划算法，如史密斯-沃特曼算法和尼德曼-翁施算法，常用于处理序列比对，但由于其时间复杂度呈二次函数式增长，当序列长度增加时，算法的处理时间也随之变长，导致其在处理大规模序列比对时效率低下，严重阻碍了其在大规模序列比对中的应用。目前并行加速比对的最优算法有三种方法：通过增加数据并行度获得加速的条纹法；通过减少计算单元的字节数从而增加并行度的差分法；通过减少整体计算量获得加速的带宽法。然而，目前并没有任何方法可以高效地结合这三种方法，获得更快速的比对算法。研究人员提出了条纹移动法，该算法在带宽环境下实现了高效运算，并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题。这一创新显著提高了比对速度。与现有并行算法相比，BSAlign比对算法的速度提升了2倍，在长序列比对方面，其效率较基于编辑距离的比对算法提高了1.5到4倍。</p>
+<hr>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><p>目前加速比对方法：</p>
+<ul>
+<li>通过增加数据并行度获得加速的条纹法；</li>
+<li>通过减少计算单元的字节数从而增加并行度的差分法；</li>
+<li>通过减少整体计算量获得加速的带宽法。</li>
+</ul>
+<p>BSAlign创新点：</p>
+<ul>
+<li><p>提出了条纹移动法，该算法在带宽环境下实现了高效运算</p>
+</li>
+<li><p>并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题</p>
+</li>
+<li><p>速度有优势</p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531213449507.png" alt="image-20240531213449507"></p>
+</li>
+</ul>
+<h3 id="经典算法："><a href="#经典算法：" class="headerlink" title="经典算法："></a>经典算法：</h3><p>Needleman-Wunsch算法和Smith-Waterman算法。他们通过解决 动态规划 (DP) 问题来处理序列比对，其中计算评分矩阵并返回来自具有最大分数的单元的最佳路径。虽然这两种方法在寻找最佳比对结果方面表现出了很强的能力，但它们需要二次方的时间复杂度并且快速退化，尤其是在处理长序列时。（具体参考生物信息学课本讲解，如果没记错两种算法大致是全局和局部的画箭头规划走路，再加上空位罚分之类的）</p>
+<h3 id="准确性："><a href="#准确性：" class="headerlink" title="准确性："></a>准确性：</h3><p>相比其他几种算法准确性较高</p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215701260.png" alt="image-20240531215701260"></p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215726562.png" alt="image-20240531215726562"></p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215740916.png" alt="image-20240531215740916"></p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215906528.png" alt="image-20240531215906528"></p>
+<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215940363.png" alt="image-20240531215940363"></p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215954247.png" alt="image-20240531215954247"></p>
+<p>单指令多数据（SIMD）：  第一个优化类别是重新设计评分矩阵计算的数据结构，解决相邻单元之间的数据依赖关系，从而消除 DP 算法内循环内的条件分支，SIMD 等并行化技术更加高效。</p>
+<p>在该类别的最初 个试验中，Wozniak 提出了一种与次对角线平行存储值 的实现，以消除 个传统实现的内循环中的条件分支，并实现了 2 倍的加速。</p>
+<p>在另一项试验中，Rognes 等人。 引入了另一种实现来存储与查询 序列并行的值。与 Wozniak 的实现相比，Rognes 的设计 的一个优点是它只需要为整个参考序列计算一次查询配置文件。然而，缺点是在计算 F 矩阵时，条件分支被放置在内部循环中。</p>
+<p>对于最近的工具，例如 BGSA 、SeqAn  和 AnySeq ，单个指令的长度范围从 128 位到 512位。</p>
+<h3 id="F-evaluation"><a href="#F-evaluation" class="headerlink" title="F evaluation"></a>F evaluation</h3><p>为了结合 Wozniak  和 Rognes 的优点，Farrar 修复了这些内容，引入与 SIMD 寄存器并行但以条带模式访问的查询序列布局的缺点，该布局仅计算查询配置文件一次 并将条件 F 矩阵评估移至内部之外环形。结果，Farrar 的条纹矢量化成功地加速了 Smith–Waterman 算法 并被许多对准器采用，例如 Burrows–Wheeler Alignment Smith–Waterman (BWA-SW) 、Bowtie2  和条纹史密斯-沃特曼 (SSW) 库 。然而，同一寄存器中的单元并不总是彼此独立的。  Farrar  通过为每个 F 元素添加一个校正循环解决了这个问题，当插入&#x2F;缺失足够长时，该循环可能会迭代多次。</p>
+<hr>
+<h1 id="bsalign"><a href="#bsalign" class="headerlink" title="bsalign"></a>bsalign</h1><p><a target="_blank" rel="noopener" href="https://github.com/ruanjue/bsalign">ruanjue&#x2F;bsalign: Banded Striped DNA Sequence Alignment (github.com)</a></p>
+<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ruanjue/bsalign.git</span><br><span class="line">cd bsalign</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<h1 id="run-bsalign"><a href="#run-bsalign" class="headerlink" title="run bsalign"></a>run bsalign</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bsalign</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">commands:</span><br><span class="line"> align       Pairwise alignment implemented by 8-bit encoded Banded Striped SIMD</span><br><span class="line"> edit        Pairwise alignment using edit distance implemented by 2-bit encoded banded Striped algorithm</span><br><span class="line"> poa         Multiple alignment implemented by 8-bit encoded Banded Striped SIMD Partial Order Alignment</span><br><span class="line"> cat         Concatenate pieces of seqs into one seq by overlaping</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd example</span><br><span class="line">sh run.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Result-Example"><a href="#Result-Example" class="headerlink" title="Result Example"></a>Result Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">29.1	75	+	0	75	29.2	76	+	0	76	128	0.934	71	4	0	1</span><br><span class="line">TGTTACTTTTCTTCCCTGCTGTATAAACCC-CAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br><span class="line">||||||*|||||||||||||**||||||||-*||||||||||||||||||||||||||||||||||||||||||||</span><br><span class="line">TGTTACATTTCTTCCCTGCTACATAAACCCTTAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Result-Format"><a href="#Result-Format" class="headerlink" title="Result Format"></a>Result Format</h2><p>Each result is 4 lines. Line 1 :col1-RefName; col2-RefLength; col3-RefStrand; col4-RefStart; col5-RefEnd; col6-QueryName; col7-QueryLength; col8-QueryStrand; col9-QueryStart; col10-QueryEnd; col11-AlignmentScore; col12-Identity; col13-NumberOfMatch; col14-NumberOfMismatch; col15-NumberOfDeletion; col16-NumberOfInsertion Line 2 :Reference Sequence Line 3 :’|’, ‘*’ and ‘-‘ mean match, mismatch and indel, respectively. Line 4 :Query Sequence</p>
+<h1 id="use-bsalign-library"><a href="#use-bsalign-library" class="headerlink" title="use bsalign library"></a>use bsalign library</h1><p>copy bsalign directory into your code <code>cp -r /path/to/bsalign .</code></p>
+<h2 id="Pairwise-Alignment-Example"><a href="#Pairwise-Alignment-Example" class="headerlink" title="Pairwise Alignment Example"></a>Pairwise Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bsalign/bsalign.h&quot;</span><br><span class="line"></span><br><span class="line">int verbose = 0; // be quiet in alignment</span><br><span class="line">b1i mtx[16]; // score matrix, 4 * 4</span><br><span class="line">banded_striped_epi8_seqalign_set_score_matrix(mtx, sc_mat=2, sc_mis=-6); // init score matrix</span><br><span class="line">b1v *memp = adv_init_b1v(1024, 0, WORDSIZE, 0); // it needs a WORDSIZE(16 bytes)-aligned memory block to perform SIMD alignment</span><br><span class="line">u4v *cigars = init_u4v(32); // use to store alignment cigars (SAM-like), or NULL if useless</span><br><span class="line">int bandwidth = 128; // Or 0 if disable banded alignment</span><br><span class="line">// perform pairwise global alignment (8-bits)</span><br><span class="line">seqalign_result_t rs = banded_striped_epi8_seqalign_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, SEQALIGN_MODE_GLOBAL, bandwidth, mtx, sc_gapo=-3, sc_gape=-2, 0, 0, verbose);</span><br><span class="line">// perform pairwise global edit (2-bits), using edit-distance in alignment, much faster than 8-bits alignment</span><br><span class="line">seqalign_result_t rs = striped_seqedit_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, SEQALIGN_MODE_GLOBAL, bandwidth, memp, cigars, verbose);</span><br><span class="line">// perform pairwise kmer-guided edit (2-bits), it is better for two strange reads, because it infers the outline of alignment by kmer-matching-synteny</span><br><span class="line">seqalign_result_t rs = kmer_striped_seqedit_pairwise(ksize=13, (u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, verbose);</span><br><span class="line">// print alignment information</span><br><span class="line">fprintf(stdout, &quot;QRY\t%d\t%d\tREF\t%d\t%d\tmat=%d\tmis=%d\tins=%d\tdel=%d\n&quot;, rs.qb, rs.qe, rs.tb, rs.te, rs.mat, rs.mis, rs.ins, rs.del);</span><br><span class="line">char *alnstr[3];</span><br><span class="line">alnstr[0] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[1] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[2] = malloc(rs.aln + 1);</span><br><span class="line">seqalign_cigar2alnstr(qseq, tseq, &amp;rs, cigars, alnstr, rs.aln);</span><br><span class="line">// print alignment string</span><br><span class="line">fprintf(stdout, &quot;%s\n%s\n%s\n&quot;, alnstr[0], alnstr[2], alnstr[1]);</span><br><span class="line">free(alnstr[0]); free(alnstr[1]); free(alnstr[2]);</span><br><span class="line">free_u4v(cigars);</span><br><span class="line">free_b1v(memp);</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Multiple-Alignment-Example"><a href="#Multiple-Alignment-Example" class="headerlink" title="Multiple Alignment Example"></a>Multiple Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bsalign/bspoa.h&quot;</span><br><span class="line"></span><br><span class="line">BSPOAPar par = DEFAULT_BSPOA_PAR; // change par.xxx if you want</span><br><span class="line">BSPOA *g = init_bspoa(par);</span><br><span class="line">beg_bspoa(g); // prepare to accept reads</span><br><span class="line">for(...) push_bspoa(g, (char*)rdseq, (int)rdlen); // push reads one by one</span><br><span class="line">end_bspoa(g); // MSA generated</span><br><span class="line">tidy_msa_bspoa(g); // polish MSA to call more SNVs</span><br><span class="line">call_snvs_bspoa(g); // call SNVs on the polished MSA</span><br><span class="line">// print MSA, linewidth=0 to output each read in a single line</span><br><span class="line">// colorful=1 to output friendly terminal characters, pipe to &#x27;less -S -R&#x27; if no color in your screen</span><br><span class="line">print_msa_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, 0, 0, linewidth=100, colorful=1, stdout);</span><br><span class="line">print_snvs_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, stdout);</span><br><span class="line">// Or write binary MSA (no SNVs) to save disk space</span><br><span class="line">dump_binary_msa_bspoa(g, &quot;Welcome to AGIS&quot;, 15, file);</span><br><span class="line">// Load a binary MSA instead of beg/push/end_bspoa, Note: invoke call_snvs_bspoa if you want SNVs</span><br><span class="line">String *metainfo = init_string(32);</span><br><span class="line">load_binary_msa_bspoa(g, file, metainfo);</span><br><span class="line">free_bspoa(g);</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -608,169 +768,6 @@
 
 
 <p>5.jupyter重启服务</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://louis-kento.github.io/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="liuxiao">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kento_blog">
-      <meta itemprop="description" content="A Bioinformatics Rookie">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | kento_blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/" class="post-title-link" itemprop="url">文献学习-BSAlign比对算法</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2024-05-31 18:49:09" itemprop="dateCreated datePublished" datetime="2024-05-31T18:49:09+08:00">2024-05-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-01 17:25:25" itemprop="dateModified" datetime="2024-07-01T17:25:25+08:00">2024-07-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">文献学习</span></a>
-        </span>
-    </span>
-
-  
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>5.6k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>10 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment"><a href="#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment" class="headerlink" title="文献学习-BSAlign: A Library for Nucleotide Sequence Alignment"></a>文献学习-BSAlign: A Library for Nucleotide Sequence Alignment</h3><p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531185054495.png" alt="image-20240531185054495"></p>
-<p>文献题目：A Library for Nucleotide Sequence Alignment</p>
-<p>doi:<a target="_blank" rel="noopener" href="https://doi.org/10.1093/gpbjnl/qzae025">https://doi.org/10.1093/gpbjnl/qzae025</a></p>
-<p>背景：中国农业科学院深圳农业基因组研究所（岭南现代农业科学与技术广东省实验室深圳分中心）阮珏团队和邵浩靖团队开发了一种DNA比对新技术“BSAlign”，相比较同类并行算法，该算法可更快生成最优比对结果，且准确性更高。相关研究成果以题为“BSAlign: A Library for Nucleotide Sequence Alignment”发表在《基因组蛋白质组与生物信息学报（*Genomics, Proteomics &amp; Bioinformatics（GPB）*）》上</p>
-<p>主题：经典的动态规划算法，如史密斯-沃特曼算法和尼德曼-翁施算法，常用于处理序列比对，但由于其时间复杂度呈二次函数式增长，当序列长度增加时，算法的处理时间也随之变长，导致其在处理大规模序列比对时效率低下，严重阻碍了其在大规模序列比对中的应用。目前并行加速比对的最优算法有三种方法：通过增加数据并行度获得加速的条纹法；通过减少计算单元的字节数从而增加并行度的差分法；通过减少整体计算量获得加速的带宽法。然而，目前并没有任何方法可以高效地结合这三种方法，获得更快速的比对算法。研究人员提出了条纹移动法，该算法在带宽环境下实现了高效运算，并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题。这一创新显著提高了比对速度。与现有并行算法相比，BSAlign比对算法的速度提升了2倍，在长序列比对方面，其效率较基于编辑距离的比对算法提高了1.5到4倍。</p>
-<hr>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><p>目前加速比对方法：</p>
-<ul>
-<li>通过增加数据并行度获得加速的条纹法；</li>
-<li>通过减少计算单元的字节数从而增加并行度的差分法；</li>
-<li>通过减少整体计算量获得加速的带宽法。</li>
-</ul>
-<p>BSAlign创新点：</p>
-<ul>
-<li><p>提出了条纹移动法，该算法在带宽环境下实现了高效运算</p>
-</li>
-<li><p>并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题</p>
-</li>
-<li><p>速度有优势</p>
-<p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531213449507.png" alt="image-20240531213449507"></p>
-</li>
-</ul>
-<h3 id="经典算法："><a href="#经典算法：" class="headerlink" title="经典算法："></a>经典算法：</h3><p>Needleman-Wunsch算法和Smith-Waterman算法。他们通过解决 动态规划 (DP) 问题来处理序列比对，其中计算评分矩阵并返回来自具有最大分数的单元的最佳路径。虽然这两种方法在寻找最佳比对结果方面表现出了很强的能力，但它们需要二次方的时间复杂度并且快速退化，尤其是在处理长序列时。（具体参考生物信息学课本讲解，如果没记错两种算法大致是全局和局部的画箭头规划走路，再加上空位罚分之类的）</p>
-<h3 id="准确性："><a href="#准确性：" class="headerlink" title="准确性："></a>准确性：</h3><p>相比其他几种算法准确性较高</p>
-<p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215701260.png" alt="image-20240531215701260"></p>
-<p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215726562.png" alt="image-20240531215726562"></p>
-<p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215740916.png" alt="image-20240531215740916"></p>
-<p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215906528.png" alt="image-20240531215906528"></p>
-<h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215940363.png" alt="image-20240531215940363"></p>
-<p><img src="/2024/05/31/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A0-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment/image-20240531215954247.png" alt="image-20240531215954247"></p>
-<p>单指令多数据（SIMD）：  第一个优化类别是重新设计评分矩阵计算的数据结构，解决相邻单元之间的数据依赖关系，从而消除 DP 算法内循环内的条件分支，SIMD 等并行化技术更加高效。</p>
-<p>在该类别的最初 个试验中，Wozniak 提出了一种与次对角线平行存储值 的实现，以消除 个传统实现的内循环中的条件分支，并实现了 2 倍的加速。</p>
-<p>在另一项试验中，Rognes 等人。 引入了另一种实现来存储与查询 序列并行的值。与 Wozniak 的实现相比，Rognes 的设计 的一个优点是它只需要为整个参考序列计算一次查询配置文件。然而，缺点是在计算 F 矩阵时，条件分支被放置在内部循环中。</p>
-<p>对于最近的工具，例如 BGSA 、SeqAn  和 AnySeq ，单个指令的长度范围从 128 位到 512位。</p>
-<h3 id="F-evaluation"><a href="#F-evaluation" class="headerlink" title="F evaluation"></a>F evaluation</h3><p>为了结合 Wozniak  和 Rognes 的优点，Farrar 修复了这些内容，引入与 SIMD 寄存器并行但以条带模式访问的查询序列布局的缺点，该布局仅计算查询配置文件一次 并将条件 F 矩阵评估移至内部之外环形。结果，Farrar 的条纹矢量化成功地加速了 Smith–Waterman 算法 并被许多对准器采用，例如 Burrows–Wheeler Alignment Smith–Waterman (BWA-SW) 、Bowtie2  和条纹史密斯-沃特曼 (SSW) 库 。然而，同一寄存器中的单元并不总是彼此独立的。  Farrar  通过为每个 F 元素添加一个校正循环解决了这个问题，当插入&#x2F;缺失足够长时，该循环可能会迭代多次。</p>
-<hr>
-<h1 id="bsalign"><a href="#bsalign" class="headerlink" title="bsalign"></a>bsalign</h1><p><a target="_blank" rel="noopener" href="https://github.com/ruanjue/bsalign">ruanjue&#x2F;bsalign: Banded Striped DNA Sequence Alignment (github.com)</a></p>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ruanjue/bsalign.git</span><br><span class="line">cd bsalign</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
-
-<h1 id="run-bsalign"><a href="#run-bsalign" class="headerlink" title="run bsalign"></a>run bsalign</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bsalign</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">commands:</span><br><span class="line"> align       Pairwise alignment implemented by 8-bit encoded Banded Striped SIMD</span><br><span class="line"> edit        Pairwise alignment using edit distance implemented by 2-bit encoded banded Striped algorithm</span><br><span class="line"> poa         Multiple alignment implemented by 8-bit encoded Banded Striped SIMD Partial Order Alignment</span><br><span class="line"> cat         Concatenate pieces of seqs into one seq by overlaping</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd example</span><br><span class="line">sh run.sh</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Result-Example"><a href="#Result-Example" class="headerlink" title="Result Example"></a>Result Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">29.1	75	+	0	75	29.2	76	+	0	76	128	0.934	71	4	0	1</span><br><span class="line">TGTTACTTTTCTTCCCTGCTGTATAAACCC-CAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br><span class="line">||||||*|||||||||||||**||||||||-*||||||||||||||||||||||||||||||||||||||||||||</span><br><span class="line">TGTTACATTTCTTCCCTGCTACATAAACCCTTAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Result-Format"><a href="#Result-Format" class="headerlink" title="Result Format"></a>Result Format</h2><p>Each result is 4 lines. Line 1 :col1-RefName; col2-RefLength; col3-RefStrand; col4-RefStart; col5-RefEnd; col6-QueryName; col7-QueryLength; col8-QueryStrand; col9-QueryStart; col10-QueryEnd; col11-AlignmentScore; col12-Identity; col13-NumberOfMatch; col14-NumberOfMismatch; col15-NumberOfDeletion; col16-NumberOfInsertion Line 2 :Reference Sequence Line 3 :’|’, ‘*’ and ‘-‘ mean match, mismatch and indel, respectively. Line 4 :Query Sequence</p>
-<h1 id="use-bsalign-library"><a href="#use-bsalign-library" class="headerlink" title="use bsalign library"></a>use bsalign library</h1><p>copy bsalign directory into your code <code>cp -r /path/to/bsalign .</code></p>
-<h2 id="Pairwise-Alignment-Example"><a href="#Pairwise-Alignment-Example" class="headerlink" title="Pairwise Alignment Example"></a>Pairwise Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bsalign/bsalign.h&quot;</span><br><span class="line"></span><br><span class="line">int verbose = 0; // be quiet in alignment</span><br><span class="line">b1i mtx[16]; // score matrix, 4 * 4</span><br><span class="line">banded_striped_epi8_seqalign_set_score_matrix(mtx, sc_mat=2, sc_mis=-6); // init score matrix</span><br><span class="line">b1v *memp = adv_init_b1v(1024, 0, WORDSIZE, 0); // it needs a WORDSIZE(16 bytes)-aligned memory block to perform SIMD alignment</span><br><span class="line">u4v *cigars = init_u4v(32); // use to store alignment cigars (SAM-like), or NULL if useless</span><br><span class="line">int bandwidth = 128; // Or 0 if disable banded alignment</span><br><span class="line">// perform pairwise global alignment (8-bits)</span><br><span class="line">seqalign_result_t rs = banded_striped_epi8_seqalign_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, SEQALIGN_MODE_GLOBAL, bandwidth, mtx, sc_gapo=-3, sc_gape=-2, 0, 0, verbose);</span><br><span class="line">// perform pairwise global edit (2-bits), using edit-distance in alignment, much faster than 8-bits alignment</span><br><span class="line">seqalign_result_t rs = striped_seqedit_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, SEQALIGN_MODE_GLOBAL, bandwidth, memp, cigars, verbose);</span><br><span class="line">// perform pairwise kmer-guided edit (2-bits), it is better for two strange reads, because it infers the outline of alignment by kmer-matching-synteny</span><br><span class="line">seqalign_result_t rs = kmer_striped_seqedit_pairwise(ksize=13, (u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, verbose);</span><br><span class="line">// print alignment information</span><br><span class="line">fprintf(stdout, &quot;QRY\t%d\t%d\tREF\t%d\t%d\tmat=%d\tmis=%d\tins=%d\tdel=%d\n&quot;, rs.qb, rs.qe, rs.tb, rs.te, rs.mat, rs.mis, rs.ins, rs.del);</span><br><span class="line">char *alnstr[3];</span><br><span class="line">alnstr[0] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[1] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[2] = malloc(rs.aln + 1);</span><br><span class="line">seqalign_cigar2alnstr(qseq, tseq, &amp;rs, cigars, alnstr, rs.aln);</span><br><span class="line">// print alignment string</span><br><span class="line">fprintf(stdout, &quot;%s\n%s\n%s\n&quot;, alnstr[0], alnstr[2], alnstr[1]);</span><br><span class="line">free(alnstr[0]); free(alnstr[1]); free(alnstr[2]);</span><br><span class="line">free_u4v(cigars);</span><br><span class="line">free_b1v(memp);</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="Multiple-Alignment-Example"><a href="#Multiple-Alignment-Example" class="headerlink" title="Multiple Alignment Example"></a>Multiple Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bsalign/bspoa.h&quot;</span><br><span class="line"></span><br><span class="line">BSPOAPar par = DEFAULT_BSPOA_PAR; // change par.xxx if you want</span><br><span class="line">BSPOA *g = init_bspoa(par);</span><br><span class="line">beg_bspoa(g); // prepare to accept reads</span><br><span class="line">for(...) push_bspoa(g, (char*)rdseq, (int)rdlen); // push reads one by one</span><br><span class="line">end_bspoa(g); // MSA generated</span><br><span class="line">tidy_msa_bspoa(g); // polish MSA to call more SNVs</span><br><span class="line">call_snvs_bspoa(g); // call SNVs on the polished MSA</span><br><span class="line">// print MSA, linewidth=0 to output each read in a single line</span><br><span class="line">// colorful=1 to output friendly terminal characters, pipe to &#x27;less -S -R&#x27; if no color in your screen</span><br><span class="line">print_msa_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, 0, 0, linewidth=100, colorful=1, stdout);</span><br><span class="line">print_snvs_bspoa(g, &quot;&lt;MSA_ID&gt;&quot;, stdout);</span><br><span class="line">// Or write binary MSA (no SNVs) to save disk space</span><br><span class="line">dump_binary_msa_bspoa(g, &quot;Welcome to AGIS&quot;, 15, file);</span><br><span class="line">// Load a binary MSA instead of beg/push/end_bspoa, Note: invoke call_snvs_bspoa if you want SNVs</span><br><span class="line">String *metainfo = init_string(32);</span><br><span class="line">load_binary_msa_bspoa(g, file, metainfo);</span><br><span class="line">free_bspoa(g);</span><br></pre></td></tr></table></figure>
 
       
     </div>
