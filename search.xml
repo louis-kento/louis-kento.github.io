@@ -3,10 +3,10 @@
   <entry>
     <title>文献学习2024-BSAlign比对算法</title>
     <url>/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment"><a href="#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment" class="headerlink" title="文献学习-BSAlign: A Library for Nucleotide Sequence Alignment"></a>文献学习-BSAlign: A Library for Nucleotide Sequence Alignment</h3><p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531185054495.png" alt="image-20240531185054495"></p>
-<p>文献题目：A Library for Nucleotide Sequence Alignment</p>
+    <content><![CDATA[<p>文献题目：A Library for Nucleotide Sequence Alignment</p>
 <p>doi:<a href="https://doi.org/10.1093/gpbjnl/qzae025">https://doi.org/10.1093/gpbjnl/qzae025</a></p>
-<p>背景：中国农业科学院深圳农业基因组研究所（岭南现代农业科学与技术广东省实验室深圳分中心）阮珏团队和邵浩靖团队开发了一种DNA比对新技术“BSAlign”，相比较同类并行算法，该算法可更快生成最优比对结果，且准确性更高。相关研究成果以题为“BSAlign: A Library for Nucleotide Sequence Alignment”发表在《基因组蛋白质组与生物信息学报（*Genomics, Proteomics &amp; Bioinformatics（GPB）*）》上</p>
+<p>背景：中国农业科学院深圳农业基因组研究所（岭南现代农业科学与技术广东省实验室深圳分中心）阮珏团队和邵浩靖团队开发了一种DNA比对新技术“BSAlign”，相比较同类并行算法，该算法可更快生成最优比对结果，且准确性更高。相关研究成果以题为“BSAlign: A Library for Nucleotide Sequence Alignment”发表在 基因组蛋白质组与生物信息学报（Genomics, Proteomics &amp; Bioinformatics（GPB））</p>
+<p><img src="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531185054495.png" alt="image-20240531185054495"></p>
 <p>主题：经典的动态规划算法，如史密斯-沃特曼算法和尼德曼-翁施算法，常用于处理序列比对，但由于其时间复杂度呈二次函数式增长，当序列长度增加时，算法的处理时间也随之变长，导致其在处理大规模序列比对时效率低下，严重阻碍了其在大规模序列比对中的应用。目前并行加速比对的最优算法有三种方法：通过增加数据并行度获得加速的条纹法；通过减少计算单元的字节数从而增加并行度的差分法；通过减少整体计算量获得加速的带宽法。然而，目前并没有任何方法可以高效地结合这三种方法，获得更快速的比对算法。研究人员提出了条纹移动法，该算法在带宽环境下实现了高效运算，并开发了主动F循环法，解决了条纹数据在长插入或删除情况下的多次查询问题。这一创新显著提高了比对速度。与现有并行算法相比，BSAlign比对算法的速度提升了2倍，在长序列比对方面，其效率较基于编辑距离的比对算法提高了1.5到4倍。</p>
 <hr>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点:"></a>优点:</h3><p>目前加速比对方法：</p>
@@ -70,7 +70,30 @@
   <entry>
     <title>群论学习1</title>
     <url>/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/</url>
-    <content><![CDATA[<h2 id="群论"><a href="#群论" class="headerlink" title="群论"></a>群论</h2><p>群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：</p>
+    <content><![CDATA[<h2 id="群论"><a href="#群论" class="headerlink" title="群论"></a>群论</h2><p>在<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6">数学</a>和<a href="https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0">抽象代数</a>中，<strong>群论</strong>（英语：Group theory）研究名为<a href="https://zh.wikipedia.org/wiki/%E7%BE%A4">群</a>的<a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84">代数结构</a>。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%BE%A4">群</a>在抽象代数中具有基本的重要地位：许多代数结构，包括<a href="https://zh.wikipedia.org/wiki/%E7%8E%AF_(%E4%BB%A3%E6%95%B0)">环</a>、<a href="https://zh.wikipedia.org/wiki/%E5%9F%9F_(%E6%95%B0%E5%AD%A6)">域</a>和<a href="https://zh.wikipedia.org/wiki/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4">向量空间</a>等可以看作是在群的基础上添加新的<a href="https://zh.wikipedia.org/wiki/%E8%BF%90%E7%AE%97">运算</a>和<a href="https://zh.wikipedia.org/wiki/%E5%85%AC%E7%90%86">公理</a>而形成的。群的概念在数学的许多分支都有出现，而且群论的研究方法也对抽象代数的其它分支有重要影响。<a href="https://zh.wikipedia.org/w/index.php?title=%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%BE%A4&action=edit&redlink=1">线性代数群</a>和<a href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>作为群论的分支，在经历了重大的发展之后，已经形成相对独立的研究领域。</p>
+<span id="more"></span>
+
+<p>群论的重要性还体现在<a href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%AD%A6">物理学</a>和<a href="https://zh.wikipedia.org/wiki/%E5%8C%96%E5%AD%A6">化学</a>的研究中，因为许多不同的物理结构，如<a href="https://zh.wikipedia.org/wiki/%E6%99%B6%E4%BD%93">晶体</a>结构和<a href="https://zh.wikipedia.org/wiki/%E6%B0%A2%E5%8E%9F%E5%AD%90">氢原子</a>结构可以用群论方法来进行建模。于是群论和相关的<a href="https://zh.wikipedia.org/wiki/%E7%BE%A4%E8%A1%A8%E7%A4%BA%E8%AE%BA">群表示论</a>在物理学和化学中有大量的应用。</p>
+<p>群论中的重要结果，<a href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%8D%95%E7%BE%A4%E5%88%86%E7%B1%BB">有限单群分类</a>是20世纪数学最重要的结果之一。该定理的证明是集体努力的结果，它的证明出现在1960年和1980年之间出版的超过10,000页的期刊上。</p>
+<hr>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>主条目：<a href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E8%AE%BA%E5%8E%86%E5%8F%B2&action=edit&redlink=1">群论历史</a></p>
+<p>群论在历史上主要有三个来源：<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E8%AE%BA">数论</a>，<a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E6%96%B9%E7%A8%8B">代数方程</a>理论和<a href="https://zh.wikipedia.org/wiki/%E5%87%A0%E4%BD%95%E5%AD%A6">几何学</a>。数论中出现的对群的研究始于<a href="https://zh.wikipedia.org/wiki/%E8%8E%B1%E6%98%82%E5%93%88%E5%BE%B7%C2%B7%E6%AC%A7%E6%8B%89">莱昂哈德·欧拉</a>，之后由<a href="https://zh.wikipedia.org/wiki/%E5%8D%A1%E5%B0%94%C2%B7%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E9%AB%98%E6%96%AF">卡尔·弗里德里希·高斯</a>在对<a href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E7%AE%97%E6%9C%AF">模算术</a>和与<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E6%AC%A1%E5%9F%9F">二次域</a>相关的乘法和加法的研究中进行了发展。群论的概念在<a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E6%95%B0%E8%AE%BA">代数数论</a>中首先被隐含地使用，后来才显式地运用它们。</p>
+<p>关于<a href="https://zh.wikipedia.org/wiki/%E7%BD%AE%E6%8D%A2%E7%BE%A4">置换群</a>的早期结果出现在<a href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%91%9F%E5%A4%AB%C2%B7%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5">约瑟夫·拉格朗日</a>、<a href="https://zh.wikipedia.org/wiki/%E4%BF%9D%E7%BE%85%C2%B7%E9%AD%AF%E8%8F%B2%E5%B0%BC">保罗·鲁菲尼</a>和<a href="https://zh.wikipedia.org/wiki/%E5%B0%BC%E5%B0%94%E6%96%AF%C2%B7%E9%98%BF%E8%B4%9D%E5%B0%94">尼尔斯·阿贝尔</a>等人关于高次方程一般解的工作中。1830年，<a href="https://zh.wikipedia.org/wiki/%E5%9F%83%E7%93%A6%E9%87%8C%E6%96%AF%E7%89%B9%C2%B7%E4%BC%BD%E7%BD%97%E7%93%A6">埃瓦里斯特·伽罗瓦</a>第一个用群的观点来确定<a href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%96%B9%E7%A8%8B">多项式方程</a>的可解性。伽罗瓦首次使用了术语“群”，并在新生的群的理论与<a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E8%AB%96">域论</a>之间建立起了联系。这套理论现在被称为<a href="https://zh.wikipedia.org/wiki/%E4%BC%BD%E7%BE%85%E7%93%A6%E7%90%86%E8%AB%96">伽罗瓦理论</a>。<a href="https://zh.wikipedia.org/wiki/%E9%98%BF%E7%91%9F%C2%B7%E5%87%AF%E8%8E%B1">阿瑟·凯莱</a>和<a href="https://zh.wikipedia.org/wiki/%E5%A5%A7%E5%8F%A4%E6%96%AF%E4%B8%81%C2%B7%E8%B7%AF%E6%98%93%C2%B7%E6%9F%AF%E8%A5%BF">奥古斯丁·路易·柯西</a>进一步发展了这些研究，创立了<a href="https://zh.wikipedia.org/wiki/%E7%BD%AE%E6%8D%A2%E7%BE%A4">置换群</a>理论。</p>
+<p>群论的第三个主要历史渊源来自几何。群论在<a href="https://zh.wikipedia.org/wiki/%E5%B0%84%E5%BD%B1%E5%87%A0%E4%BD%95">射影几何</a>中首次显示出它的重要性，并在之后的<a href="https://zh.wikipedia.org/wiki/%E9%9D%9E%E6%AC%A7%E5%87%A0%E4%BD%95">非欧几何</a>中起到了作用。<a href="https://zh.wikipedia.org/wiki/%E8%8F%B2%E5%88%A9%E5%85%8B%E6%96%AF%C2%B7%E5%85%8B%E8%8E%B1%E5%9B%A0">菲利克斯·克莱因</a>用群论的观点，在不同的几何学（如<a href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E5%87%A0%E4%BD%95">欧几里德几何</a>、<a href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E6%9B%B2%E5%87%A0%E4%BD%95">双曲几何</a>、<a href="https://zh.wikipedia.org/wiki/%E5%B0%84%E5%BD%B1%E5%87%A0%E4%BD%95">射影几何</a>）之间建立了联系，即<a href="https://zh.wikipedia.org/wiki/%E7%88%B1%E5%B0%94%E5%85%B0%E6%A0%B9%E7%BA%B2%E9%A2%86">爱尔兰根纲领</a>。1884年，<a href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E8%8F%B2%E6%96%AF%C2%B7%E6%9D%8E">索菲斯·李</a>开始研究<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90">分析学</a>问题中出现的群（现在称为<a href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>）。</p>
+<p>属于不同领域的来源导致了群的不同记法。群的理论从约1880年起开始统一。在那之后，群论的影响一直在扩大，在20世纪早期促进了<a href="https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0">抽象代数</a>、<a href="https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%A4%BA%E8%AE%BA">表示论</a>和其他许多有影响力的子领域的建立。<a href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%96%AE%E7%BE%A4%E5%88%86%E9%A1%9E">有限单群分类</a>是20世纪中叶一项规模庞大的工作，对一切的<a href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E9%9B%86%E5%90%88">有限</a><a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E7%BE%A4">单群</a>进行了分类。</p>
+<hr>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>主条目：<a href="https://zh.wikipedia.org/wiki/%E7%BE%A4">群</a>和<a href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E7%9A%84%E7%B1%BB%E5%9E%8B&action=edit&redlink=1">群的类型</a></p>
+<p>群论考虑的群的类型从有限置换群和一些特殊的<a href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5%E7%BE%A4">矩阵群</a>逐渐进展到抽象群。这些抽象群可以由<a href="https://zh.wikipedia.org/wiki/%E7%BE%A4%E7%9A%84%E7%94%9F%E6%88%90%E9%9B%86%E5%90%88">生成元</a>和<a href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB_(%E6%95%B0%E5%AD%A6)">关系</a>给定。</p>
+<h6 id="置换群、矩阵群、变换群、抽象群"><a href="#置换群、矩阵群、变换群、抽象群" class="headerlink" title="置换群、矩阵群、变换群、抽象群"></a>置换群、矩阵群、变换群、抽象群</h6><hr>
+<h2 id="应用-编辑"><a href="#应用-编辑" class="headerlink" title="应用[编辑]"></a>应用[<a href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E8%AE%BA&action=edit&section=8">编辑</a>]</h2><p>群论在数学上被广泛地运用，通常以<a href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%90%8C%E6%A7%8B%E7%BE%A4">自同构群</a>的形式体现某些结构的内部对称性。结构的内部对称性常常和一种不变式性质同时存在。如果在一类操作中存在不变式，那这些操作转换的组合和不变式统称为一个对称群。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4">阿贝尔群</a>概括了另外几种抽象集合研究的结构，例如<a href="https://zh.wikipedia.org/wiki/%E7%8E%AF_(%E4%BB%A3%E6%95%B0)">环</a>、<a href="https://zh.wikipedia.org/wiki/%E5%9F%9F_(%E6%95%B8%E5%AD%B8)">域</a>、<a href="https://zh.wikipedia.org/wiki/%E6%A8%A1">模</a>。</p>
+<p>在<a href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E6%8B%93%E6%89%91">代数拓扑</a>中，群用于描述拓扑空间转换中不变的性质，例如基本群和透射群。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>的概念在<a href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B">微分方程</a>和<a href="https://zh.wikipedia.org/wiki/%E6%B5%81%E5%BD%A2">流形</a>中都有很重要的角色，因其结合了群论和<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E6%9E%90%E5%AD%A6">分析学</a>，<a href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>能很好的描述分析数学结构中的对称性。对这类群的分析又叫<a href="https://zh.wikipedia.org/wiki/%E8%AA%BF%E5%92%8C%E5%88%86%E6%9E%90">调和分析</a>。</p>
+<p>在<a href="https://zh.wikipedia.org/wiki/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6">组合数学</a>中，<a href="https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8D%A2%E7%BE%A4">交换群</a>和<a href="https://zh.wikipedia.org/wiki/%E7%BE%A4%E4%BD%9C%E7%94%A8">群作用</a>常用来简化在某些集合内的元素的计算。</p>
+<p>后来群论广泛应用于各个科学领域。凡是有对称性出现的地方，就会有它的影子，例如物理学的<a href="https://zh.wikipedia.org/wiki/%E8%B6%85%E5%BC%A6%E7%90%86%E8%AB%96">超弦理论</a>。</p>
+<hr>
+<p>群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：</p>
 <table>
 <thead>
 <tr>
@@ -118,7 +141,9 @@
     <content><![CDATA[<p>用到的工具是 <strong>VCF2Dis</strong></p>
 <p>工具对应的github主页 <a href="https://github.com/BGI-shenzhen/VCF2Dis">https://github.com/BGI-shenzhen/VCF2Dis</a></p>
 <p>按照软件主页的帮助文档 下载安装，没有遇到问题</p>
-<h1 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h1><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
+<span id="more"></span>
+
+<h2 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h2><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
 <h3 id="1）-安装"><a href="#1）-安装" class="headerlink" title="1） 安装"></a>1） 安装</h3><hr>
 <p><strong>新版本</strong>将在 <strong><a href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong> 中更新和维护，请点击下方链接下载最新版本</p>
 <p><strong><a href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong></p>
@@ -218,24 +243,12 @@
       </tags>
   </entry>
   <entry>
-    <title>R语言绘制组合图</title>
-    <url>/2024/06/08/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%88%B6%E7%BB%84%E5%90%88%E5%9B%BE/</url>
-    <content><![CDATA[<p>在用R语言做完图之后要想放在论文里，就需要把不同的图组合起来，尝试过用PPT，以及在Word里，效果都不太好，因此试着在R里组图（它的优势在于调图片清晰度比较方便）</p>
-<p>如标题所示，包括①R里面做出的图以及②已经导出为PNG格式的图片</p>
-<p>首先说第一种</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#加载包</span><br><span class="line">library(ggpubr) </span><br><span class="line">library(ggplot2) </span><br><span class="line">#组图</span><br><span class="line">figure &lt;- ggarrange(pp1,pp2,pp3, #需要组合的图</span><br><span class="line">                    ncol = 3, nrow = 1)   #ncol是一行放几个，nrow是放几列</span><br><span class="line">figure</span><br><span class="line"></span><br><span class="line">#这个是看要不要给组图加横纵标题什么的。&quot;left&quot;就是加在左边，其他的top,bottom等同理</span><br><span class="line">figure2=annotate_figure(figure,left = text_grob(&quot;Normal nitrogen&quot;,color = &quot;black&quot;,  </span><br><span class="line">                        size = 36,x = 0.5,y=0.5,rot=90))  #rot是旋转的角度</span><br><span class="line">figure2</span><br><span class="line">#这个是导出图片的</span><br><span class="line">ggsave(filename=&quot;merge_Normal.png&quot;,</span><br><span class="line">       figure2,</span><br><span class="line">       width=30,   </span><br><span class="line">       heigh=16.4,   </span><br><span class="line">       dpi = 1000)  #能设置dpi值，越大的话就越清晰，相应的也就越占内存</span><br></pre></td></tr></table></figure>
-
-<p>然后如果图片已经导出了的话，就再导进来改一下格式就好啦，如下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm(list=ls())  #清一下运行环境，不然图片多容易卡</span><br><span class="line">#导入图片</span><br><span class="line">library(png) </span><br><span class="line">setwd(&quot;D:/WU G.J/共现图/共现网络图片&quot;)  #图片存储路径</span><br><span class="line">#导入图片</span><br><span class="line">img1 &lt;- readPNG(&quot;Pic1.png&quot;)</span><br><span class="line">img2 &lt;- readPNG(&quot;Pic2.png&quot;)</span><br><span class="line">#改格式</span><br><span class="line">p1&lt;-ggplot()+background_image(img1)+theme_void()</span><br><span class="line">p2&lt;-ggplot()+background_image(img2)+theme_void()</span><br><span class="line"></span><br><span class="line">#之后就和上面的一样啦</span><br><span class="line"></span><br><span class="line">figure &lt;- ggarrange(pp1,pp2,pp3, #需要组合的图</span><br><span class="line">                    ncol = 6, nrow = 3)   #ncol是一行放几个，nrow是放几列</span><br><span class="line">figure</span><br><span class="line"></span><br><span class="line">#这个是看要不要给组图加横纵标题什么的。&quot;left&quot;就是加在左边，其他的top,bottom等同理</span><br><span class="line">figure2=annotate_figure(figure,left = text_grob(&quot;Normal nitrogen&quot;,color = &quot;black&quot;,  </span><br><span class="line">                        size = 36,x = 0.5,y=0.5,rot=90))  #rot是旋转的角度</span><br><span class="line">figure2</span><br><span class="line">#这个是导出图片的</span><br><span class="line">ggsave(filename=&quot;merge_Normal.png&quot;,</span><br><span class="line">       figure2,</span><br><span class="line">       width=30,   </span><br><span class="line">       heigh=16.4,   </span><br><span class="line">       dpi = 1000)  #能设置dpi值，越大的话就越清晰，相应的也就越占内存</span><br></pre></td></tr></table></figure>
-
-<p>在做的过程中我觉得比较有趣的一点就是①先组图再加标题还是②先加标题再组图 ，或者③加标题再组图，再加总的标题</p>
-<p>总而言之，涉及的代码就是ggarrange函数（作用是组图）和annotate_figure函数(作用是加标题)这两句，灵活反复运用就行了</p>
-]]></content>
-  </entry>
-  <entry>
     <title>jupyter notebook 安装字体解决可视化时字体不显示</title>
     <url>/2024/06/02/jupyter-notebook-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%86%E5%8C%96%E6%97%B6%E5%AD%97%E4%BD%93%E4%B8%8D%E6%98%BE%E7%A4%BA/</url>
-    <content><![CDATA[<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[<span class="string">&#x27;figure.figsize&#x27;</span>] = (12.0, 8.0) <span class="comment"># 调整大小，可根据自实际情况进行设置</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;image.interpolation&#x27;</span>] = <span class="string">&#x27;nearest&#x27;</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;image.cmap&#x27;</span>] = <span class="string">&#x27;gray&#x27;</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=[<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 下面这两个是设置乱码的</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=False</span><br><span class="line">plt.style.use(<span class="string">&#x27;ggplot&#x27;</span>)  <span class="comment"># 使用&#x27;ggplot&#x27;风格美化显示的图表</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p> jupyter notebook 安装中文字体解决可视化时部分字体不显示或者错位</p>
+<span id="more"></span>
+
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">plt.rcParams[<span class="string">&#x27;figure.figsize&#x27;</span>] = (12.0, 8.0) <span class="comment"># 调整大小，可根据自实际情况进行设置</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;image.interpolation&#x27;</span>] = <span class="string">&#x27;nearest&#x27;</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;image.cmap&#x27;</span>] = <span class="string">&#x27;gray&#x27;</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;font.sans-serif&#x27;</span>]=[<span class="string">&#x27;SimHei&#x27;</span>]  <span class="comment"># 下面这两个是设置乱码的</span></span><br><span class="line">plt.rcParams[<span class="string">&#x27;axes.unicode_minus&#x27;</span>]=False</span><br><span class="line">plt.style.use(<span class="string">&#x27;ggplot&#x27;</span>)  <span class="comment"># 使用&#x27;ggplot&#x27;风格美化显示的图表</span></span><br></pre></td></tr></table></figure>
 
 <p>jupyter中的中文字体显示框框，解决方案：</p>
 <p>1、下载simhei.ttf字体：</p>
@@ -256,11 +269,16 @@
 
 <p>5.jupyter重启服务</p>
 ]]></content>
+      <tags>
+        <tag>jupyter</tag>
+      </tags>
   </entry>
   <entry>
     <title>wdl学习心得</title>
     <url>/2024/05/23/wdl%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
     <content><![CDATA[<h3 id="WDL官网简介："><a href="#WDL官网简介：" class="headerlink" title="WDL官网简介："></a>WDL官网简介：</h3><p>工作流描述语言（WDL）是一种开放标准，用于以人类可读可写的语法描述数据处理工作流。WDL 可以直接定义分析任务，在工作流中将它们连接起来，并并行执行。该语言力求让所有用户（包括程序员、分析师和生产系统的操作员）都能理解和使用。这种语言可以简单地表达常见的模式，如分散收集和条件执行。WDL 专为可移植性而设计，有多种实现方式可供选择，可在包括 HPC 系统和云平台在内的各种环境中运行。</p>
+<span id="more"></span>
+
 <hr>
 <p>WDL主要有5个核心组件，WDL不是顺序执行的，所以workflow、task、call在脚本内的排列顺序并不重要。</p>
 <table>
@@ -302,11 +320,17 @@
 <h4 id="条件语句："><a href="#条件语句：" class="headerlink" title="条件语句："></a>条件语句：</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">task process_file &#123;</span><br><span class="line">  File input_file</span><br><span class="line">  String output_file</span><br><span class="line"></span><br><span class="line">  command &#123;</span><br><span class="line">    # 处理文件</span><br><span class="line">    # ...</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    File processed_file = $&#123;output_file&#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">workflow process_files &#123;</span><br><span class="line">  input &#123;</span><br><span class="line">    Array[File] input_files</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  scatter (file in input_files) &#123;</span><br><span class="line">    call process_file &#123;</span><br><span class="line">      input: input_file = file, output_file = &quot;$&#123;file&#125;.processed&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output &#123;</span><br><span class="line">    Array[File] processed_files = process_file.processed_file</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+      <tags>
+        <tag>wdl</tag>
+      </tags>
   </entry>
   <entry>
     <title>wsl配置jupyter</title>
     <url>/2024/05/21/wsl%E9%85%8D%E7%BD%AEjupyter/</url>
-    <content><![CDATA[<h2 id="1-jupyter-notebook安装"><a href="#1-jupyter-notebook安装" class="headerlink" title="1.jupyter notebook安装"></a>1.jupyter notebook安装</h2><h3 id="1-1-本文档适用的情况"><a href="#1-1-本文档适用的情况" class="headerlink" title="1.1 本文档适用的情况"></a>1.1 本文档适用的情况</h3><p>Windows10环境已安装WSL2下的Ubuntu20.04<br>WSL2<br>Ubuntu20.04</p>
+    <content><![CDATA[<p>jupyter安装教程</p>
+<span id="more"></span>
+
+<h2 id="1-jupyter-notebook安装"><a href="#1-jupyter-notebook安装" class="headerlink" title="1.jupyter notebook安装"></a>1.jupyter notebook安装</h2><h3 id="1-1-本文档适用的情况"><a href="#1-1-本文档适用的情况" class="headerlink" title="1.1 本文档适用的情况"></a>1.1 本文档适用的情况</h3><p>Windows10环境已安装WSL2下的Ubuntu20.04<br>WSL2<br>Ubuntu20.04</p>
 <h3 id="1-2-Jupyternotebook安装流程"><a href="#1-2-Jupyternotebook安装流程" class="headerlink" title="1.2 Jupyternotebook安装流程"></a>1.2 Jupyternotebook安装流程</h3><p>PS：这里推荐安装jupyter notebook而非jupyter lab，</p>
 <p>以下为安装步骤：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install jupyter notebook</span><br><span class="line"></span><br><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
@@ -343,8 +367,11 @@
 
 
 
-
 ]]></content>
+      <tags>
+        <tag>jupyter</tag>
+        <tag>wsl</tag>
+      </tags>
   </entry>
   <entry>
     <title>win11配置wsl2</title>

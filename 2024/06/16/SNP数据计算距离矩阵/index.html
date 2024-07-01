@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="用到的工具是 VCF2Dis 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题 VCF2Dis（英语：VCF2Dis）VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式 1） 安装 新版本将在 hewm2008&#x2F;VCF2Dis 中更新和维护，请点击下">
+    <meta name="description" content="用到的工具是 VCF2Dis 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SNP数据计算距离矩阵">
 <meta property="og:url" content="https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="kento_blog">
-<meta property="og:description" content="用到的工具是 VCF2Dis 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题 VCF2Dis（英语：VCF2Dis）VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式 1） 安装 新版本将在 hewm2008&#x2F;VCF2Dis 中更新和维护，请点击下">
+<meta property="og:description" content="用到的工具是 VCF2Dis 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-16T14:13:34.000Z">
-<meta property="article:modified_time" content="2024-07-01T09:45:31.300Z">
+<meta property="article:modified_time" content="2024-07-01T11:54:22.679Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="distance">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#VCF2Dis%EF%BC%88%E8%8B%B1%E8%AF%AD%EF%BC%9AVCF2Dis%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">VCF2Dis（英语：VCF2Dis）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%BC%89-%E5%AE%89%E8%A3%85"><span class="nav-number">1.0.1.</span> <span class="nav-text">1） 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%BC%89-%E6%B2%A1%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">2） 没有 boostrap 的 nj-tree 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E5%BB%BA-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%B9%E6%B3%95-1-%E5%9C%A8%E7%BA%BF"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">其他构建 nj-tree 的方法：方法 1 在线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E9%80%A0-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95-%EF%BC%9A-%E6%96%B9%E6%B3%95-2-%EF%BC%9A-PHYLIPNEW"><span class="nav-number">1.0.2.2.</span> <span class="nav-text">其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E9%80%A0-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%B9%E6%B3%95-3-R-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.0.2.3.</span> <span class="nav-text">其他构造 nj-tree 的方法：方法 3 R 脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%BC%89-%E5%B8%A6%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.3.</span> <span class="nav-text">3） 带有 boostrap 的 nj-tree 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%EF%BC%89-%E5%BC%95%E8%A8%80"><span class="nav-number">1.0.4.</span> <span class="nav-text">4） 引言</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VCF2Dis%EF%BC%88%E8%8B%B1%E8%AF%AD%EF%BC%9AVCF2Dis%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">VCF2Dis（英语：VCF2Dis）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%BC%89-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1） 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%BC%89-%E6%B2%A1%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">2） 没有 boostrap 的 nj-tree 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E5%BB%BA-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%B9%E6%B3%95-1-%E5%9C%A8%E7%BA%BF"><span class="nav-number">1.2.1.</span> <span class="nav-text">其他构建 nj-tree 的方法：方法 1 在线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E9%80%A0-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95-%EF%BC%9A-%E6%96%B9%E6%B3%95-2-%EF%BC%9A-PHYLIPNEW"><span class="nav-number">1.2.2.</span> <span class="nav-text">其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E9%80%A0-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%B9%E6%B3%95-3-R-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.3.</span> <span class="nav-text">其他构造 nj-tree 的方法：方法 3 R 脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%BC%89-%E5%B8%A6%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3） 带有 boostrap 的 nj-tree 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%EF%BC%89-%E5%BC%95%E8%A8%80"><span class="nav-number">1.4.</span> <span class="nav-text">4） 引言</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-01 17:45:31" itemprop="dateModified" datetime="2024-07-01T17:45:31+08:00">2024-07-01</time>
+      <time title="Modified: 2024-07-01 19:54:22" itemprop="dateModified" datetime="2024-07-01T19:54:22+08:00">2024-07-01</time>
     </span>
 
   
@@ -304,7 +304,9 @@
     <div class="post-body" itemprop="articleBody"><p>用到的工具是 <strong>VCF2Dis</strong></p>
 <p>工具对应的github主页 <a target="_blank" rel="noopener" href="https://github.com/BGI-shenzhen/VCF2Dis">https://github.com/BGI-shenzhen/VCF2Dis</a></p>
 <p>按照软件主页的帮助文档 下载安装，没有遇到问题</p>
-<h1 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h1><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
+<span id="more"></span>
+
+<h2 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h2><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
 <h3 id="1）-安装"><a href="#1）-安装" class="headerlink" title="1） 安装"></a>1） 安装</h3><hr>
 <p><strong>新版本</strong>将在 <strong><a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong> 中更新和维护，请点击下方链接下载最新版本</p>
 <p><strong><a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong></p>
@@ -431,8 +433,8 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/06/08/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%88%B6%E7%BB%84%E5%90%88%E5%9B%BE/" rel="prev" title="R语言绘制组合图">
-                  <i class="fa fa-angle-left"></i> R语言绘制组合图
+                <a href="/2024/06/02/jupyter-notebook-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%86%E5%8C%96%E6%97%B6%E5%AD%97%E4%BD%93%E4%B8%8D%E6%98%BE%E7%A4%BA/" rel="prev" title="jupyter notebook 安装字体解决可视化时字体不显示">
+                  <i class="fa fa-angle-left"></i> jupyter notebook 安装字体解决可视化时字体不显示
                 </a>
             </div>
             <div class="post-nav-item">

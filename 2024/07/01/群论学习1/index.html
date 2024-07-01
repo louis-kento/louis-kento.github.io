@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="群论群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：          恒等元 存在一个元素运算后不改变零一元素的元素 0+a&#x3D;a   封闭性 运算结果任在集合内 整数相加还是整数   逆元素 每个元素都存在一个与他运算后等于恒等元的元素 整数的相反数   结合律 运算中加括号改变运算优先级不影响结果 算数加法乘法满足结合律   例如：对称性旋转和翻转">
+    <meta name="description" content="群论在数学和抽象代数中，群论（英语：Group theory）研究名为群的代数结构。 群在抽象代数中具有基本的重要地位：许多代数结构，包括环、域和向量空间等可以看作是在群的基础上添加新的运算和公理而形成的。群的概念在数学的许多分支都有出现，而且群论的研究方法也对抽象代数的其它分支有重要影响。线性代数群和李群作为群论的分支，在经历了重大的发展之后，已经形成相对独立的研究领域。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="群论学习1">
 <meta property="og:url" content="https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/index.html">
 <meta property="og:site_name" content="kento_blog">
-<meta property="og:description" content="群论群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：          恒等元 存在一个元素运算后不改变零一元素的元素 0+a&#x3D;a   封闭性 运算结果任在集合内 整数相加还是整数   逆元素 每个元素都存在一个与他运算后等于恒等元的元素 整数的相反数   结合律 运算中加括号改变运算优先级不影响结果 算数加法乘法满足结合律   例如：对称性旋转和翻转">
+<meta property="og:description" content="群论在数学和抽象代数中，群论（英语：Group theory）研究名为群的代数结构。 群在抽象代数中具有基本的重要地位：许多代数结构，包括环、域和向量空间等可以看作是在群的基础上添加新的运算和公理而形成的。群的概念在数学的许多分支都有出现，而且群论的研究方法也对抽象代数的其它分支有重要影响。线性代数群和李群作为群论的分支，在经历了重大的发展之后，已经形成相对独立的研究领域。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-01T07:08:45.000Z">
-<meta property="article:modified_time" content="2024-07-01T09:45:03.603Z">
+<meta property="article:modified_time" content="2024-07-01T12:05:02.321Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="群论">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">群论</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BE%A4%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">群论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2"><span class="nav-number">2.</span> <span class="nav-text">历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%86%E7%B1%BB"><span class="nav-number">3.</span> <span class="nav-text">分类</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%BD%AE%E6%8D%A2%E7%BE%A4%E3%80%81%E7%9F%A9%E9%98%B5%E7%BE%A4%E3%80%81%E5%8F%98%E6%8D%A2%E7%BE%A4%E3%80%81%E6%8A%BD%E8%B1%A1%E7%BE%A4"><span class="nav-number">3.0.0.0.1.</span> <span class="nav-text">置换群、矩阵群、变换群、抽象群</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8-%E7%BC%96%E8%BE%91"><span class="nav-number">4.</span> <span class="nav-text">应用[编辑]</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -247,7 +247,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-07-01 15:08:45 / Modified: 17:45:03" itemprop="dateCreated datePublished" datetime="2024-07-01T15:08:45+08:00">2024-07-01</time>
+      <time title="Created: 2024-07-01 15:08:45 / Modified: 20:05:02" itemprop="dateCreated datePublished" datetime="2024-07-01T15:08:45+08:00">2024-07-01</time>
     </span>
 
   
@@ -278,14 +278,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>378</span>
+      <span>1.7k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -295,7 +295,30 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="群论"><a href="#群论" class="headerlink" title="群论"></a>群论</h2><p>群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="群论"><a href="#群论" class="headerlink" title="群论"></a>群论</h2><p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6">数学</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0">抽象代数</a>中，<strong>群论</strong>（英语：Group theory）研究名为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%A4">群</a>的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84">代数结构</a>。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%A4">群</a>在抽象代数中具有基本的重要地位：许多代数结构，包括<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%8E%AF_(%E4%BB%A3%E6%95%B0)">环</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%9F_(%E6%95%B0%E5%AD%A6)">域</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4">向量空间</a>等可以看作是在群的基础上添加新的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%BF%90%E7%AE%97">运算</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%AC%E7%90%86">公理</a>而形成的。群的概念在数学的许多分支都有出现，而且群论的研究方法也对抽象代数的其它分支有重要影响。<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%BE%A4&action=edit&redlink=1">线性代数群</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>作为群论的分支，在经历了重大的发展之后，已经形成相对独立的研究领域。</p>
+<span id="more"></span>
+
+<p>群论的重要性还体现在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%89%A9%E7%90%86%E5%AD%A6">物理学</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8C%96%E5%AD%A6">化学</a>的研究中，因为许多不同的物理结构，如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%99%B6%E4%BD%93">晶体</a>结构和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%B0%A2%E5%8E%9F%E5%AD%90">氢原子</a>结构可以用群论方法来进行建模。于是群论和相关的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%A4%E8%A1%A8%E7%A4%BA%E8%AE%BA">群表示论</a>在物理学和化学中有大量的应用。</p>
+<p>群论中的重要结果，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%8D%95%E7%BE%A4%E5%88%86%E7%B1%BB">有限单群分类</a>是20世纪数学最重要的结果之一。该定理的证明是集体努力的结果，它的证明出现在1960年和1980年之间出版的超过10,000页的期刊上。</p>
+<hr>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>主条目：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E8%AE%BA%E5%8E%86%E5%8F%B2&action=edit&redlink=1">群论历史</a></p>
+<p>群论在历史上主要有三个来源：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E8%AE%BA">数论</a>，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E6%96%B9%E7%A8%8B">代数方程</a>理论和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%87%A0%E4%BD%95%E5%AD%A6">几何学</a>。数论中出现的对群的研究始于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%8E%B1%E6%98%82%E5%93%88%E5%BE%B7%C2%B7%E6%AC%A7%E6%8B%89">莱昂哈德·欧拉</a>，之后由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%A1%E5%B0%94%C2%B7%E5%BC%97%E9%87%8C%E5%BE%B7%E9%87%8C%E5%B8%8C%C2%B7%E9%AB%98%E6%96%AF">卡尔·弗里德里希·高斯</a>在对<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%A8%A1%E7%AE%97%E6%9C%AF">模算术</a>和与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E6%AC%A1%E5%9F%9F">二次域</a>相关的乘法和加法的研究中进行了发展。群论的概念在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E6%95%B0%E8%AE%BA">代数数论</a>中首先被隐含地使用，后来才显式地运用它们。</p>
+<p>关于<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%AE%E6%8D%A2%E7%BE%A4">置换群</a>的早期结果出现在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BA%A6%E7%91%9F%E5%A4%AB%C2%B7%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5">约瑟夫·拉格朗日</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BF%9D%E7%BE%85%C2%B7%E9%AD%AF%E8%8F%B2%E5%B0%BC">保罗·鲁菲尼</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%BC%E5%B0%94%E6%96%AF%C2%B7%E9%98%BF%E8%B4%9D%E5%B0%94">尼尔斯·阿贝尔</a>等人关于高次方程一般解的工作中。1830年，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%83%E7%93%A6%E9%87%8C%E6%96%AF%E7%89%B9%C2%B7%E4%BC%BD%E7%BD%97%E7%93%A6">埃瓦里斯特·伽罗瓦</a>第一个用群的观点来确定<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%96%B9%E7%A8%8B">多项式方程</a>的可解性。伽罗瓦首次使用了术语“群”，并在新生的群的理论与<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E8%AB%96">域论</a>之间建立起了联系。这套理论现在被称为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BC%BD%E7%BE%85%E7%93%A6%E7%90%86%E8%AB%96">伽罗瓦理论</a>。<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%98%BF%E7%91%9F%C2%B7%E5%87%AF%E8%8E%B1">阿瑟·凯莱</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A5%A7%E5%8F%A4%E6%96%AF%E4%B8%81%C2%B7%E8%B7%AF%E6%98%93%C2%B7%E6%9F%AF%E8%A5%BF">奥古斯丁·路易·柯西</a>进一步发展了这些研究，创立了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BD%AE%E6%8D%A2%E7%BE%A4">置换群</a>理论。</p>
+<p>群论的第三个主要历史渊源来自几何。群论在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%84%E5%BD%B1%E5%87%A0%E4%BD%95">射影几何</a>中首次显示出它的重要性，并在之后的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%9D%9E%E6%AC%A7%E5%87%A0%E4%BD%95">非欧几何</a>中起到了作用。<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%8F%B2%E5%88%A9%E5%85%8B%E6%96%AF%C2%B7%E5%85%8B%E8%8E%B1%E5%9B%A0">菲利克斯·克莱因</a>用群论的观点，在不同的几何学（如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%B7%E5%87%A0%E4%BD%95">欧几里德几何</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E6%9B%B2%E5%87%A0%E4%BD%95">双曲几何</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%84%E5%BD%B1%E5%87%A0%E4%BD%95">射影几何</a>）之间建立了联系，即<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%88%B1%E5%B0%94%E5%85%B0%E6%A0%B9%E7%BA%B2%E9%A2%86">爱尔兰根纲领</a>。1884年，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%B4%A2%E8%8F%B2%E6%96%AF%C2%B7%E6%9D%8E">索菲斯·李</a>开始研究<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6%E5%88%86%E6%9E%90">分析学</a>问题中出现的群（现在称为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>）。</p>
+<p>属于不同领域的来源导致了群的不同记法。群的理论从约1880年起开始统一。在那之后，群论的影响一直在扩大，在20世纪早期促进了<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0">抽象代数</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%A1%A8%E7%A4%BA%E8%AE%BA">表示论</a>和其他许多有影响力的子领域的建立。<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%96%AE%E7%BE%A4%E5%88%86%E9%A1%9E">有限单群分类</a>是20世纪中叶一项规模庞大的工作，对一切的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E9%9B%86%E5%90%88">有限</a><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%95%E7%BE%A4">单群</a>进行了分类。</p>
+<hr>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>主条目：<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%A4">群</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E7%9A%84%E7%B1%BB%E5%9E%8B&action=edit&redlink=1">群的类型</a></p>
+<p>群论考虑的群的类型从有限置换群和一些特殊的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%98%B5%E7%BE%A4">矩阵群</a>逐渐进展到抽象群。这些抽象群可以由<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%A4%E7%9A%84%E7%94%9F%E6%88%90%E9%9B%86%E5%90%88">生成元</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%85%B3%E7%B3%BB_(%E6%95%B0%E5%AD%A6)">关系</a>给定。</p>
+<h6 id="置换群、矩阵群、变换群、抽象群"><a href="#置换群、矩阵群、变换群、抽象群" class="headerlink" title="置换群、矩阵群、变换群、抽象群"></a>置换群、矩阵群、变换群、抽象群</h6><hr>
+<h2 id="应用-编辑"><a href="#应用-编辑" class="headerlink" title="应用[编辑]"></a>应用[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E8%AE%BA&action=edit&section=8">编辑</a>]</h2><p>群论在数学上被广泛地运用，通常以<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%87%AA%E5%90%8C%E6%A7%8B%E7%BE%A4">自同构群</a>的形式体现某些结构的内部对称性。结构的内部对称性常常和一种不变式性质同时存在。如果在一类操作中存在不变式，那这些操作转换的组合和不变式统称为一个对称群。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%98%BF%E8%B4%9D%E5%B0%94%E7%BE%A4">阿贝尔群</a>概括了另外几种抽象集合研究的结构，例如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%8E%AF_(%E4%BB%A3%E6%95%B0)">环</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9F%9F_(%E6%95%B8%E5%AD%B8)">域</a>、<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%A8%A1">模</a>。</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E6%8B%93%E6%89%91">代数拓扑</a>中，群用于描述拓扑空间转换中不变的性质，例如基本群和透射群。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>的概念在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B">微分方程</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%B5%81%E5%BD%A2">流形</a>中都有很重要的角色，因其结合了群论和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E6%9E%90%E5%AD%A6">分析学</a>，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4">李群</a>能很好的描述分析数学结构中的对称性。对这类群的分析又叫<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%AA%BF%E5%92%8C%E5%88%86%E6%9E%90">调和分析</a>。</p>
+<p>在<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6">组合数学</a>中，<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%A4%E6%8D%A2%E7%BE%A4">交换群</a>和<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BE%A4%E4%BD%9C%E7%94%A8">群作用</a>常用来简化在某些集合内的元素的计算。</p>
+<p>后来群论广泛应用于各个科学领域。凡是有对称性出现的地方，就会有它的影子，例如物理学的<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B6%85%E5%BC%A6%E7%90%86%E8%AB%96">超弦理论</a>。</p>
+<hr>
+<p>群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：</p>
 <table>
 <thead>
 <tr>

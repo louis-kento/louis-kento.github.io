@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-07-01T09:45:45.194Z</updated>
+  <updated>2024-07-01T12:07:24.090Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -21,12 +21,13 @@
     <link href="https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/"/>
     <id>https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/</id>
     <published>2024-07-01T09:38:08.000Z</published>
-    <updated>2024-07-01T09:45:45.194Z</updated>
+    <updated>2024-07-01T12:07:24.090Z</updated>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot;&gt;&lt;a href=&quot;#文献学习-BSAlign-A-Library-for-Nucleotide-Sequence-Alignment&quot; class=</summary>
+    <summary type="html">&lt;p&gt;文献题目：A Library for Nucleotide Sequence Alignment&lt;/p&gt;
+&lt;p&gt;doi:&lt;a href=&quot;https://doi.org/10.1093/gpbjnl/qzae025&quot;&gt;https://doi.org/10.1093/gpbj</summary>
       
     
     
@@ -39,17 +40,11 @@
     <link href="https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/"/>
     <id>https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/</id>
     <published>2024-07-01T07:08:45.000Z</published>
-    <updated>2024-07-01T09:45:03.603Z</updated>
+    <updated>2024-07-01T12:05:02.321Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;群论&quot;&gt;&lt;a href=&quot;#群论&quot; class=&quot;headerlink&quot; title=&quot;群论&quot;&gt;&lt;/a&gt;群论&lt;/h2&gt;&lt;p&gt;群（group）是一种规定了特殊乘法的集合，在这个运算规则框架下，集合中的元素满足：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;t</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;群论&quot;&gt;&lt;a href=&quot;#群论&quot; class=&quot;headerlink&quot; title=&quot;群论&quot;&gt;&lt;/a&gt;群论&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6&quot;&gt;数学&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0&quot;&gt;抽象代数&lt;/a&gt;中，&lt;strong&gt;群论&lt;/strong&gt;（英语：Group theory）研究名为&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%BE%A4&quot;&gt;群&lt;/a&gt;的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84&quot;&gt;代数结构&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%BE%A4&quot;&gt;群&lt;/a&gt;在抽象代数中具有基本的重要地位：许多代数结构，包括&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%8E%AF_(%E4%BB%A3%E6%95%B0)&quot;&gt;环&lt;/a&gt;、&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%9F%9F_(%E6%95%B0%E5%AD%A6)&quot;&gt;域&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4&quot;&gt;向量空间&lt;/a&gt;等可以看作是在群的基础上添加新的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%BF%90%E7%AE%97&quot;&gt;运算&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%AC%E7%90%86&quot;&gt;公理&lt;/a&gt;而形成的。群的概念在数学的许多分支都有出现，而且群论的研究方法也对抽象代数的其它分支有重要影响。&lt;a href=&quot;https://zh.wikipedia.org/w/index.php?title=%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%BE%A4&amp;action=edit&amp;redlink=1&quot;&gt;线性代数群&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4&quot;&gt;李群&lt;/a&gt;作为群论的分支，在经历了重大的发展之后，已经形成相对独立的研究领域。&lt;/p&gt;</summary>
     
     
     
@@ -63,14 +58,12 @@
     <link href="https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/"/>
     <id>https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/</id>
     <published>2024-06-16T14:13:34.000Z</published>
-    <updated>2024-07-01T09:45:31.300Z</updated>
+    <updated>2024-07-01T11:54:22.679Z</updated>
     
     
-      
-      
     <summary type="html">&lt;p&gt;用到的工具是 &lt;strong&gt;VCF2Dis&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;工具对应的github主页 &lt;a href=&quot;https://github.com/BGI-shenzhen/VCF2Dis&quot;&gt;https://github.com/BGI-shenzhen/VC</summary>
-      
+&lt;p&gt;工具对应的github主页 &lt;a href=&quot;https://github.com/BGI-shenzhen/VCF2Dis&quot;&gt;https://github.com/BGI-shenzhen/VCF2Dis&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;按照软件主页的帮助文档 下载安装，没有遇到问题&lt;/p&gt;</summary>
     
     
     
@@ -80,40 +73,19 @@
   </entry>
   
   <entry>
-    <title>R语言绘制组合图</title>
-    <link href="https://louis-kento.github.io/2024/06/08/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%88%B6%E7%BB%84%E5%90%88%E5%9B%BE/"/>
-    <id>https://louis-kento.github.io/2024/06/08/R%E8%AF%AD%E8%A8%80%E7%BB%98%E5%88%B6%E7%BB%84%E5%90%88%E5%9B%BE/</id>
-    <published>2024-06-08T07:04:51.000Z</published>
-    <updated>2024-06-08T07:08:57.507Z</updated>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;在用R语言做完图之后要想放在论文里，就需要把不同的图组合起来，尝试过用PPT，以及在Word里，效果都不太好，因此试着在R里组图（它的优势在于调图片清晰度比较方便）&lt;/p&gt;
-&lt;p&gt;如标题所示，包括①R里面做出的图以及②已经导出为PNG格式的图片&lt;/p&gt;
-&lt;p&gt;首先说第一种&lt;</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>jupyter notebook 安装字体解决可视化时字体不显示</title>
     <link href="https://louis-kento.github.io/2024/06/02/jupyter-notebook-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%86%E5%8C%96%E6%97%B6%E5%AD%97%E4%BD%93%E4%B8%8D%E6%98%BE%E7%A4%BA/"/>
     <id>https://louis-kento.github.io/2024/06/02/jupyter-notebook-%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93%E8%A7%A3%E5%86%B3%E5%8F%AF%E8%A7%86%E5%8C%96%E6%97%B6%E5%AD%97%E4%BD%93%E4%B8%8D%E6%98%BE%E7%A4%BA/</id>
     <published>2024-06-02T05:27:46.000Z</published>
-    <updated>2024-06-02T07:53:26.089Z</updated>
+    <updated>2024-07-01T11:51:24.924Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight sh&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;l</summary>
-      
+    <summary type="html">&lt;p&gt; jupyter notebook 安装中文字体解决可视化时部分字体不显示或者错位&lt;/p&gt;</summary>
     
     
     
+    
+    <category term="jupyter" scheme="https://louis-kento.github.io/tags/jupyter/"/>
     
   </entry>
   
@@ -122,16 +94,15 @@
     <link href="https://louis-kento.github.io/2024/05/23/wdl%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/"/>
     <id>https://louis-kento.github.io/2024/05/23/wdl%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</id>
     <published>2024-05-23T08:52:35.000Z</published>
-    <updated>2024-05-23T11:41:23.356Z</updated>
+    <updated>2024-07-01T11:56:39.832Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h3 id=&quot;WDL官网简介：&quot;&gt;&lt;a href=&quot;#WDL官网简介：&quot; class=&quot;headerlink&quot; title=&quot;WDL官网简介：&quot;&gt;&lt;/a&gt;WDL官网简介：&lt;/h3&gt;&lt;p&gt;工作流描述语言（WDL）是一种开放标准，用于以人类可读可写的语法描述数据处理工作流。WDL </summary>
-      
+    <summary type="html">&lt;h3 id=&quot;WDL官网简介：&quot;&gt;&lt;a href=&quot;#WDL官网简介：&quot; class=&quot;headerlink&quot; title=&quot;WDL官网简介：&quot;&gt;&lt;/a&gt;WDL官网简介：&lt;/h3&gt;&lt;p&gt;工作流描述语言（WDL）是一种开放标准，用于以人类可读可写的语法描述数据处理工作流。WDL 可以直接定义分析任务，在工作流中将它们连接起来，并并行执行。该语言力求让所有用户（包括程序员、分析师和生产系统的操作员）都能理解和使用。这种语言可以简单地表达常见的模式，如分散收集和条件执行。WDL 专为可移植性而设计，有多种实现方式可供选择，可在包括 HPC 系统和云平台在内的各种环境中运行。&lt;/p&gt;</summary>
     
     
     
+    
+    <category term="wdl" scheme="https://louis-kento.github.io/tags/wdl/"/>
     
   </entry>
   
@@ -140,16 +111,17 @@
     <link href="https://louis-kento.github.io/2024/05/21/wsl%E9%85%8D%E7%BD%AEjupyter/"/>
     <id>https://louis-kento.github.io/2024/05/21/wsl%E9%85%8D%E7%BD%AEjupyter/</id>
     <published>2024-05-21T06:50:34.000Z</published>
-    <updated>2024-05-21T07:00:11.859Z</updated>
+    <updated>2024-07-01T11:56:20.585Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-jupyter-notebook安装&quot;&gt;&lt;a href=&quot;#1-jupyter-notebook安装&quot; class=&quot;headerlink&quot; title=&quot;1.jupyter notebook安装&quot;&gt;&lt;/a&gt;1.jupyter notebook安装&lt;/h2&gt;&lt;</summary>
-      
+    <summary type="html">&lt;p&gt;jupyter安装教程&lt;/p&gt;</summary>
     
     
     
+    
+    <category term="jupyter" scheme="https://louis-kento.github.io/tags/jupyter/"/>
+    
+    <category term="wsl" scheme="https://louis-kento.github.io/tags/wsl/"/>
     
   </entry>
   
@@ -158,7 +130,7 @@
     <link href="https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/"/>
     <id>https://louis-kento.github.io/2024/05/01/win11%E9%85%8D%E7%BD%AEwsl2/</id>
     <published>2024-05-01T13:48:57.000Z</published>
-    <updated>2024-05-08T12:37:45.414Z</updated>
+    <updated>2024-07-01T11:55:15.351Z</updated>
     
     
     <summary type="html">&lt;p&gt;写在前面：&lt;/p&gt;
@@ -190,7 +162,7 @@
     <link href="https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/"/>
     <id>https://louis-kento.github.io/2024/04/29/linux%E9%94%81%E5%AE%9A%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/</id>
     <published>2024-04-28T16:23:12.000Z</published>
-    <updated>2024-05-07T05:09:07.539Z</updated>
+    <updated>2024-07-01T11:49:43.783Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 Linux 中，锁定后台进程可以确保该进程在后台运行，即使当前用户退出登录或终端会话结束。这样可以保持进程的持续运行，而不受登录状态或终端连接的影响。&lt;/p&gt;</summary>
@@ -213,7 +185,7 @@
     <link href="https://louis-kento.github.io/2024/04/29/non-zero-exit%E6%8A%A5%E9%94%99R/"/>
     <id>https://louis-kento.github.io/2024/04/29/non-zero-exit%E6%8A%A5%E9%94%99R/</id>
     <published>2024-04-28T16:04:14.000Z</published>
-    <updated>2024-05-07T05:09:58.788Z</updated>
+    <updated>2024-07-01T11:51:35.814Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 R 安装需要软件包时，”non-zero-exit” 错误通常指示程序在执行过程中出现了非零的退出代码。这通常表示程序在某个步骤中遇到了错误或异常情况。回溯安装过程，可以发现non-zero exit status 的问题不止一种，或者说所有的安装失败，都会给出 non-zero exit status 的warning。以下列出几种可能的问题类型，或许可以按照这些办法解决掉安装失败的问题。&lt;/p&gt;</summary>
@@ -236,7 +208,7 @@
     <link href="https://louis-kento.github.io/2024/04/29/one-hot%E7%BC%96%E7%A0%81/"/>
     <id>https://louis-kento.github.io/2024/04/29/one-hot%E7%BC%96%E7%A0%81/</id>
     <published>2024-04-28T16:00:10.000Z</published>
-    <updated>2024-05-07T05:10:39.148Z</updated>
+    <updated>2024-07-01T11:51:43.169Z</updated>
     
     
     <summary type="html">&lt;p&gt;One-hot 编码是一种将分类变量转换为二进制向量表示的编码方法。它常用于机器学习和数据分析中，特别是在处理分类特征时。在 One-hot 编码中，每个分类变量的每个可能取值都被表示为一个二进制向量的形式。这个二进制向量的长度等于分类变量的取值个数，其中只有一个元素为 1，其余元素都为 0。被编码为 1 的元素对应了分类变量的实际取值，而其他元素表示该分类变量的其他取值。&lt;/p&gt;</summary>
@@ -255,7 +227,7 @@
     <link href="https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:28:07.000Z</published>
-    <updated>2024-05-08T14:55:35.556Z</updated>
+    <updated>2024-07-01T11:54:54.051Z</updated>
     
     
     <summary type="html">&lt;p&gt;fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。&lt;/p&gt;</summary>
@@ -278,7 +250,7 @@
     <link href="https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
     <id>https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
     <published>2024-04-28T12:26:57.000Z</published>
-    <updated>2024-05-07T05:08:56.615Z</updated>
+    <updated>2024-07-01T11:56:54.031Z</updated>
     
     
     <summary type="html">&lt;p&gt;xpehh (Cross Population Extended Haplotype Homozygosity) 是一种用于选择信号检测的统计方法，用于寻找遗传变异与自然选择之间的关联。它基于单核苷酸多态性（SNP）在不同群体之间的扩展单倍型同质性差异。通过计算目标群体与参考群体之间的扩展单倍型同质性差异，并进行统计检验，xpehh 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在遗传学和人类进化研究中得到了广泛应用。&lt;/p&gt;</summary>
