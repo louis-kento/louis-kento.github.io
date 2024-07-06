@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="泛基因组(Pan-genome)即某一物种全部基因的总称，这里这个全部基因是有别于个体基因组的基因的。一个个体的基因组是这个物种基因组的代表。因此，以一个基因组为模板的分析不能全面的反应物种基因水平的全部遗传信息，尤其是在研究同一物种中差异巨大的不同亚种或者变种，此类特有片段的差异往往要比共有片段中的差异更为重要。分析核心基因和非核心基因的基本情况，并从特有基因序列的角度来研究物种内的差异。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="泛基因组理论学习1">
+<meta property="og:url" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/index.html">
+<meta property="og:site_name" content="kento_blog">
+<meta property="og:description" content="泛基因组(Pan-genome)即某一物种全部基因的总称，这里这个全部基因是有别于个体基因组的基因的。一个个体的基因组是这个物种基因组的代表。因此，以一个基因组为模板的分析不能全面的反应物种基因水平的全部遗传信息，尤其是在研究同一物种中差异巨大的不同亚种或者变种，此类特有片段的差异往往要比共有片段中的差异更为重要。分析核心基因和非核心基因的基本情况，并从特有基因序列的角度来研究物种内的差异。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100631-1.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100631-2.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-3.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-4.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-5.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-6.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-7.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-8.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-9.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-10.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-11.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-12.webp">
+<meta property="og:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-13.webp">
+<meta property="article:published_time" content="2024-07-06T01:57:04.000Z">
+<meta property="article:modified_time" content="2024-07-06T02:02:08.760Z">
+<meta property="article:author" content="liuxiao">
+<meta property="article:tag" content="pangenome">
+<meta property="article:tag" content="理论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240.webp">
+
+
+<link rel="canonical" href="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/","path":"2024/07/06/泛基因组理论学习1/","title":"泛基因组理论学习1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>泛基因组理论学习1 | kento_blog</title>
+  
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="waline-virid-nine.vercel.app">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="kento_blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">kento_blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">nice to meet you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%A0%94%E7%A9%B6%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">一、研究内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E6%AF%94%E8%BE%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">1.比较基因组分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%9F%BA%E5%9B%A0-%E9%9D%9E%E5%BF%85%E9%9C%80%E5%9F%BA%E5%9B%A0%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">核心基因&#x2F;非必需基因分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%A8%A1%E6%8B%9F"><span class="nav-number">3.1.</span> <span class="nav-text">泛基因组大小模拟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%9F%BA%E5%9B%A0-%E9%9D%9E%E5%BF%85%E9%9C%80%E5%9F%BA%E5%9B%A0%E5%8A%9F%E8%83%BD%E5%AF%8C%E9%9B%86"><span class="nav-number">3.2.</span> <span class="nav-text">核心基因&#x2F;非必需基因功能富集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%9F%BA%E5%9B%A0-%E9%9D%9E%E5%BF%85%E9%9C%80%E5%9F%BA%E5%9B%A0%E4%BF%9D%E5%AE%88%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">3.3.</span> <span class="nav-text">核心基因&#x2F;非必需基因保守性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%9F%BA%E5%9B%A0-%E9%9D%9E%E5%BF%85%E9%9C%80%E5%9F%BA%E5%9B%A0%E4%B8%8E%E9%87%8D%E5%A4%8D%E5%BA%8F%E5%88%97%E7%9B%B8%E5%85%B3%E6%80%A7%E5%88%86%E6%9E%90"><span class="nav-number">3.4.</span> <span class="nav-text">核心基因&#x2F;非必需基因与重复序列相关性分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83%E5%9F%BA%E5%9B%A0-%E9%9D%9E%E5%BF%85%E9%9C%80%E5%9F%BA%E5%9B%A0%E8%A1%A8%E8%BE%BE%E6%B0%B4%E5%B9%B3%E5%88%86%E6%9E%90"><span class="nav-number">3.5.</span> <span class="nav-text">核心基因&#x2F;非必需基因表达水平分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E7%BB%93%E6%9E%84%E5%8F%98%E5%BC%82%E5%88%86%E6%9E%90"><span class="nav-number">4.</span> <span class="nav-text">3.结构变异分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SVs%E7%89%B9%E5%BE%81%E5%88%86%E6%9E%90"><span class="nav-number">4.1.</span> <span class="nav-text">SVs特征分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83-%E9%9D%9E%E5%BF%85%E9%9C%80SVs%E7%B4%AF%E8%AE%A1%E5%88%86%E6%9E%90"><span class="nav-number">4.2.</span> <span class="nav-text">核心&#x2F;非必需SVs累计分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%93%E6%9E%84%E5%9F%BA%E5%9B%A0%E7%BB%84%E6%9E%84%E5%BB%BA"><span class="nav-number">4.3.</span> <span class="nav-text">图形结构基因组构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVs%E5%AF%B9%E5%9F%BA%E5%9B%A0%E7%BB%93%E6%9E%84%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">4.4.</span> <span class="nav-text">SVs对基因结构的影响</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SVs%E5%AF%B9%E5%9F%BA%E5%9B%A0%E8%A1%A8%E8%BE%BE%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">4.5.</span> <span class="nav-text">SVs对基因表达的影响</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%8A%80%E6%9C%AF%E7%AD%96%E7%95%A5"><span class="nav-number"></span> <span class="nav-text">二、技术策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B7%E6%9C%AC%E9%80%89%E6%8B%A9"><span class="nav-number">1.</span> <span class="nav-text">样本选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8B%E5%BA%8F%E7%AD%96%E7%95%A5"><span class="nav-number">2.</span> <span class="nav-text">测序策略</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="liuxiao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">liuxiao</p>
+  <div class="site-description" itemprop="description">A Bioinformatics Rookie</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/louis-kento/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;louis-kento&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:13253779912@163.com" title="E-Mail → mailto:13253779912@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://sheepbreeds.cn/" title="https:&#x2F;&#x2F;sheepbreeds.cn" rel="noopener" target="_blank">Project</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="liuxiao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kento_blog">
+      <meta itemprop="description" content="A Bioinformatics Rookie">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="泛基因组理论学习1 | kento_blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          泛基因组理论学习1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-06 09:57:04 / Modified: 10:02:08" itemprop="dateCreated datePublished" datetime="2024-07-06T09:57:04+08:00">2024-07-06</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline: </span>
+  
+    <a title="waline" href="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>4.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>8 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>泛基因组(Pan-genome)即某一物种<strong>全部基因</strong>的总称，这里这个全部基因是有别于个体基因组的基因的。一个个体的基因组是这个物种基因组的代表。因此，以一个基因组为模板的分析不能全面的反应物种基因水平的全部遗传信息，尤其是在研究<strong>同一物种中差异巨大的不同亚种或者变种</strong>，此类特有片段的差异往往要比共有片段中的差异更为重要。分析核心基因和非核心基因的基本情况，并从特有基因序列的角度来研究物种内的差异。</p>
+<span id="more"></span>
+
+<h2 id="一、研究内容"><a href="#一、研究内容" class="headerlink" title="一、研究内容"></a>一、研究内容</h2><p>泛基因组产品采用从头组装的策略进行泛基因组构建，分析内容包括比较基因组分析、核心基因和非必需基因分析、结构变异（SVs）分析和图形结构基因组的构建。具体内容如下：<br><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240.webp" alt="image.png"></p>
+<h2 id="1-比较基因组分析"><a href="#1-比较基因组分析" class="headerlink" title="1.比较基因组分析"></a>1.比较基因组分析</h2><p>泛基因组包含多个材料的基因组数据，非常适合进行材料间的比较基因组分析，挖掘群体&#x2F;个体材料的特有基因，从而在全基因组水平上了解不同材料间的共性与特性，进而了解其基因组结构、基因功能，探究特有基因与特殊生物学性状的关系，推断物种进化地位及适应性机制。</p>
+<p>例如，大豆泛基因组研究[1]中，研究者通过WGD（Whole genome duplication,全基因组复制）分析，发现WGD区域包含较高比例的核心基因和次核心基因，而非WGD区域包含较高比例的非必需基因和特有基因。比较WGD和non-WGD之间的核苷酸多样性，发现WGD区域基因核苷酸多样性显著低于非WGD区域。同时，在非WGD区域发现了更多的SVs，且与非WGD区域相比，WGD区域拥有较少特有SVs。研究结果表明基因组复制可以作为一种重要的遗传力来影响SVs的进化。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100631-1.webp" alt="image"></p>
+<blockquote>
+<p>图1 大豆WGD与非WGD区域之间的基因和结构变异特征的比较（图片引自文献[1]），A：WGD与非WGD区域之间的基因密度比较。B：WGD和非WGD区域之间重复DNA比例的比较。C：WGD和非WGD区域之间核苷酸多样性的比较。D：WGD和非WGD区域中的基因组成情况。E：WGD和非WGD区域中的结构变化组成情况。F：WGD和非WGD区域之间PAV驱动的单核苷酸突变率比较。</p>
+</blockquote>
+<ol start="2">
+<li><h2 id="核心基因-非必需基因分析"><a href="#核心基因-非必需基因分析" class="headerlink" title="核心基因&#x2F;非必需基因分析"></a>核心基因&#x2F;非必需基因分析</h2></li>
+</ol>
+<p>泛基因组中的基因分为核心基因和非必需基因，不同类型基因在特征和功能上具有明显差异，通过对不同类型基因集的比较，可以进一步揭示物种的基因组变化和适应性机制。</p>
+<h3 id="泛基因组大小模拟"><a href="#泛基因组大小模拟" class="headerlink" title="泛基因组大小模拟"></a>泛基因组大小模拟</h3><p>通过泛基因集的大小模拟（即泛基因和核心基因累计分析），可以预测该物种泛基集的理论大小、挖掘个体特有基因、了解个体基因组成、明确物种核心基因和非必需基因的占比等。</p>
+<p>例如，大豆泛基因组研究[1]中，研究者对核心基因和非必需基因数目进行模拟，发现总基因随着新基因组的加入而增加，并在n&#x3D;25时接近平缓，表明这27份大豆材料非常具有代表性，已包含绝大多数的大豆基因信息。此外，短柄草[2]和番茄[3]等泛基因组研究也做了类似的分析。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100631-2.webp" alt="image.png"></p>
+<blockquote>
+<p>图2 大豆核心基因和非必需基因分析 A：泛基因组和核心基因组中基因家族数目随大豆基因组数目增加的变化情况。B：泛基因组和个体基因组的基因家族组成。（图片引自文献[1]）</p>
+</blockquote>
+<h3 id="核心基因-非必需基因功能富集"><a href="#核心基因-非必需基因功能富集" class="headerlink" title="核心基因&#x2F;非必需基因功能富集"></a>核心基因&#x2F;非必需基因功能富集</h3><p>通过功能富集分析，可以直观了解不同类型基因集的功能，有助于挖掘影响特殊生物学性状形成的特有基因资源。</p>
+<p>例如，大豆泛基因组研究[1]中，Pfam富集分析和GO富集分析显示，核心基因在与生长、免疫、生殖、细胞发生等相关的生物学过程中富集，而非必需和特有基因在生物和非生物胁迫响应过程中富集。KEGG通路分析表明，核心基因富含与基础代谢和次生代谢产物生物合成有关的途径，非必需基因在特定代谢相关的途径富集。</p>
+<p>此外，短柄草[2]、番茄[3]、甘蓝[4]等泛基因组研究均有类似发现。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-3.webp" alt="image"></p>
+<blockquote>
+<p>图3 大豆核心基因和非必需基因功能富集分析A：核心和非必需基因的Pfam富集。B：核心和非必需基因的GO分析。C：核心和非必需基因的KEGG分析。（图片引自文献[1]）</p>
+</blockquote>
+<h3 id="核心基因-非必需基因保守性分析"><a href="#核心基因-非必需基因保守性分析" class="headerlink" title="核心基因&#x2F;非必需基因保守性分析"></a>核心基因&#x2F;非必需基因保守性分析</h3><p>对不同类型基因集进行保守性分析，有助于挖掘适应性进化或驯化中发挥关键作用的基因。</p>
+<p>例如，大豆泛基因组研究[1]中，对不同类型的基因进行保守性比较，结果表明含有InterPro结构域的核心基因和次核心基因远远高于非必需基因和特有基因，非必需基因的核苷酸多样性（π）和<em>dN &#x2F; dS</em> （非同义替换率与同义替换率的的比值）均高于核心基因，这些结果表明核心基因比非必需基因在功能上更保守。短柄草泛基因组研究[2]也有类似的发现。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-4.webp" alt="image"></p>
+<blockquote>
+<p>图4 大豆核心基因和非必需基因保守性比较左图：核心基因和非必需基因中具有InterPro结构域的基因比例。中间图及右图：核心基因和非必需基因的核苷酸多样性(π)和dN &#x2F; dS 比较。（图片引自文献[1]）</p>
+</blockquote>
+<h3 id="核心基因-非必需基因与重复序列相关性分析"><a href="#核心基因-非必需基因与重复序列相关性分析" class="headerlink" title="核心基因&#x2F;非必需基因与重复序列相关性分析"></a>核心基因&#x2F;非必需基因与重复序列相关性分析</h3><p>研究表明，非必需基因更可能在重复序列区域富集。对不同类型基因集所在的重复区域进行统计。</p>
+<p>例如，短柄草泛基因组研究[2]中，研究者发现染色体上非必需基因与核心基因的比率与种内TE活性高度相关，在染色体的着丝粒周围区域，非必需基因与核心基因的比率更高。甘蓝泛基因组研究[4]中也有类似的发现，与核心基因相比，非必需基因周围具有较高TE密度。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-5.webp" alt="image.png"></p>
+<blockquote>
+<p>图5 核心基因和非必需基因与重复序列相关性左图：短柄草染色体的着丝粒周围区域，核心基因与非必需基因的分布情况。右图：甘蓝核心和非必需基因TE含量比较。（图片引自文献[2，4]）</p>
+</blockquote>
+<h3 id="核心基因-非必需基因表达水平分析"><a href="#核心基因-非必需基因表达水平分析" class="headerlink" title="核心基因&#x2F;非必需基因表达水平分析"></a>核心基因&#x2F;非必需基因表达水平分析</h3><p>核心基因与非必需基因功能不同，表达量也有差异。</p>
+<p>例如，短柄草泛基因组研究[2]中，研究者发现与非必需基因相比，核心基因通常有更高表达水平，并且在组织中更广泛地表达。番茄泛基因组研究[3]也做有类似的发现。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-6.webp" alt="image.png"></p>
+<blockquote>
+<p>图6 短柄草核心基因和非必需基因表达比较 左图：核心基因与Shell基因的表达水平比较。右图：核心基因在与Shell基因的在多种组织中的表达情况。（图片引自文献[2]）</p>
+</blockquote>
+<h2 id="3-结构变异分析"><a href="#3-结构变异分析" class="headerlink" title="3.结构变异分析"></a>3.结构变异分析</h2><p>相比于原核生物基因组主要由基因序列组成，真核生物基因组中有超过50%的基因组可能是基因间的，并且基因序列本身还包含内含子。因此，真核生物泛基因组除了要关注基因外，也应该关注序列的变异。根据泛基因组进行结构变异分析，可以深入挖掘重要性状的调控基因，解析表型多样性形成的遗传基础。</p>
+<h3 id="SVs特征分析"><a href="#SVs特征分析" class="headerlink" title="SVs特征分析"></a>SVs特征分析</h3><p>基于基因组序列比对进行基因组SVs的检测，可以对SVs特征进行分析，如对SVs类型、长度分布、基因组分布、重复含量进行比较等。番茄结构变异研究[5]中，研究者构建了最全面的pan-SV基因组，并对SVs的特征进行详细分析，结果表明大多数SVs相对较小，SVs通常由转座子和相关重复序列组成或产生。大豆泛基因组研究[1]也有类似内容。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-7.webp" alt="image"></p>
+<blockquote>
+<p>图7 SVs的特征分布左图：番茄不同大小SVs的检测频率分布图及不同类型SVs的长度分布图。右图：番茄不同类型SVs的重复含量分布。（图片引自文献[5]）</p>
+</blockquote>
+<h3 id="核心-非必需SVs累计分析"><a href="#核心-非必需SVs累计分析" class="headerlink" title="核心&#x2F;非必需SVs累计分析"></a>核心&#x2F;非必需SVs累计分析</h3><p>将所有基因组中整合得到的非冗余SVs，同样基于核心基因和非必须基因类似的策略进行核心和非必需SVs划分和比较。通过核心和非必需SVs累计曲线，可以预测该物种泛基组的理论大小、挖掘个体特有结构变异。</p>
+<p>例如，大豆泛基因组研究[1]中，研究者根据SVs的等位基因频率，将SVs分为4类：核心SVs、次核心SVs、非必需SVs或特有SVs。与核心基因和非必需基因的累计分布模式相似，非冗余SVs集随着样本的加入而增长，并且趋于平缓。同时，核心SVs集逐渐减少，最终有130个SVs为所有样本共有。番茄结构变异研究[5]也有类似的SVs累计分布趋势的发现。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100632-8.webp" alt="image"></p>
+<blockquote>
+<p>图8 核心和非必需SVs累计分析 左图：大豆核心和非必需SVs累计分析。右图：番茄核心和非必需SVs累计分析。（图片引自文献[1，5]）</p>
+</blockquote>
+<h3 id="图形结构基因组构建"><a href="#图形结构基因组构建" class="headerlink" title="图形结构基因组构建"></a>图形结构基因组构建</h3><p>在基因组从头组装的基础上，把该物种的所有遗传变异的信息都添加到参考基因组中，表示为含有替代路径的图形结构，从而进行图形结构泛基因构建，该泛基因组极大的涵盖了个体间的差异信息，为物种研究提供更全面的遗传信息。例如，大豆泛基因组研究[1]首次采用了图形结构的泛基因组构建方法，打破了传统线性基因组的存储形式，展示了物种更全面的遗传信息，为后续基因组学的其他研究奠定良好的基础。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-9.webp" alt="image"></p>
+<blockquote>
+<p>图9 图形结构基因组构建（图片引自文献[6]）</p>
+</blockquote>
+<h3 id="SVs对基因结构的影响"><a href="#SVs对基因结构的影响" class="headerlink" title="SVs对基因结构的影响"></a>SVs对基因结构的影响</h3><p>通过泛基因组序列及基因结构分析，不仅可以检测到先前报道的等位基因，而且可以发现新的基因结构变异，包括基因融合。</p>
+<p>例如，大豆泛基因组研究[1]发现开花基因E3 基因结构变异导致其自身移码甚至与其他基因融合，从而影响大豆的开花。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-10.webp" alt="image"></p>
+<blockquote>
+<p>图10 E3 在不同大豆材料中的结构变异 A：E3 在基因组中的物理位置。B：不同种质中E3的单倍型。C：13.3 kb的缺失导致单倍型E3-tr 材料中SoyZH13_19G210500基因丢失和E3 (SoyZH13_19G210400)与其邻近基因SoyZH13_19G210600的基因融合。（图片引自文献[1]）</p>
+</blockquote>
+<h3 id="SVs对基因表达的影响"><a href="#SVs对基因表达的影响" class="headerlink" title="SVs对基因表达的影响"></a>SVs对基因表达的影响</h3><p>通过对SVs所在的区域进行分类展示，并结合转录组数据对基因表达进行分析，有助于挖掘影响基因表达的关键SVs。</p>
+<p>例如，番茄结构变异研究[5]通过检测有和无SVs时相关基因的差异表达程度，来检测受SVs影响的表达基因。结果发现在21,156个SV-基因对中发现数百个显著的表达改变。研究表明结构变异通过改变基因剂量效应和表达水平，从而影响果实的风味，大小和产量。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-11.webp" alt="image"></p>
+<blockquote>
+<p>图11 番茄SVs对基因表达的影响 左图：番茄材料中不同基因组特征SVs的百分比。右图：受不同类型SVs影响的差异表达基因的数量情况。（图片引自文献[5]）</p>
+</blockquote>
+<h1 id="二、技术策略"><a href="#二、技术策略" class="headerlink" title="二、技术策略"></a>二、技术策略</h1><h2 id="样本选择"><a href="#样本选择" class="headerlink" title="样本选择"></a>样本选择</h2><p>为全面捕获物种所有的基因组信息，建议<strong>基于经验或群体结构信息选择最具代表性的个体</strong>进行泛基因组构建，推荐<strong>样本个数≥5个</strong>，具体可根据物种基因组大小、复杂度及群体复杂度进行调整。</p>
+<p>大豆泛基因组研究[1]中，研究者通过2,898份大豆的重测序和进化树构建，选择了26份在系统发育关系和地理分布方面最具代表性的材料进行泛基因组构建。大麦泛基因组研究[7] 中，研究者通过19,778份大麦种质的基因分型数据的PCA（包含不同地理来源、行类型、生长习性等材料）选择了20份大麦来代表其遗传多样性。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-12.webp" alt="image"></p>
+<blockquote>
+<p>图12 20份代表性大麦的材料选择（图片引自文献[7]）</p>
+</blockquote>
+<h2 id="测序策略"><a href="#测序策略" class="headerlink" title="测序策略"></a>测序策略</h2><p>推荐采用<strong>PacBio HiFi测序</strong>，读长长且准确，测序深度≥<strong>15X&#x2F;样本</strong>。</p>
+<p>HiFi组装作为组装界的新秀，具有组装周期短，准确性高，连续性好，简单基因组和复杂基因组通吃的特点，对于泛基因组这样的大样本量基因组组装尤其合适，大幅缩短组装周期，提高组装准确性和连续性。</p>
+<p>缺点是贵。目前真正用HiFi来做泛基因组的还是很少，但二代和三代都有，二代组装相对来说比较碎，可能研究不了太深的问题。</p>
+<p><img src="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/1240-1720231100633-13.webp" alt="image.png"></p>
+<blockquote>
+<p>图13 HiFi测序深度与组装连续性的关系（图片引自文献[8]）</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>liuxiao
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://louis-kento.github.io/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/" title="泛基因组理论学习1">https://louis-kento.github.io/2024/07/06/泛基因组理论学习1/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/pangenome/" rel="tag"># pangenome</a>
+              <a href="/tags/%E7%90%86%E8%AE%BA/" rel="tag"># 理论</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/" rel="prev" title="文献学习2024-BSAlign比对算法">
+                  <i class="fa fa-angle-left"></i> 文献学习2024-BSAlign比对算法
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">liuxiao</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2024 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/louis-kento" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"waline-virid-nine.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":null,"avatar":"mm","pageSize":8,"visitor":false,"comment_count":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

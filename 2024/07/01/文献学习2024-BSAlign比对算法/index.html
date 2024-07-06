@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215940363.png">
 <meta property="og:image" content="https://louis-kento.github.io/2024/07/01/%E6%96%87%E7%8C%AE%E5%AD%A6%E4%B9%A02024-BSAlign%E6%AF%94%E5%AF%B9%E7%AE%97%E6%B3%95/image-20240531215954247.png">
 <meta property="article:published_time" content="2024-07-01T09:38:08.000Z">
-<meta property="article:modified_time" content="2024-07-05T06:21:45.705Z">
+<meta property="article:modified_time" content="2024-07-06T02:07:58.905Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="study &amp; share, bioinformatics, zoological">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">优点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">经典算法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E7%A1%AE%E6%80%A7%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">准确性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-evaluation"><span class="nav-number">5.</span> <span class="nav-text">F evaluation</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bsalign"><span class="nav-number"></span> <span class="nav-text">bsalign</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Installation"><span class="nav-number"></span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#run-bsalign"><span class="nav-number"></span> <span class="nav-text">run bsalign</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number"></span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result-Example"><span class="nav-number"></span> <span class="nav-text">Result Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result-Format"><span class="nav-number"></span> <span class="nav-text">Result Format</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#use-bsalign-library"><span class="nav-number"></span> <span class="nav-text">use bsalign library</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Pairwise-Alignment-Example"><span class="nav-number"></span> <span class="nav-text">Pairwise Alignment Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Alignment-Example"><span class="nav-number"></span> <span class="nav-text">Multiple Alignment Example</span></a></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">优点:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E7%AE%97%E6%B3%95%EF%BC%9A"><span class="nav-number">2.</span> <span class="nav-text">经典算法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%86%E7%A1%AE%E6%80%A7%EF%BC%9A"><span class="nav-number">3.</span> <span class="nav-text">准确性：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">原理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#F-evaluation"><span class="nav-number">5.</span> <span class="nav-text">F evaluation</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bsalign"><span class="nav-number"></span> <span class="nav-text">bsalign</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installation"><span class="nav-number"></span> <span class="nav-text">Installation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#run-bsalign"><span class="nav-number"></span> <span class="nav-text">run bsalign</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number"></span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result-Example"><span class="nav-number"></span> <span class="nav-text">Result Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Result-Format"><span class="nav-number"></span> <span class="nav-text">Result Format</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#use-bsalign-library"><span class="nav-number"></span> <span class="nav-text">use bsalign library</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pairwise-Alignment-Example"><span class="nav-number"></span> <span class="nav-text">Pairwise Alignment Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiple-Alignment-Example"><span class="nav-number"></span> <span class="nav-text">Multiple Alignment Example</span></a></div>
         </div>
         <!--/noindex-->
 
@@ -165,7 +165,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -176,7 +176,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -262,7 +262,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-05 14:21:45" itemprop="dateModified" datetime="2024-07-05T14:21:45+08:00">2024-07-05</time>
+      <time title="Modified: 2024-07-06 10:07:58" itemprop="dateModified" datetime="2024-07-06T10:07:58+08:00">2024-07-06</time>
     </span>
 
   
@@ -348,27 +348,20 @@
 <p>对于最近的工具，例如 BGSA 、SeqAn  和 AnySeq ，单个指令的长度范围从 128 位到 512位。</p>
 <h3 id="F-evaluation"><a href="#F-evaluation" class="headerlink" title="F evaluation"></a>F evaluation</h3><p>为了结合 Wozniak  和 Rognes 的优点，Farrar 修复了这些内容，引入与 SIMD 寄存器并行但以条带模式访问的查询序列布局的缺点，该布局仅计算查询配置文件一次 并将条件 F 矩阵评估移至内部之外环形。结果，Farrar 的条纹矢量化成功地加速了 Smith–Waterman 算法 并被许多对准器采用，例如 Burrows–Wheeler Alignment Smith–Waterman (BWA-SW) 、Bowtie2  和条纹史密斯-沃特曼 (SSW) 库 。然而，同一寄存器中的单元并不总是彼此独立的。  Farrar  通过为每个 F 元素添加一个校正循环解决了这个问题，当插入&#x2F;缺失足够长时，该循环可能会迭代多次。</p>
 <hr>
-<h1 id="bsalign"><a href="#bsalign" class="headerlink" title="bsalign"></a>bsalign</h1><p><a target="_blank" rel="noopener" href="https://github.com/ruanjue/bsalign">ruanjue&#x2F;bsalign: Banded Striped DNA Sequence Alignment (github.com)</a></p>
-<h1 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ruanjue/bsalign.git</span><br><span class="line">cd bsalign</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+<p>下面是github安装使用介绍</p>
+<h2 id="bsalign"><a href="#bsalign" class="headerlink" title="bsalign"></a>bsalign</h2><p><a target="_blank" rel="noopener" href="https://github.com/ruanjue/bsalign">ruanjue&#x2F;bsalign: Banded Striped DNA Sequence Alignment (github.com)</a></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/ruanjue/bsalign.git</span><br><span class="line">cd bsalign</span><br><span class="line">make</span><br></pre></td></tr></table></figure>
 
-<h1 id="run-bsalign"><a href="#run-bsalign" class="headerlink" title="run bsalign"></a>run bsalign</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bsalign</span><br></pre></td></tr></table></figure>
-
-
+<h2 id="run-bsalign"><a href="#run-bsalign" class="headerlink" title="run bsalign"></a>run bsalign</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bsalign</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">commands:</span><br><span class="line"> align       Pairwise alignment implemented by 8-bit encoded Banded Striped SIMD</span><br><span class="line"> edit        Pairwise alignment using edit distance implemented by 2-bit encoded banded Striped algorithm</span><br><span class="line"> poa         Multiple alignment implemented by 8-bit encoded Banded Striped SIMD Partial Order Alignment</span><br><span class="line"> cat         Concatenate pieces of seqs into one seq by overlaping</span><br></pre></td></tr></table></figure>
 
-
-
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd example</span><br><span class="line">sh run.sh</span><br></pre></td></tr></table></figure>
-
-
 
 <h2 id="Result-Example"><a href="#Result-Example" class="headerlink" title="Result Example"></a>Result Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">29.1	75	+	0	75	29.2	76	+	0	76	128	0.934	71	4	0	1</span><br><span class="line">TGTTACTTTTCTTCCCTGCTGTATAAACCC-CAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br><span class="line">||||||*|||||||||||||**||||||||-*||||||||||||||||||||||||||||||||||||||||||||</span><br><span class="line">TGTTACATTTCTTCCCTGCTACATAAACCCTTAGTTTTAGTCAGTCAGGGAGATGGATTTGAGACTGAGCTCCCAT</span><br></pre></td></tr></table></figure>
 
-
-
 <h2 id="Result-Format"><a href="#Result-Format" class="headerlink" title="Result Format"></a>Result Format</h2><p>Each result is 4 lines. Line 1 :col1-RefName; col2-RefLength; col3-RefStrand; col4-RefStart; col5-RefEnd; col6-QueryName; col7-QueryLength; col8-QueryStrand; col9-QueryStart; col10-QueryEnd; col11-AlignmentScore; col12-Identity; col13-NumberOfMatch; col14-NumberOfMismatch; col15-NumberOfDeletion; col16-NumberOfInsertion Line 2 :Reference Sequence Line 3 :’|’, ‘*’ and ‘-‘ mean match, mismatch and indel, respectively. Line 4 :Query Sequence</p>
-<h1 id="use-bsalign-library"><a href="#use-bsalign-library" class="headerlink" title="use bsalign library"></a>use bsalign library</h1><p>copy bsalign directory into your code <code>cp -r /path/to/bsalign .</code></p>
+<h2 id="use-bsalign-library"><a href="#use-bsalign-library" class="headerlink" title="use bsalign library"></a>use bsalign library</h2><p>copy bsalign directory into your code <code>cp -r /path/to/bsalign .</code></p>
 <h2 id="Pairwise-Alignment-Example"><a href="#Pairwise-Alignment-Example" class="headerlink" title="Pairwise Alignment Example"></a>Pairwise Alignment Example</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;bsalign/bsalign.h&quot;</span><br><span class="line"></span><br><span class="line">int verbose = 0; // be quiet in alignment</span><br><span class="line">b1i mtx[16]; // score matrix, 4 * 4</span><br><span class="line">banded_striped_epi8_seqalign_set_score_matrix(mtx, sc_mat=2, sc_mis=-6); // init score matrix</span><br><span class="line">b1v *memp = adv_init_b1v(1024, 0, WORDSIZE, 0); // it needs a WORDSIZE(16 bytes)-aligned memory block to perform SIMD alignment</span><br><span class="line">u4v *cigars = init_u4v(32); // use to store alignment cigars (SAM-like), or NULL if useless</span><br><span class="line">int bandwidth = 128; // Or 0 if disable banded alignment</span><br><span class="line">// perform pairwise global alignment (8-bits)</span><br><span class="line">seqalign_result_t rs = banded_striped_epi8_seqalign_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, SEQALIGN_MODE_GLOBAL, bandwidth, mtx, sc_gapo=-3, sc_gape=-2, 0, 0, verbose);</span><br><span class="line">// perform pairwise global edit (2-bits), using edit-distance in alignment, much faster than 8-bits alignment</span><br><span class="line">seqalign_result_t rs = striped_seqedit_pairwise((u1i*)qseq, qlen, (u1i*)tseq, tlen, SEQALIGN_MODE_GLOBAL, bandwidth, memp, cigars, verbose);</span><br><span class="line">// perform pairwise kmer-guided edit (2-bits), it is better for two strange reads, because it infers the outline of alignment by kmer-matching-synteny</span><br><span class="line">seqalign_result_t rs = kmer_striped_seqedit_pairwise(ksize=13, (u1i*)qseq, qlen, (u1i*)tseq, tlen, memp, cigars, verbose);</span><br><span class="line">// print alignment information</span><br><span class="line">fprintf(stdout, &quot;QRY\t%d\t%d\tREF\t%d\t%d\tmat=%d\tmis=%d\tins=%d\tdel=%d\n&quot;, rs.qb, rs.qe, rs.tb, rs.te, rs.mat, rs.mis, rs.ins, rs.del);</span><br><span class="line">char *alnstr[3];</span><br><span class="line">alnstr[0] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[1] = malloc(rs.aln + 1);</span><br><span class="line">alnstr[2] = malloc(rs.aln + 1);</span><br><span class="line">seqalign_cigar2alnstr(qseq, tseq, &amp;rs, cigars, alnstr, rs.aln);</span><br><span class="line">// print alignment string</span><br><span class="line">fprintf(stdout, &quot;%s\n%s\n%s\n&quot;, alnstr[0], alnstr[2], alnstr[1]);</span><br><span class="line">free(alnstr[0]); free(alnstr[1]); free(alnstr[2]);</span><br><span class="line">free_u4v(cigars);</span><br><span class="line">free_b1v(memp);</span><br></pre></td></tr></table></figure>
 
 
@@ -409,6 +402,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/07/06/%E6%B3%9B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A01/" rel="next" title="泛基因组理论学习1">
+                  泛基因组理论学习1 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
