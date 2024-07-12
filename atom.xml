@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-07-11T15:01:51.831Z</updated>
+  <updated>2024-07-12T04:36:34.312Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -21,12 +21,14 @@
     <link href="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/"/>
     <id>https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/</id>
     <published>2024-07-11T14:18:48.000Z</published>
-    <updated>2024-07-11T15:01:51.831Z</updated>
+    <updated>2024-07-12T04:36:34.312Z</updated>
     
     
       
       
-    <summary type="html">&lt;h3 id=&quot;先picard-建立基因组索引-dict文件，再vcf坐标转换&quot;&gt;&lt;a href=&quot;#先picard-建立基因组索引-dict文件，再vcf坐标转换&quot; class=&quot;headerlink&quot; title=&quot;先picard 建立基因组索引.dict文件，再vcf坐标转</summary>
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h3 id=&quot;先picard-建立基因组索引-dict文件，再vcf坐标转换&quot;&gt;&lt;a href=&quot;#先picard-建立基因组索引-dict文件，再vcf坐标转换&quot; class=&quot;headerlink&quot; title=&quot;先pica</summary>
       
     
     
@@ -43,7 +45,7 @@
     <link href="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8snpeff%E6%B3%A8%E9%87%8AVCF%E6%96%87%E4%BB%B6/"/>
     <id>https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8snpeff%E6%B3%A8%E9%87%8AVCF%E6%96%87%E4%BB%B6/</id>
     <published>2024-07-11T14:18:22.000Z</published>
-    <updated>2024-07-11T15:01:54.260Z</updated>
+    <updated>2024-07-12T04:36:50.941Z</updated>
     
     
       
@@ -288,7 +290,7 @@
     <link href="https://louis-kento.github.io/2024/04/29/non-zero-exit%E6%8A%A5%E9%94%99R/"/>
     <id>https://louis-kento.github.io/2024/04/29/non-zero-exit%E6%8A%A5%E9%94%99R/</id>
     <published>2024-04-28T16:04:14.000Z</published>
-    <updated>2024-07-01T11:51:35.814Z</updated>
+    <updated>2024-07-12T04:38:52.662Z</updated>
     
     
     <summary type="html">&lt;p&gt;在 R 安装需要软件包时，”non-zero-exit” 错误通常指示程序在执行过程中出现了非零的退出代码。这通常表示程序在某个步骤中遇到了错误或异常情况。回溯安装过程，可以发现non-zero exit status 的问题不止一种，或者说所有的安装失败，都会给出 non-zero exit status 的warning。以下列出几种可能的问题类型，或许可以按照这些办法解决掉安装失败的问题。&lt;/p&gt;</summary>

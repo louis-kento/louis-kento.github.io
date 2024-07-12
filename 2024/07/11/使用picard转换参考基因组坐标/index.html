@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="先picard 建立基因组索引.dict文件，再vcf坐标转换1java -jar &#x2F;home&#x2F;liuxiao&#x2F;soft&#x2F;picard&#x2F;picard.jar CreateSequenceDictionary R&#x3D; sequences.fa O&#x3D;sequences.fa.dict  1234567示例java -jar &#x2F;home&#x2F;lx&#x2F;soft&#x2F;picard.jar LiftoverVcf \I&#x3D;">
+    <meta name="description" content="先picard 建立基因组索引.dict文件，再vcf坐标转换1java -jar &#x2F;home&#x2F;liuxiao&#x2F;soft&#x2F;picard&#x2F;picard.jar CreateSequenceDictionary R&#x3D; sequences.fa O&#x3D;sequences.fa.dict  1234567示例java -jar &#x2F;home&#x2F;lx&#x2F;soft&#x2F;picard.jar LiftoverVcf \">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用picard转换参考基因组坐标">
 <meta property="og:url" content="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/index.html">
 <meta property="og:site_name" content="kento_blog">
-<meta property="og:description" content="先picard 建立基因组索引.dict文件，再vcf坐标转换1java -jar &#x2F;home&#x2F;liuxiao&#x2F;soft&#x2F;picard&#x2F;picard.jar CreateSequenceDictionary R&#x3D; sequences.fa O&#x3D;sequences.fa.dict  1234567示例java -jar &#x2F;home&#x2F;lx&#x2F;soft&#x2F;picard.jar LiftoverVcf \I&#x3D;">
+<meta property="og:description" content="先picard 建立基因组索引.dict文件，再vcf坐标转换1java -jar &#x2F;home&#x2F;liuxiao&#x2F;soft&#x2F;picard&#x2F;picard.jar CreateSequenceDictionary R&#x3D; sequences.fa O&#x3D;sequences.fa.dict  1234567示例java -jar &#x2F;home&#x2F;lx&#x2F;soft&#x2F;picard.jar LiftoverVcf \">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-11T14:18:48.000Z">
-<meta property="article:modified_time" content="2024-07-11T15:01:51.831Z">
+<meta property="article:modified_time" content="2024-07-12T04:36:34.312Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="picard">
 <meta property="article:tag" content="转换坐标">
@@ -246,9 +246,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-07-11 22:18:48 / Modified: 23:01:51" itemprop="dateCreated datePublished" datetime="2024-07-11T22:18:48+08:00">2024-07-11</time>
+      <time title="Created: 2024-07-11 22:18:48" itemprop="dateCreated datePublished" datetime="2024-07-11T22:18:48+08:00">2024-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-07-12 12:36:34" itemprop="dateModified" datetime="2024-07-12T12:36:34+08:00">2024-07-12</time>
     </span>
 
   
@@ -296,7 +302,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h3 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
+    <div class="post-body" itemprop="articleBody"><span id="more"></span>
+
+<h3 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">示例</span><br><span class="line">java -jar /home/lx/soft/picard.jar LiftoverVcf \</span><br><span class="line">I=/home/lx/wsl/caid323.vcf.gz  \</span><br><span class="line">O=323.vcf \</span><br><span class="line">CHAIN=/home/lx/wsl/oviAri4Tooarv1.over.chain  \</span><br><span class="line">REJECT=unmap_variants.vcf  \</span><br><span class="line">R=/home/lx/wsl/oarchange/oarv1.fasta </span><br></pre></td></tr></table></figure>
 

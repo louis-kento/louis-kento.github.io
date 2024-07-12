@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="使用SnpEff对得到的标记进行注释VCF（Variant Call Format）文件变异注释是一种生物信息学分析过程，用于为VCF文件中记录的基因变异提供详细的功能和临床信息。这些变异可能包括单核苷酸多态性（SNP）、插入和缺失（indels）等。变异注释的目的是理解这些变异的生物学意义及其潜在的影响。 具体来说，变异注释包括以下几个方面的内容：  基因信息： 基因名称：识别变异所在的基因。">
+    <meta name="description" content="使用SnpEff对得到的标记进行注释VCF（Variant Call Format）文件变异注释是一种生物信息学分析过程，用于为VCF文件中记录的基因变异提供详细的功能和临床信息。这些变异可能包括单核苷酸多态性（SNP）、插入和缺失（indels）等。变异注释的目的是理解这些变异的生物学意义及其潜在的影响。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用snpeff注释VCF文件">
 <meta property="og:url" content="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8snpeff%E6%B3%A8%E9%87%8AVCF%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="kento_blog">
-<meta property="og:description" content="使用SnpEff对得到的标记进行注释VCF（Variant Call Format）文件变异注释是一种生物信息学分析过程，用于为VCF文件中记录的基因变异提供详细的功能和临床信息。这些变异可能包括单核苷酸多态性（SNP）、插入和缺失（indels）等。变异注释的目的是理解这些变异的生物学意义及其潜在的影响。 具体来说，变异注释包括以下几个方面的内容：  基因信息： 基因名称：识别变异所在的基因。">
+<meta property="og:description" content="使用SnpEff对得到的标记进行注释VCF（Variant Call Format）文件变异注释是一种生物信息学分析过程，用于为VCF文件中记录的基因变异提供详细的功能和临床信息。这些变异可能包括单核苷酸多态性（SNP）、插入和缺失（indels）等。变异注释的目的是理解这些变异的生物学意义及其潜在的影响。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-11T14:18:22.000Z">
-<meta property="article:modified_time" content="2024-07-11T15:01:54.260Z">
+<meta property="article:modified_time" content="2024-07-12T04:36:50.941Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="snpEff">
 <meta property="article:tag" content="注释">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SnpEff%E5%AF%B9%E5%BE%97%E5%88%B0%E7%9A%84%E6%A0%87%E8%AE%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="nav-number">1.</span> <span class="nav-text">使用SnpEff对得到的标记进行注释</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BC%82%E6%B3%A8%E9%87%8A%E7%9A%84%E5%B7%A5%E5%85%B7"><span class="nav-number">1.1.</span> <span class="nav-text">变异注释的工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#snpeff%E6%B3%A8%E9%87%8A%E5%8F%98%E5%BC%82%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">snpeff注释变异文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85SnpEff"><span class="nav-number">1.3.</span> <span class="nav-text">下载安装SnpEff</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SnpEff%E4%BD%BF%E7%94%A8"><span class="nav-number">1.4.</span> <span class="nav-text">SnpEff使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SnpEff%E7%9A%84build%E5%91%BD%E4%BB%A4%E6%9E%84%E5%BB%BA%E5%8F%82%E8%80%83%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">使用SnpEff的build命令构建参考数据库</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8SnpEff%E5%AF%B9%E5%BE%97%E5%88%B0%E7%9A%84%E6%A0%87%E8%AE%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="nav-number">1.</span> <span class="nav-text">使用SnpEff对得到的标记进行注释</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -246,9 +246,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2024-07-11 22:18:22 / Modified: 23:01:54" itemprop="dateCreated datePublished" datetime="2024-07-11T22:18:22+08:00">2024-07-11</time>
+      <time title="Created: 2024-07-11 22:18:22" itemprop="dateCreated datePublished" datetime="2024-07-11T22:18:22+08:00">2024-07-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-07-12 12:36:50" itemprop="dateModified" datetime="2024-07-12T12:36:50+08:00">2024-07-12</time>
     </span>
 
   
@@ -279,14 +285,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>1.7k</span>
+      <span>152</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>3 mins.</span>
+      <span>1 mins.</span>
     </span>
 </div>
 
@@ -297,55 +303,48 @@
     
     
     <div class="post-body" itemprop="articleBody"><h2 id="使用SnpEff对得到的标记进行注释"><a href="#使用SnpEff对得到的标记进行注释" class="headerlink" title="使用SnpEff对得到的标记进行注释"></a><strong>使用SnpEff对得到的标记进行注释</strong></h2><p>VCF（Variant Call Format）文件变异注释是一种生物信息学分析过程，用于为VCF文件中记录的基因变异提供详细的功能和临床信息。这些变异可能包括单核苷酸多态性（SNP）、插入和缺失（indels）等。变异注释的目的是理解这些变异的生物学意义及其潜在的影响。</p>
-<p>具体来说，变异注释包括以下几个方面的内容：</p>
-<ol>
-<li><strong>基因信息</strong>：<ul>
-<li><strong>基因名称</strong>：识别变异所在的基因。</li>
-<li><strong>转录本信息</strong>：标识变异影响的特定转录本。</li>
-</ul>
-</li>
-<li><strong>变异类型</strong>：<ul>
-<li><strong>编码区变异</strong>：包括错义变异、同义变异、无义变异等。</li>
-<li><strong>非编码区变异</strong>：包括内含子变异、上游&#x2F;下游变异、调控区域变异等。</li>
-</ul>
-</li>
-<li><strong>功能影响</strong>：<ul>
-<li><strong>蛋白质影响</strong>：例如，变异是否会导致氨基酸的改变。</li>
-<li><strong>结构影响</strong>：例如，变异是否会影响蛋白质的结构或功能。</li>
-</ul>
-</li>
-<li><strong>临床意义</strong>：<ul>
-<li><strong>已知疾病关联</strong>：变异是否与某些遗传疾病或综合征相关。</li>
-<li><strong>药物反应</strong>：变异是否会影响个体对某些药物的反应。</li>
-</ul>
-</li>
-<li><strong>保守性和进化信息</strong>：<ul>
-<li><strong>保守性评分</strong>：变异位置在进化过程中是否保守，保守性较高的位置通常对功能更重要。</li>
-<li><strong>进化信息</strong>：变异在不同物种中的保守性。</li>
-</ul>
-</li>
-<li><strong>频率信息</strong>：<ul>
-<li><strong>群体频率</strong>：变异在不同人群中的频率，通常来自于公共变异数据库，如1000 Genomes、gnomAD等。</li>
-</ul>
-</li>
-<li><strong>数据库注释</strong>：<ul>
-<li><strong>ClinVar</strong>：变异的临床意义注释。</li>
-<li><strong>dbSNP</strong>：常见的SNP数据库注释。</li>
-<li><strong>COSMIC</strong>：癌症相关变异数据库注释。</li>
-</ul>
-</li>
-</ol>
-<h3 id="变异注释的工具"><a href="#变异注释的工具" class="headerlink" title="变异注释的工具"></a>变异注释的工具</h3><p>有多种工具和软件可以进行VCF文件的变异注释，包括但不限于：</p>
-<ul>
-<li><p><strong>ANNOVAR</strong>：一个广泛使用的变异注释工具。</p>
-</li>
-<li><p>**VEP (Variant Effect Predictor)**：由Ensembl提供的变异注释工具。</p>
-</li>
-<li><p><strong>SnpEff</strong>：一个高效的变异注释和预测工具。</p>
-<p>本文主要将snpEff注释</p>
-</li>
-</ul>
-<h3 id="snpeff注释变异文件"><a href="#snpeff注释变异文件" class="headerlink" title="snpeff注释变异文件"></a>snpeff注释变异文件</h3><p>在存放物种数据库的data文件下面运行注释的命令</p>
+<!--more>
+
+具体来说，变异注释包括以下几个方面的内容：
+
+1. **基因信息**：
+   - **基因名称**：识别变异所在的基因。
+   - **转录本信息**：标识变异影响的特定转录本。
+2. **变异类型**：
+   - **编码区变异**：包括错义变异、同义变异、无义变异等。
+   - **非编码区变异**：包括内含子变异、上游/下游变异、调控区域变异等。
+3. **功能影响**：
+   - **蛋白质影响**：例如，变异是否会导致氨基酸的改变。
+   - **结构影响**：例如，变异是否会影响蛋白质的结构或功能。
+4. **临床意义**：
+   - **已知疾病关联**：变异是否与某些遗传疾病或综合征相关。
+   - **药物反应**：变异是否会影响个体对某些药物的反应。
+5. **保守性和进化信息**：
+   - **保守性评分**：变异位置在进化过程中是否保守，保守性较高的位置通常对功能更重要。
+   - **进化信息**：变异在不同物种中的保守性。
+6. **频率信息**：
+   - **群体频率**：变异在不同人群中的频率，通常来自于公共变异数据库，如1000 Genomes、gnomAD等。
+7. **数据库注释**：
+   - **ClinVar**：变异的临床意义注释。
+   - **dbSNP**：常见的SNP数据库注释。
+   - **COSMIC**：癌症相关变异数据库注释。
+
+### 变异注释的工具
+
+有多种工具和软件可以进行VCF文件的变异注释，包括但不限于：
+
+- **ANNOVAR**：一个广泛使用的变异注释工具。
+
+- **VEP (Variant Effect Predictor)**：由Ensembl提供的变异注释工具。
+
+- **SnpEff**：一个高效的变异注释和预测工具。
+
+  本文主要将snpEff注释
+
+### snpeff注释变异文件
+
+在存放物种数据库的data文件下面运行注释的命令
+
 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">###配置后，直接运行，备忘</span><br><span class="line">#build</span><br><span class="line">java -jar snpEff.jar build -gff3 -v oarv1</span><br><span class="line"></span><br><span class="line">#成功注释</span><br><span class="line">java -Xmx16g -jar /home/liuxiao/soft/snpeff/snpEff.jar ann  oarv1   miss0.7.vcf.recode.vcf   &gt; 325.ann.vcf</span><br></pre></td></tr></table></figure>
 
 <p>在使用gatk挖掘出相应的变异信息之后，需要对得到的变异信息SNP或Indel进行注释，然后再筛选。打算使用SnpEff来进行注释。</p>
@@ -371,7 +370,7 @@
 
 
 
-
+-->
     </div>
 
     
