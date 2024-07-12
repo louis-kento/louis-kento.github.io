@@ -19,18 +19,19 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="先picard 建立基因组索引.dict文件，再vcf坐标转换1java -jar &#x2F;home&#x2F;liuxiao&#x2F;soft&#x2F;picard&#x2F;picard.jar CreateSequenceDictionary R&#x3D; sequences.fa O&#x3D;sequences.fa.dict  1234567示例java -jar &#x2F;home&#x2F;lx&#x2F;soft&#x2F;picard.jar LiftoverVcf \">
+    <meta name="description" content="我们有时候在处理多个vcf文件时，他们的参考基因组可能各不相同，这时候就需要把vcf 文件中的变异位置从一个参考基因组映射到另一个参考基因组。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用picard转换参考基因组坐标">
+<meta property="og:title" content="转换参考基因组坐标">
 <meta property="og:url" content="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/index.html">
 <meta property="og:site_name" content="kento_blog">
-<meta property="og:description" content="先picard 建立基因组索引.dict文件，再vcf坐标转换1java -jar &#x2F;home&#x2F;liuxiao&#x2F;soft&#x2F;picard&#x2F;picard.jar CreateSequenceDictionary R&#x3D; sequences.fa O&#x3D;sequences.fa.dict  1234567示例java -jar &#x2F;home&#x2F;lx&#x2F;soft&#x2F;picard.jar LiftoverVcf \">
+<meta property="og:description" content="我们有时候在处理多个vcf文件时，他们的参考基因组可能各不相同，这时候就需要把vcf 文件中的变异位置从一个参考基因组映射到另一个参考基因组。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-11T14:18:48.000Z">
-<meta property="article:modified_time" content="2024-07-12T04:36:34.312Z">
+<meta property="article:modified_time" content="2024-07-12T04:51:22.392Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="picard">
 <meta property="article:tag" content="转换坐标">
+<meta property="article:tag" content="liftOver">
 <meta name="twitter:card" content="summary">
 
 
@@ -38,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/","path":"2024/07/11/使用picard转换参考基因组坐标/","title":"使用picard转换参考基因组坐标"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/","path":"2024/07/11/使用picard转换参考基因组坐标/","title":"转换参考基因组坐标"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>使用picard转换参考基因组坐标 | kento_blog</title>
+<title>转换参考基因组坐标 | kento_blog</title>
   
 
 
@@ -142,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%88picard-%E5%BB%BA%E7%AB%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%B4%A2%E5%BC%95-dict%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%8Dvcf%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.</span> <span class="nav-text">先picard 建立基因组索引.dict文件，再vcf坐标转换</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-picard%E6%96%B9%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">1.picard方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%88picard-%E5%BB%BA%E7%AB%8B%E5%9F%BA%E5%9B%A0%E7%BB%84%E7%B4%A2%E5%BC%95-dict%E6%96%87%E4%BB%B6%EF%BC%8C%E5%86%8Dvcf%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.0.1.</span> <span class="nav-text">先picard 建立基因组索引.dict文件，再vcf坐标转换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81liftOver%E5%B7%A5%E5%85%B7%E3%80%82"><span class="nav-number">2.</span> <span class="nav-text">2、liftOver工具。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-1%EF%BC%9A%E5%87%86%E5%A4%87-VCF-%E6%96%87%E4%BB%B6"><span class="nav-number">2.0.1.</span> <span class="nav-text">步骤 1：准备 VCF 文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-2%EF%BC%9A%E6%8F%90%E5%8F%96-VCF-%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E5%BC%82%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.0.2.</span> <span class="nav-text">步骤 2：提取 VCF 文件中的变异位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-3%EF%BC%9A%E8%BF%90%E8%A1%8C-liftOver"><span class="nav-number">2.0.3.</span> <span class="nav-text">步骤 3：运行 liftOver</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4-4%EF%BC%9A%E5%B0%86-BED-%E6%96%87%E4%BB%B6%E8%BD%AC%E6%8D%A2%E5%9B%9E-VCF-%E6%96%87%E4%BB%B6"><span class="nav-number">2.0.4.</span> <span class="nav-text">步骤 4：将 BED 文件转换回 VCF 文件</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +169,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -231,12 +232,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="使用picard转换参考基因组坐标 | kento_blog">
+      <meta itemprop="name" content="转换参考基因组坐标 | kento_blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          使用picard转换参考基因组坐标
+          转换参考基因组坐标
         </h1>
 
         <div class="post-meta-container">
@@ -254,7 +255,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-12 12:36:34" itemprop="dateModified" datetime="2024-07-12T12:36:34+08:00">2024-07-12</time>
+      <time title="Modified: 2024-07-12 12:51:22" itemprop="dateModified" datetime="2024-07-12T12:51:22+08:00">2024-07-12</time>
     </span>
 
   
@@ -285,14 +286,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>394</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -302,16 +303,37 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><span id="more"></span>
+    <div class="post-body" itemprop="articleBody"><p>我们有时候在处理多个vcf文件时，他们的参考基因组可能各不相同，这时候就需要把vcf 文件中的变异位置从一个参考基因组映射到另一个参考基因组。</p>
+<span id="more"></span>
 
-<h3 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
+<h2 id="1-picard方法"><a href="#1-picard方法" class="headerlink" title="1.picard方法"></a>1.picard方法</h2><h4 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">示例</span><br><span class="line">java -jar /home/lx/soft/picard.jar LiftoverVcf \</span><br><span class="line">I=/home/lx/wsl/caid323.vcf.gz  \</span><br><span class="line">O=323.vcf \</span><br><span class="line">CHAIN=/home/lx/wsl/oviAri4Tooarv1.over.chain  \</span><br><span class="line">REJECT=unmap_variants.vcf  \</span><br><span class="line">R=/home/lx/wsl/oarchange/oarv1.fasta </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#使用 Picard 的 LiftoverVcf工具</span></span><br><span class="line">java -jar /home/lx/soft/picard.jar LiftoverVcf \</span><br><span class="line">I=/home/lx/wsl/caid323.vcf.gz  \</span><br><span class="line">O=323.vcf \</span><br><span class="line">CHAIN=/home/lx/wsl/oviAri4Tooarv1.over.chain  \</span><br><span class="line">REJECT=unmap_variants.vcf  \</span><br><span class="line">R=/home/lx/wsl/oarchange/oarv1.fasta </span><br></pre></td></tr></table></figure>
 
 <p>相关的.fa文件，.dict文件，.vcf文件, .chain文件均尽量软连接在同一文件夹</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s $truepath  #软连接</span><br></pre></td></tr></table></figure>
 
 
+
+<h2 id="2、liftOver工具。"><a href="#2、liftOver工具。" class="headerlink" title="2、liftOver工具。"></a>2、liftOver工具。</h2><h4 id="步骤-1：准备-VCF-文件"><a href="#步骤-1：准备-VCF-文件" class="headerlink" title="步骤 1：准备 VCF 文件"></a>步骤 1：准备 VCF 文件</h4><p>确保你的 VCF 文件格式正确，可以用以下命令查看和处理 VCF 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcftools --vcf input.vcf --recode --stdout &gt; prepared_input.vcf</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2：提取-VCF-文件中的变异位置"><a href="#步骤-2：提取-VCF-文件中的变异位置" class="headerlink" title="步骤 2：提取 VCF 文件中的变异位置"></a>步骤 2：提取 VCF 文件中的变异位置</h4><p>需要将 VCF 文件转换为 <code>BED</code> 格式，因为 <code>liftOver</code> 工具处理 <code>BED</code> 格式文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vcf2bed &lt; prepared_input.vcf &gt; input.bed</span><br></pre></td></tr></table></figure>
+
+<p>可以使用 <code>bedops</code> 工具中的 <code>vcf2bed</code> 命令。如果没有安装 <code>bedops</code>，可以使用以下 Python 脚本进行转换：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import vcf</span><br><span class="line">vcf_reader = vcf.Reader(open(&#x27;prepared_input.vcf&#x27;, &#x27;r&#x27;))</span><br><span class="line">with open(&#x27;input.bed&#x27;, &#x27;w&#x27;) as bed_file:</span><br><span class="line">    for record in vcf_reader:</span><br><span class="line">        chrom = record.CHROM</span><br><span class="line">        start = record.POS - 1</span><br><span class="line">        end = record.POS</span><br><span class="line">        name = record.ID</span><br><span class="line">        score = &#x27;.&#x27;</span><br><span class="line">        strand = &#x27;.&#x27;</span><br><span class="line">        bed_file.write(f&quot;&#123;chrom&#125;\t&#123;start&#125;\t&#123;end&#125;\t&#123;name&#125;\t&#123;score&#125;\t&#123;strand&#125;\n&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-3：运行-liftOver"><a href="#步骤-3：运行-liftOver" class="headerlink" title="步骤 3：运行 liftOver"></a>步骤 3：运行 liftOver</h4><p>使用 <code>liftOver</code> 工具将坐标转换到新的参考基因组版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./liftOver input.bed oldToNew.chain output.bed unlifted.bed</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>oldToNew.chain</code> 是你下载的链文件，它描述了两个基因组版本之间的坐标转换关系。</li>
+<li><code>output.bed</code> 是成功转换的坐标。</li>
+<li><code>unlifted.bed</code> 是未能转换的坐标。</li>
+</ul>
+<h4 id="步骤-4：将-BED-文件转换回-VCF-文件"><a href="#步骤-4：将-BED-文件转换回-VCF-文件" class="headerlink" title="步骤 4：将 BED 文件转换回 VCF 文件"></a>步骤 4：将 BED 文件转换回 VCF 文件</h4><p>使用以下脚本将转换后的 <code>BED</code> 文件转换回 <code>VCF</code> 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import vcf</span><br><span class="line"></span><br><span class="line">vcf_reader = vcf.Reader(open(&#x27;prepared_input.vcf&#x27;, &#x27;r&#x27;))</span><br><span class="line">records = list(vcf_reader)</span><br><span class="line"></span><br><span class="line">with open(&#x27;output.bed&#x27;, &#x27;r&#x27;) as bed_file, open(&#x27;output.vcf&#x27;, &#x27;w&#x27;) as vcf_file:</span><br><span class="line">    vcf_writer = vcf.Writer(vcf_file, vcf_reader)</span><br><span class="line">    for line in bed_file:</span><br><span class="line">        fields = line.strip().split(&#x27;\t&#x27;)</span><br><span class="line">        chrom = fields[0]</span><br><span class="line">        pos = int(fields[2])</span><br><span class="line">        for record in records:</span><br><span class="line">            if record.CHROM == chrom and record.POS == pos:</span><br><span class="line">                record.POS = pos</span><br><span class="line">                vcf_writer.write_record(record)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -332,7 +354,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/" title="使用picard转换参考基因组坐标">https://louis-kento.github.io/2024/07/11/使用picard转换参考基因组坐标/</a>
+      <a href="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/" title="转换参考基因组坐标">https://louis-kento.github.io/2024/07/11/使用picard转换参考基因组坐标/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -343,6 +365,7 @@
           <div class="post-tags">
               <a href="/tags/picard/" rel="tag"># picard</a>
               <a href="/tags/%E8%BD%AC%E6%8D%A2%E5%9D%90%E6%A0%87/" rel="tag"># 转换坐标</a>
+              <a href="/tags/liftOver/" rel="tag"># liftOver</a>
           </div>
 
         

@@ -1,18 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>使用picard转换参考基因组坐标</title>
+    <title>转换参考基因组坐标</title>
     <url>/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<p>我们有时候在处理多个vcf文件时，他们的参考基因组可能各不相同，这时候就需要把vcf 文件中的变异位置从一个参考基因组映射到另一个参考基因组。</p>
+<span id="more"></span>
 
-<h3 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
+<h2 id="1-picard方法"><a href="#1-picard方法" class="headerlink" title="1.picard方法"></a>1.picard方法</h2><h4 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">示例</span><br><span class="line">java -jar /home/lx/soft/picard.jar LiftoverVcf \</span><br><span class="line">I=/home/lx/wsl/caid323.vcf.gz  \</span><br><span class="line">O=323.vcf \</span><br><span class="line">CHAIN=/home/lx/wsl/oviAri4Tooarv1.over.chain  \</span><br><span class="line">REJECT=unmap_variants.vcf  \</span><br><span class="line">R=/home/lx/wsl/oarchange/oarv1.fasta </span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#使用 Picard 的 LiftoverVcf工具</span></span><br><span class="line">java -jar /home/lx/soft/picard.jar LiftoverVcf \</span><br><span class="line">I=/home/lx/wsl/caid323.vcf.gz  \</span><br><span class="line">O=323.vcf \</span><br><span class="line">CHAIN=/home/lx/wsl/oviAri4Tooarv1.over.chain  \</span><br><span class="line">REJECT=unmap_variants.vcf  \</span><br><span class="line">R=/home/lx/wsl/oarchange/oarv1.fasta </span><br></pre></td></tr></table></figure>
 
 <p>相关的.fa文件，.dict文件，.vcf文件, .chain文件均尽量软连接在同一文件夹</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ln -s $truepath  #软连接</span><br></pre></td></tr></table></figure>
 
 
+
+<h2 id="2、liftOver工具。"><a href="#2、liftOver工具。" class="headerlink" title="2、liftOver工具。"></a>2、liftOver工具。</h2><h4 id="步骤-1：准备-VCF-文件"><a href="#步骤-1：准备-VCF-文件" class="headerlink" title="步骤 1：准备 VCF 文件"></a>步骤 1：准备 VCF 文件</h4><p>确保你的 VCF 文件格式正确，可以用以下命令查看和处理 VCF 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vcftools --vcf input.vcf --recode --stdout &gt; prepared_input.vcf</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-2：提取-VCF-文件中的变异位置"><a href="#步骤-2：提取-VCF-文件中的变异位置" class="headerlink" title="步骤 2：提取 VCF 文件中的变异位置"></a>步骤 2：提取 VCF 文件中的变异位置</h4><p>需要将 VCF 文件转换为 <code>BED</code> 格式，因为 <code>liftOver</code> 工具处理 <code>BED</code> 格式文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vcf2bed &lt; prepared_input.vcf &gt; input.bed</span><br></pre></td></tr></table></figure>
+
+<p>可以使用 <code>bedops</code> 工具中的 <code>vcf2bed</code> 命令。如果没有安装 <code>bedops</code>，可以使用以下 Python 脚本进行转换：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import vcf</span><br><span class="line">vcf_reader = vcf.Reader(open(&#x27;prepared_input.vcf&#x27;, &#x27;r&#x27;))</span><br><span class="line">with open(&#x27;input.bed&#x27;, &#x27;w&#x27;) as bed_file:</span><br><span class="line">    for record in vcf_reader:</span><br><span class="line">        chrom = record.CHROM</span><br><span class="line">        start = record.POS - 1</span><br><span class="line">        end = record.POS</span><br><span class="line">        name = record.ID</span><br><span class="line">        score = &#x27;.&#x27;</span><br><span class="line">        strand = &#x27;.&#x27;</span><br><span class="line">        bed_file.write(f&quot;&#123;chrom&#125;\t&#123;start&#125;\t&#123;end&#125;\t&#123;name&#125;\t&#123;score&#125;\t&#123;strand&#125;\n&quot;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="步骤-3：运行-liftOver"><a href="#步骤-3：运行-liftOver" class="headerlink" title="步骤 3：运行 liftOver"></a>步骤 3：运行 liftOver</h4><p>使用 <code>liftOver</code> 工具将坐标转换到新的参考基因组版本。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">./liftOver input.bed oldToNew.chain output.bed unlifted.bed</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>oldToNew.chain</code> 是你下载的链文件，它描述了两个基因组版本之间的坐标转换关系。</li>
+<li><code>output.bed</code> 是成功转换的坐标。</li>
+<li><code>unlifted.bed</code> 是未能转换的坐标。</li>
+</ul>
+<h4 id="步骤-4：将-BED-文件转换回-VCF-文件"><a href="#步骤-4：将-BED-文件转换回-VCF-文件" class="headerlink" title="步骤 4：将 BED 文件转换回 VCF 文件"></a>步骤 4：将 BED 文件转换回 VCF 文件</h4><p>使用以下脚本将转换后的 <code>BED</code> 文件转换回 <code>VCF</code> 文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import vcf</span><br><span class="line"></span><br><span class="line">vcf_reader = vcf.Reader(open(&#x27;prepared_input.vcf&#x27;, &#x27;r&#x27;))</span><br><span class="line">records = list(vcf_reader)</span><br><span class="line"></span><br><span class="line">with open(&#x27;output.bed&#x27;, &#x27;r&#x27;) as bed_file, open(&#x27;output.vcf&#x27;, &#x27;w&#x27;) as vcf_file:</span><br><span class="line">    vcf_writer = vcf.Writer(vcf_file, vcf_reader)</span><br><span class="line">    for line in bed_file:</span><br><span class="line">        fields = line.strip().split(&#x27;\t&#x27;)</span><br><span class="line">        chrom = fields[0]</span><br><span class="line">        pos = int(fields[2])</span><br><span class="line">        for record in records:</span><br><span class="line">            if record.CHROM == chrom and record.POS == pos:</span><br><span class="line">                record.POS = pos</span><br><span class="line">                vcf_writer.write_record(record)</span><br></pre></td></tr></table></figure>
 
 
 
@@ -20,6 +41,7 @@
       <tags>
         <tag>picard</tag>
         <tag>转换坐标</tag>
+        <tag>liftOver</tag>
       </tags>
   </entry>
   <entry>

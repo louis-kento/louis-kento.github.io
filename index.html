@@ -164,7 +164,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -231,7 +231,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/" class="post-title-link" itemprop="url">使用picard转换参考基因组坐标</a>
+          <a href="/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/" class="post-title-link" itemprop="url">转换参考基因组坐标</a>
         </h2>
 
         <div class="post-meta-container">
@@ -249,7 +249,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-12 12:36:34" itemprop="dateModified" datetime="2024-07-12T12:36:34+08:00">2024-07-12</time>
+      <time title="Modified: 2024-07-12 12:51:22" itemprop="dateModified" datetime="2024-07-12T12:51:22+08:00">2024-07-12</time>
     </span>
 
   
@@ -273,14 +273,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>394</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -291,20 +291,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h3 id="先picard-建立基因组索引-dict文件，再vcf坐标转换"><a href="#先picard-建立基因组索引-dict文件，再vcf坐标转换" class="headerlink" title="先picard 建立基因组索引.dict文件，再vcf坐标转换"></a>先picard 建立基因组索引.dict文件，再vcf坐标转换</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar /home/liuxiao/soft/picard/picard.jar CreateSequenceDictionary R= sequences.fa O=sequences.fa.dict</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">示例</span><br><span class="line">java -jar /home/lx/soft/picard.jar LiftoverVcf \</span><br><span class="line">I=/home/lx/wsl/caid323.vcf.gz  \</span><br><span class="line">O=323.vcf \</span><br><span class="line">CHAIN=/home/lx/wsl/oviAri4Tooarv1.over.chain  \</span><br><span class="line">REJECT=unmap_variants.vcf  \</span><br><span class="line">R=/home/lx/wsl/oarchange/oarv1.fasta </span><br></pre></td></tr></table></figure>
-
-<p>相关的.fa文件，.dict文件，.vcf文件, .chain文件均尽量软连接在同一文件夹</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s $truepath  #软连接</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
+          <p>我们有时候在处理多个vcf文件时，他们的参考基因组可能各不相同，这时候就需要把vcf 文件中的变异位置从一个参考基因组映射到另一个参考基因组。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/11/%E4%BD%BF%E7%94%A8picard%E8%BD%AC%E6%8D%A2%E5%8F%82%E8%80%83%E5%9F%BA%E5%9B%A0%E7%BB%84%E5%9D%90%E6%A0%87/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
