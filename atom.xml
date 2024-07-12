@@ -31,9 +31,9 @@
     
     <category term="picard" scheme="https://louis-kento.github.io/tags/picard/"/>
     
-    <category term="转换坐标" scheme="https://louis-kento.github.io/tags/%E8%BD%AC%E6%8D%A2%E5%9D%90%E6%A0%87/"/>
-    
     <category term="liftOver" scheme="https://louis-kento.github.io/tags/liftOver/"/>
+    
+    <category term="转换坐标" scheme="https://louis-kento.github.io/tags/%E8%BD%AC%E6%8D%A2%E5%9D%90%E6%A0%87/"/>
     
   </entry>
   
