@@ -577,7 +577,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-08-07 10:25:01" itemprop="dateModified" datetime="2024-08-07T10:25:01+08:00">2024-08-07</time>
+      <time title="Modified: 2024-08-07 12:27:59" itemprop="dateModified" datetime="2024-08-07T12:27:59+08:00">2024-08-07</time>
     </span>
 
   
@@ -619,77 +619,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <span id="more"></span>
-
-<h4 id="Epoch和Batch-Size的定义"><a href="#Epoch和Batch-Size的定义" class="headerlink" title="Epoch和Batch Size的定义"></a>Epoch和Batch Size的定义</h4><ol>
-<li>Epoch：<ul>
-<li>定义：epoch是指整个数据集在模型中完整训练一遍的次数。每个epoch结束后，模型会对整个数据集进行一次完整的预测，并根据预测结果更新自身的参数。</li>
-<li>作用：通过多次epoch，模型逐步提高精度，直到达到一个相对稳定的水平。</li>
-</ul>
-</li>
-<li>Batch Size：<ul>
-<li>定义：batch size是在每个epoch中，每次更新模型参数时所使用的样本数量。</li>
-<li>作用：batch size影响模型训练的稳定性和效率。较小的batch size可能导致训练过程不稳定，容易受到噪声数据的干扰；而较大的batch size则会增加训练时间，并可能限制模型的学习能力。</li>
-</ul>
-</li>
-</ol>
-<h4 id="选择Epoch和Batch-Size的考虑因素"><a href="#选择Epoch和Batch-Size的考虑因素" class="headerlink" title="选择Epoch和Batch Size的考虑因素"></a>选择Epoch和Batch Size的考虑因素</h4><ol>
-<li>数据集大小：<ul>
-<li>大数据集：需要更多的epoch来确保模型充分学习。</li>
-<li>小数据集：可以使用较少的epoch。</li>
-</ul>
-</li>
-<li>模型复杂度：<ul>
-<li>高复杂度模型：需要更多的epoch和较小的batch size，以充分学习数据中的复杂模式。</li>
-<li>低复杂度模型：可以使用较少的epoch和较大的batch size。</li>
-</ul>
-</li>
-<li>训练时间：<ul>
-<li>时间限制：在保证模型精度的前提下，应尽量选择较少的epoch以减少训练时间。</li>
-<li>资源充裕：可以增加epoch数量以提高模型精度。</li>
-</ul>
-</li>
-<li>GPU内存：<ul>
-<li>内存限制：batch size过大可能导致GPU内存不足，需要调整batch size以适应可用内存。</li>
-<li>内存充裕：可以选择较大的batch size以提高训练效率。</li>
-</ul>
-</li>
-</ol>
-<h4 id="综合考虑的选择策略"><a href="#综合考虑的选择策略" class="headerlink" title="综合考虑的选择策略"></a>综合考虑的选择策略</h4><ol>
-<li>确定合理的epoch范围：<ul>
-<li>基于数据集大小和模型复杂度，初步确定一个合理的epoch范围。例如，数据集较大且模型复杂度较高时，选择较大的epoch数。</li>
-</ul>
-</li>
-<li>选择适当的batch size：<ul>
-<li>在GPU内存允许的范围内，尽量选择较大的batch size以加速训练过程。</li>
-<li>如果GPU内存有限，可以通过减小batch size来避免内存不足，同时增加epoch数以弥补训练效果。</li>
-</ul>
-</li>
-<li>优化训练时间和资源利用：<ul>
-<li>在保证模型精度和训练时间的前提下，尽量选择较小的epoch数和较大的batch size以减少训练时间和提高训练效率。</li>
-<li>注意避免过拟合（模型在训练数据上表现很好，但在测试数据上表现不好）和欠拟合（模型在训练数据和测试数据上都表现不好）的风险。</li>
-</ul>
-</li>
-</ol>
-<h4 id="具体的实践步骤"><a href="#具体的实践步骤" class="headerlink" title="具体的实践步骤"></a>具体的实践步骤</h4><ol>
-<li>初始设置：<ul>
-<li>根据经验或前期实验，设置一个初始的epoch数和batch size。例如，开始时可以使用一个适中的epoch数（如10-20）和适中的batch size（如32或64）。</li>
-</ul>
-</li>
-<li>观察和调整：<ul>
-<li>在训练过程中，观察模型的训练损失和验证损失。如果训练损失持续下降而验证损失稳定或下降，可以考虑增加epoch数。</li>
-<li>如果GPU内存充裕且训练时间较长，可以适当增加batch size以加快训练速度。</li>
-</ul>
-</li>
-<li>迭代优化：<ul>
-<li>通过多次实验，逐步调整epoch数和batch size，找到最优的组合。例如，逐步增加epoch数，观察模型性能的变化；或者在保证内存不溢出的前提下，逐步增加batch size。</li>
-</ul>
-</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">train loss 不断下降，test loss不断下降，说明网络仍在学习;</span><br><span class="line">train loss 不断下降，test loss趋于不变，说明网络过拟合;</span><br><span class="line">train loss 趋于不变，test loss不断下降，说明数据集有问题;</span><br><span class="line">train loss 趋于不变，test loss趋于不变，说明学习遇到瓶颈，需要减小学习率或批量数目;</span><br><span class="line">train loss 不断上升，test loss不断上升，说明网络结构设计不当，训练超参数设置不当，数据集经过清洗等问题。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
+          <p>在做nlp和参加预测siRNA药效竞赛时遇到的一些调参经验</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8F%82%E6%95%B0%E7%90%86%E8%A7%A3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
