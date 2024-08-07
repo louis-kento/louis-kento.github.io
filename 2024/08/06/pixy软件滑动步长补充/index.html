@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="pixy软件是比较群体基因组差异的一款软件 在使用时发现只能固定窗口，不能滑动步长，这在联合比较其他算法计算的选择信号时需要用到。 所以记录一下怎么弄吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pixy软件滑动步长补充">
+<meta property="og:url" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/index.html">
+<meta property="og:site_name" content="kento_blog">
+<meta property="og:description" content="pixy软件是比较群体基因组差异的一款软件 在使用时发现只能固定窗口，不能滑动步长，这在联合比较其他算法计算的选择信号时需要用到。 所以记录一下怎么弄吧">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806215608385.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806220741808.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806221552138.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806221819278.png">
+<meta property="og:image" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806221951766.png">
+<meta property="article:published_time" content="2024-08-06T13:51:37.000Z">
+<meta property="article:modified_time" content="2024-08-06T14:21:23.116Z">
+<meta property="article:author" content="liuxiao">
+<meta property="article:tag" content="study &amp; share, bioinformatics, zoological">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806215608385.png">
+
+
+<link rel="canonical" href="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/","path":"2024/08/06/pixy软件滑动步长补充/","title":"pixy软件滑动步长补充"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pixy软件滑动步长补充 | kento_blog</title>
+  
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="waline-virid-nine.vercel.app">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="kento_blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">kento_blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">nice to meet you</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%80%9D%E8%B7%AF"><span class="nav-number">1.</span> <span class="nav-text">1.思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%89%93%E5%8D%B0%E5%91%BD%E4%BB%A4"><span class="nav-number">2.</span> <span class="nav-text">2.打印命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BC%80%E5%B7%A5"><span class="nav-number">3.</span> <span class="nav-text">3.开工</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="liuxiao"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">liuxiao</p>
+  <div class="site-description" itemprop="description">A Bioinformatics Rookie</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/louis-kento/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;louis-kento&#x2F;" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:13253779912@163.com" title="E-Mail → mailto:13253779912@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://sheepbreeds.cn/" title="https:&#x2F;&#x2F;sheepbreeds.cn" rel="noopener" target="_blank">Project</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="liuxiao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kento_blog">
+      <meta itemprop="description" content="A Bioinformatics Rookie">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pixy软件滑动步长补充 | kento_blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pixy软件滑动步长补充
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-08-06 21:51:37 / Modified: 22:21:23" itemprop="dateCreated datePublished" datetime="2024-08-06T21:51:37+08:00">2024-08-06</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">Waline: </span>
+  
+    <a title="waline" href="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/#waline" itemprop="discussionUrl">
+      <span class="post-comments-count waline-comment-count" data-path="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>pixy软件是比较群体基因组差异的一款软件</p>
+<p>在使用时发现只能固定窗口，不能滑动步长，这在联合比较其他算法计算的选择信号时需要用到。</p>
+<p>所以记录一下怎么弄吧</p>
+<span id="more"></span>
+
+<h3 id="1-思路"><a href="#1-思路" class="headerlink" title="1.思路"></a>1.思路</h3><p>本身就是计算窗口内的dxy，fst这些吧，，命令可以指定窗口，下面是用法。</p>
+<p><img src="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806215608385.png" alt="image-20240806215608385"></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">usage: pixy [-h] --stats &#123;pi,dxy,fst&#125; [&#123;pi,dxy,fst&#125; ...] --vcf [VCF] --populations [POPULATIONS] [--window_size [WINDOW_SIZE]] [--bed_file [BED_FILE]] [--n_cores [N_CORES]]</span><br><span class="line">            [--output_folder [OUTPUT_FOLDER]] [--output_prefix [OUTPUT_PREFIX]] [--chromosomes [CHROMOSOMES]] [--interval_start [INTERVAL_START]] [--interval_end [INTERVAL_END]]</span><br><span class="line">            [--sites_file [SITES_FILE]] [--chunk_size [CHUNK_SIZE]] [--fst_type &#123;<span class="built_in">wc</span>,hudson&#125;] [--bypass_invariant_check &#123;<span class="built_in">yes</span>,no&#125;] [--version] [--citation] [--silent]</span><br><span class="line">pixy: error: the following arguments are required: --stats, --vcf, --populations</span><br></pre></td></tr></table></figure>
+
+<p>那么手动以step空隔出来区间去计算区间内是不是也合理呢。</p>
+<h3 id="2-打印命令"><a href="#2-打印命令" class="headerlink" title="2.打印命令"></a>2.打印命令</h3><p>那么多窗口手动都不现实，循环又不知道窗口合理大小，那就看一下染色体长度，打印一下命令吧。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">vcf_file=<span class="string">&quot;/home/liuxiao/1254/group1/370.vcf.gz&quot;</span></span><br><span class="line">window_size=150000</span><br><span class="line">step_size=75000</span><br><span class="line">output_intervals=<span class="string">&quot;intervals.txt&quot;</span></span><br><span class="line"></span><br><span class="line">chromosomes=$(bcftools view -h <span class="variable">$vcf_file</span> | grep <span class="string">&quot;^##contig&quot;</span> | sed <span class="string">&#x27;s/##contig=&lt;ID=//;s/,length=/\t/&#x27;</span> | <span class="built_in">cut</span> -f1,2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; <span class="variable">$output_intervals</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r chromosome length; <span class="keyword">do</span></span><br><span class="line"></span><br><span class="line">  length=$(<span class="built_in">echo</span> <span class="variable">$length</span> | <span class="built_in">tr</span> -d <span class="string">&#x27;&gt;&#x27;</span>)</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;Processing chromosome <span class="variable">$chromosome</span> of length <span class="variable">$length</span>&quot;</span></span><br><span class="line">  start=1</span><br><span class="line">  end=<span class="variable">$window_size</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">while</span> [ <span class="variable">$start</span> -le <span class="variable">$length</span> ]; <span class="keyword">do</span></span><br><span class="line">    <span class="keyword">if</span> [ <span class="variable">$end</span> -gt <span class="variable">$length</span> ]; <span class="keyword">then</span></span><br><span class="line">      end=<span class="variable">$length</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">    <span class="built_in">echo</span> -e <span class="string">&quot;<span class="variable">$chromosome</span>\t<span class="variable">$start</span>\t<span class="variable">$end</span>&quot;</span> &gt;&gt; <span class="variable">$output_intervals</span></span><br><span class="line">    start=$((start + step_size))</span><br><span class="line">    end=$((start + window_size - <span class="number">1</span>))</span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line"><span class="keyword">done</span> &lt;&lt;&lt; <span class="string">&quot;<span class="variable">$chromosomes</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;根据染色体规划的窗口输出: <span class="variable">$output_intervals</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-开工"><a href="#3-开工" class="headerlink" title="3.开工"></a>3.开工</h3><p>知道窗口了，那这么多窗口一个一个循环计算岂不是慢死了。</p>
+<p><em><strong>parallel启动</strong></em></p>
+<p>把窗口计算完整命令打印一下</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">vcf_file=<span class="string">&quot;/home/liuxiao/1254/group1/370.vcf.gz&quot;</span></span><br><span class="line">populations_file=<span class="string">&quot;/home/liuxiao/1254/group1/vcf/dxy/pop/hu_other.txt&quot;</span></span><br><span class="line">output_prefix=<span class="string">&quot;tepedxy_outputwinstep_pophu_other&quot;</span></span><br><span class="line">intervals_file=<span class="string">&quot;intervals.txt&quot;</span></span><br><span class="line">n_cores=60</span><br><span class="line"></span><br><span class="line">temp_dir=$(<span class="built_in">mktemp</span> -d)</span><br><span class="line">output_folder=<span class="string">&quot;<span class="variable">$temp_dir</span>/output&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$output_folder</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="built_in">read</span> -r chromosome start end; <span class="keyword">do</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">&quot;Processing <span class="variable">$chromosome</span>: <span class="variable">$start</span>-<span class="variable">$end</span>&quot;</span></span><br><span class="line">  pixy --stats dxy --vcf <span class="variable">$vcf_file</span> --populations <span class="variable">$populations_file</span> --window_size $((end-start+<span class="number">1</span>)) \</span><br><span class="line">       --chromosomes <span class="variable">$chromosome</span> --interval_start <span class="variable">$start</span> --interval_end <span class="variable">$end</span> \</span><br><span class="line">       --n_cores <span class="variable">$n_cores</span> --bypass_invariant_check <span class="built_in">yes</span> --output_folder <span class="variable">$output_folder</span> --output_prefix <span class="variable">$&#123;output_prefix&#125;</span>_<span class="variable">$&#123;chromosome&#125;</span>_<span class="variable">$&#123;start&#125;</span>_<span class="variable">$&#123;end&#125;</span></span><br><span class="line"><span class="keyword">done</span> &lt; <span class="variable">$intervals_file</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> <span class="variable">$output_folder</span>/<span class="variable">$&#123;output_prefix&#125;</span>_* &gt; <span class="variable">$&#123;output_prefix&#125;</span>_combined.txt</span><br><span class="line"><span class="built_in">rm</span> -r <span class="variable">$temp_dir</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;command输出到 <span class="variable">$&#123;output_prefix&#125;</span>_combined.txt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806220741808.png" alt="image-20240806220741808"></p>
+<p>如上图，根据染色体号和区间填充了我们的命令</p>
+<p>直接bash就算了，parallel给服务器上上强度</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">commands_file=<span class="string">&quot;pixy_commands.txt&quot;</span></span><br><span class="line">output_prefix=<span class="string">&quot;tepedxy_outputwinstep_pophu_other&quot;</span></span><br><span class="line">output_folder=<span class="string">&quot;hu_other&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">mkdir</span> -p <span class="variable">$output_folder</span></span><br><span class="line">parallel --<span class="built_in">jobs</span> 30 &lt; <span class="variable">$commands_file</span></span><br><span class="line"><span class="built_in">wait</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> chr <span class="keyword">in</span> $(grep --only-matching --perl-regexp <span class="string">&quot;(?&lt;=--chromosomes )[^\s]+&quot;</span> <span class="variable">$commands_file</span> | <span class="built_in">sort</span> | <span class="built_in">uniq</span>); <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Merging results for chromosome <span class="variable">$chr</span>&quot;</span></span><br><span class="line">    <span class="built_in">cat</span> <span class="variable">$&#123;output_prefix&#125;</span>_<span class="variable">$&#123;chr&#125;</span>_* &gt; <span class="variable">$&#123;output_folder&#125;</span>/combine_<span class="variable">$&#123;chr&#125;</span>_combined.txt</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="built_in">wait</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cat</span> <span class="variable">$&#123;output_folder&#125;</span>/combine_*_combined.txt &gt; <span class="variable">$&#123;output_folder&#125;</span>/<span class="variable">$&#123;output_prefix&#125;</span>_final_combined.txt</span><br><span class="line"><span class="built_in">wait</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;分析完成，结果已复制到<span class="variable">$&#123;output_folder&#125;</span>/<span class="variable">$&#123;output_prefix&#125;</span>_final_combined.txt&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>一小点点的不足，过程文件太多了，rm处理不了，自己分染色体rm吧</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#计算合并的结果已经复制到子文件夹了，放心删除</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;1..27&#125;; <span class="built_in">rm</span> *Chr<span class="variable">$i</span>*</span><br><span class="line"><span class="built_in">rm</span> *tmp</span><br></pre></td></tr></table></figure>
+
+<p>还有坑，合并的子文件标题行。。。</p>
+<p><img src="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806221552138.png" alt="image-20240806221552138"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &#x27;NR==1 || !/^pop1/&#x27; combine.txt &gt; cutcombine.txt</span><br></pre></td></tr></table></figure>
+
+<p>排序也不对</p>
+<p><img src="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806221819278.png" alt="image-20240806221819278"></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line">input_file=<span class="string">&quot;step.txt&quot;</span></span><br><span class="line">output_file=<span class="string">&quot;step_sorted.txt&quot;</span></span><br><span class="line">header_file=<span class="string">&quot;header.txt&quot;</span></span><br><span class="line">data_file=<span class="string">&quot;data.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">head</span> -n 1 <span class="variable">$input_file</span> &gt; <span class="variable">$header_file</span></span><br><span class="line"><span class="built_in">tail</span> -n +2 <span class="variable">$input_file</span> &gt; <span class="variable">$data_file</span></span><br><span class="line"><span class="built_in">sort</span> -k3,3 -k4,4n <span class="variable">$data_file</span> &gt; <span class="variable">$output_file</span></span><br><span class="line"><span class="built_in">cat</span> <span class="variable">$header_file</span> <span class="variable">$output_file</span> &gt; <span class="variable">$&#123;output_file&#125;</span>_final</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;大功告成了，看看 <span class="variable">$&#123;output_file&#125;</span>.&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/image-20240806221951766.png" alt="image-20240806221951766"></p>
+<p>这差不多成功了，</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cut</span>  -f 3,4,5,6 <span class="variable">$output_file</span> &gt; clean_file</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>liuxiao
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/" title="pixy软件滑动步长补充">https://louis-kento.github.io/2024/08/06/pixy软件滑动步长补充/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/08/04/ld/" rel="prev" title="ld">
+                  <i class="fa fa-angle-left"></i> ld
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="waline"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">liuxiao</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("04/16/2024 10:00:00"); //此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒.";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/louis-kento" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="waline" type="application/json">{"lang":"zh-cn","enable":true,"serverURL":"waline-virid-nine.vercel.app","cssUrl":"https://unpkg.com/@waline/client@v2/dist/waline.css","commentCount":true,"pageview":false,"placeholder":null,"avatar":"mm","pageSize":8,"visitor":false,"comment_count":false,"requiredFields":[],"libUrl":"//unpkg.com/@waline/client@v2/dist/waline.js","el":"#waline","comment":true,"path":"/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/"}</script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.waline.el).then(() =>
+    NexT.utils.getScript(CONFIG.waline.libUrl, { condition: window.Waline })
+  ).then(() => 
+    Waline.init(Object.assign({}, CONFIG.waline,{ el: document.querySelector(CONFIG.waline.el) }))
+  );
+});
+</script>
+
+</body>
+</html>

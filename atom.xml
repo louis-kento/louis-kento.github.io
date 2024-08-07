@@ -6,7 +6,7 @@
   <link href="https://louis-kento.github.io/atom.xml" rel="self"/>
   
   <link href="https://louis-kento.github.io/"/>
-  <updated>2024-07-14T14:57:18.381Z</updated>
+  <updated>2024-08-06T14:21:23.116Z</updated>
   <id>https://louis-kento.github.io/</id>
   
   <author>
@@ -17,15 +17,81 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>DatawhaleAI夏令营之nlp</title>
-    <link href="https://louis-kento.github.io/2024/07/14/DatawhaleAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%B9%8Bnlp/"/>
-    <id>https://louis-kento.github.io/2024/07/14/DatawhaleAI%E5%A4%8F%E4%BB%A4%E8%90%A5%E4%B9%8Bnlp/</id>
-    <published>2024-07-14T14:57:18.000Z</published>
-    <updated>2024-07-14T14:57:18.381Z</updated>
+    <title>pixy软件滑动步长补充</title>
+    <link href="https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/"/>
+    <id>https://louis-kento.github.io/2024/08/06/pixy%E8%BD%AF%E4%BB%B6%E6%BB%91%E5%8A%A8%E6%AD%A5%E9%95%BF%E8%A1%A5%E5%85%85/</id>
+    <published>2024-08-06T13:51:37.000Z</published>
+    <updated>2024-08-06T14:21:23.116Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;pixy软件是比较群体基因组差异的一款软件&lt;/p&gt;
+&lt;p&gt;在使用时发现只能固定窗口，不能滑动步长，这在联合比较其他算法计算的选择信号时需要用到。&lt;/p&gt;
+&lt;p&gt;所以记录一下怎么弄吧&lt;/p&gt;</summary>
     
     
     
     
+  </entry>
+  
+  <entry>
+    <title>ld</title>
+    <link href="https://louis-kento.github.io/2024/08/04/ld/"/>
+    <id>https://louis-kento.github.io/2024/08/04/ld/</id>
+    <published>2024-08-04T01:56:31.000Z</published>
+    <updated>2024-08-04T09:43:52.445Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;使用PopLDdecay进行ld分析&quot;&gt;&lt;a href=&quot;#使用PopLDdecay进行ld分析&quot; class=&quot;headerlink&quot; title=&quot;使用PopLDdecay进行ld分析&quot;&gt;&lt;/a&gt;使用PopLDdecay进行ld分析&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;PopLDdecay&lt;/strong&gt;是华大开发一款快速进行连锁不平衡衰减分析的工具，只需输入vcf文件就可完成所有分析，计算速度非常快。&lt;/p&gt;
+&lt;p&gt;连锁不平衡（LD）：当两个或多个位点的等位基因频率组合偏离随机组合时，这些位点之间被称为连锁不平衡。LD 的度量通常使用 r² 或 D’ 值。r² 值介于 0 和 1 之间，表示连锁不平衡的强度；D’ 值也介于 0 和 1 之间，表示连锁不平衡的比例。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="ld" scheme="https://louis-kento.github.io/tags/ld/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ln-πratio对数频率比率</title>
+    <link href="https://louis-kento.github.io/2024/08/01/ln-ratio%E5%AF%B9%E6%95%B0%E9%A2%91%E7%8E%87%E6%AF%94%E7%8E%87/"/>
+    <id>https://louis-kento.github.io/2024/08/01/ln-ratio%E5%AF%B9%E6%95%B0%E9%A2%91%E7%8E%87%E6%AF%94%E7%8E%87/</id>
+    <published>2024-08-01T13:15:57.000Z</published>
+    <updated>2024-08-07T02:22:00.626Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;群体遗传选择信号分析之ln-πratio&lt;/p&gt;
+&lt;p&gt;在群体基因组学研究中，&lt;code&gt;ln-piratio&lt;/code&gt; 是一个常用的统计量，用于评估群体间的遗传分化程度。&lt;code&gt;ln-piratio&lt;/code&gt; 统计量结合了两个关键的概念：&lt;code&gt;π&lt;/code&gt;（pi）和&lt;code&gt;θ&lt;/code&gt;（theta）。其中 &lt;code&gt;π&lt;/code&gt; 表示群体内的平均遗传多样性，而 &lt;code&gt;θ&lt;/code&gt; 则是从群体内随机抽取两个个体并计算其遗传差异的一种估计。&lt;code&gt;ln-piratio&lt;/code&gt; 通常用于比较不同群体或不同地理区域之间的遗传分化。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="ln-πratio" scheme="https://louis-kento.github.io/tags/ln-%CF%80ratio/"/>
+    
+    <category term="选择信号" scheme="https://louis-kento.github.io/tags/%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深度学习参数理解</title>
+    <link href="https://louis-kento.github.io/2024/07/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8F%82%E6%95%B0%E7%90%86%E8%A7%A3/"/>
+    <id>https://louis-kento.github.io/2024/07/18/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%8F%82%E6%95%B0%E7%90%86%E8%A7%A3/</id>
+    <published>2024-07-18T07:30:23.000Z</published>
+    <updated>2024-08-07T02:25:01.122Z</updated>
+    
+    
+      
+      
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h4 id=&quot;Epoch和Batch-Size的定义&quot;&gt;&lt;a href=&quot;#Epoch和Batch-Size的定义&quot; class=&quot;headerlink&quot; title=&quot;Epoch和Batch Size的定义&quot;&gt;&lt;/a&gt;Epoc</summary>
+      
+    
+    
+    
+    
+    <category term="deep learn" scheme="https://louis-kento.github.io/tags/deep-learn/"/>
+    
+    <category term="study" scheme="https://louis-kento.github.io/tags/study/"/>
     
   </entry>
   
@@ -34,14 +100,10 @@
     <link href="https://louis-kento.github.io/2024/07/12/lazypredict%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%9B%9E%E5%BD%92%E5%92%8C%E5%88%86%E7%B1%BB/"/>
     <id>https://louis-kento.github.io/2024/07/12/lazypredict%E5%BA%93%E8%BF%9B%E8%A1%8C%E5%9B%9E%E5%BD%92%E5%92%8C%E5%88%86%E7%B1%BB/</id>
     <published>2024-07-12T06:48:53.000Z</published>
-    <updated>2024-07-12T07:41:03.906Z</updated>
+    <updated>2024-08-07T01:50:41.669Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;p&gt;Lazy Predict 是一个用于快速评估多种机器学习模型性能的Python库。它可以帮助你在非常短的时间内测试多种机器学习模型并选择最佳模型，而无需手动编写大量的代码。Lazy Predict 主要用于数据科学和机器学习的初步模型选择阶段。&lt;/p&gt;
-&lt;h3 id=&quot;1、</summary>
-      
+    <summary type="html">&lt;p&gt;Lazy Predict 是一个用于快速评估多种机器学习模型性能的Python库。它可以帮助你在非常短的时间内测试多种机器学习模型并选择最佳模型，而无需手动编写大量的代码。Lazy Predict 主要用于数据科学和机器学习的初步模型选择阶段。&lt;/p&gt;</summary>
     
     
     
@@ -82,13 +144,10 @@
     <link href="https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8snpeff%E6%B3%A8%E9%87%8AVCF%E6%96%87%E4%BB%B6/"/>
     <id>https://louis-kento.github.io/2024/07/11/%E4%BD%BF%E7%94%A8snpeff%E6%B3%A8%E9%87%8AVCF%E6%96%87%E4%BB%B6/</id>
     <published>2024-07-11T14:18:22.000Z</published>
-    <updated>2024-07-12T04:36:50.941Z</updated>
+    <updated>2024-08-07T02:22:29.720Z</updated>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;使用SnpEff对得到的标记进行注释&quot;&gt;&lt;a href=&quot;#使用SnpEff对得到的标记进行注释&quot; class=&quot;headerlink&quot; title=&quot;使用SnpEff对得到的标记进行注释&quot;&gt;&lt;/a&gt;&lt;strong&gt;使用SnpEff对得到的标记进行注释&lt;/stro</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;使用SnpEff对得到的标记进行注释&quot;&gt;&lt;a href=&quot;#使用SnpEff对得到的标记进行注释&quot; class=&quot;headerlink&quot; title=&quot;使用SnpEff对得到的标记进行注释&quot;&gt;&lt;/a&gt;&lt;strong&gt;使用SnpEff对得到的标记进行注释&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;VCF（Variant Call Format）文件变异注释是一种生物信息学分析过程，用于为VCF文件中记录的基因变异提供详细的功能和临床信息。这些变异可能包括单核苷酸多态性（SNP）、插入和缺失（indels）等。变异注释的目的是理解这些变异的生物学意义及其潜在的影响。&lt;/p&gt;</summary>
     
     
     
@@ -163,10 +222,10 @@
     <link href="https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/"/>
     <id>https://louis-kento.github.io/2024/07/01/%E7%BE%A4%E8%AE%BA%E5%AD%A6%E4%B9%A01/</id>
     <published>2024-07-01T07:08:45.000Z</published>
-    <updated>2024-07-01T12:05:02.321Z</updated>
+    <updated>2024-08-07T02:25:16.490Z</updated>
     
     
-    <summary type="html">&lt;h2 id=&quot;群论&quot;&gt;&lt;a href=&quot;#群论&quot; class=&quot;headerlink&quot; title=&quot;群论&quot;&gt;&lt;/a&gt;群论&lt;/h2&gt;&lt;p&gt;在&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6&quot;&gt;数学&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0&quot;&gt;抽象代数&lt;/a&gt;中，&lt;strong&gt;群论&lt;/strong&gt;（英语：Group theory）研究名为&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%BE%A4&quot;&gt;群&lt;/a&gt;的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84&quot;&gt;代数结构&lt;/a&gt;。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;在&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%A6&quot;&gt;数学&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E4%BB%A3%E6%95%B0&quot;&gt;抽象代数&lt;/a&gt;中，&lt;strong&gt;群论&lt;/strong&gt;（英语：Group theory）研究名为&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%BE%A4&quot;&gt;群&lt;/a&gt;的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84&quot;&gt;代数结构&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%BE%A4&quot;&gt;群&lt;/a&gt;在抽象代数中具有基本的重要地位：许多代数结构，包括&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E7%8E%AF_(%E4%BB%A3%E6%95%B0)&quot;&gt;环&lt;/a&gt;、&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%9F%9F_(%E6%95%B0%E5%AD%A6)&quot;&gt;域&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4&quot;&gt;向量空间&lt;/a&gt;等可以看作是在群的基础上添加新的&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E8%BF%90%E7%AE%97&quot;&gt;运算&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E5%85%AC%E7%90%86&quot;&gt;公理&lt;/a&gt;而形成的。群的概念在数学的许多分支都有出现，而且群论的研究方法也对抽象代数的其它分支有重要影响。&lt;a href=&quot;https://zh.wikipedia.org/w/index.php?title=%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0%E7%BE%A4&amp;action=edit&amp;redlink=1&quot;&gt;线性代数群&lt;/a&gt;和&lt;a href=&quot;https://zh.wikipedia.org/wiki/%E6%9D%8E%E7%BE%A4&quot;&gt;李群&lt;/a&gt;作为群论的分支，在经历了重大的发展之后，已经形成相对独立的研究领域。&lt;/p&gt;</summary>
     
     
@@ -181,10 +240,11 @@
     <link href="https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/"/>
     <id>https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/</id>
     <published>2024-06-16T14:13:34.000Z</published>
-    <updated>2024-07-01T11:54:22.679Z</updated>
+    <updated>2024-08-07T02:12:26.832Z</updated>
     
     
-    <summary type="html">&lt;p&gt;用到的工具是 &lt;strong&gt;VCF2Dis&lt;/strong&gt;&lt;/p&gt;
+    <summary type="html">&lt;p&gt;用到的工具是 VCF2Dis&lt;/p&gt;
+&lt;p&gt;VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式&lt;/p&gt;
 &lt;p&gt;工具对应的github主页 &lt;a href=&quot;https://github.com/BGI-shenzhen/VCF2Dis&quot;&gt;https://github.com/BGI-shenzhen/VCF2Dis&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;按照软件主页的帮助文档 下载安装，没有遇到问题&lt;/p&gt;</summary>
     
@@ -361,52 +421,6 @@
     
     
     <category term="Encoding" scheme="https://louis-kento.github.io/tags/Encoding/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vcftools计算fst选择信号</title>
-    <link href="https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
-    <id>https://louis-kento.github.io/2024/04/28/vcftools%E8%AE%A1%E7%AE%97fst%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
-    <published>2024-04-28T12:28:07.000Z</published>
-    <updated>2024-07-01T11:54:54.051Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;fst（F-statistics）是一种用于选择信号检测的统计方法，用于测量和比较不同群体之间的遗传差异。它可以帮助确定是否存在选择压力导致的遗传变异。通过计算不同群体之间的遗传差异（fst 值）并进行统计检验，fst 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在种群遗传学、进化生物学和生态学研究中得到了广泛应用。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Genome" scheme="https://louis-kento.github.io/categories/Genome/"/>
-    
-    <category term="Selection_signature" scheme="https://louis-kento.github.io/categories/Genome/Selection-signature/"/>
-    
-    
-    <category term="Vcftools" scheme="https://louis-kento.github.io/tags/Vcftools/"/>
-    
-    <category term="Fst" scheme="https://louis-kento.github.io/tags/Fst/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算xpehh选择信号</title>
-    <link href="https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/"/>
-    <id>https://louis-kento.github.io/2024/04/28/%E8%AE%A1%E7%AE%97xpehh%E9%80%89%E6%8B%A9%E4%BF%A1%E5%8F%B7/</id>
-    <published>2024-04-28T12:26:57.000Z</published>
-    <updated>2024-07-01T11:56:54.031Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;xpehh (Cross Population Extended Haplotype Homozygosity) 是一种用于选择信号检测的统计方法，用于寻找遗传变异与自然选择之间的关联。它基于单核苷酸多态性（SNP）在不同群体之间的扩展单倍型同质性差异。通过计算目标群体与参考群体之间的扩展单倍型同质性差异，并进行统计检验，xpehh 方法可以帮助检测到与自然选择相关的遗传变异。这种方法在遗传学和人类进化研究中得到了广泛应用。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="Genome" scheme="https://louis-kento.github.io/categories/Genome/"/>
-    
-    <category term="Selection_signature" scheme="https://louis-kento.github.io/categories/Genome/Selection-signature/"/>
-    
-    
-    <category term="xpehh" scheme="https://louis-kento.github.io/tags/xpehh/"/>
-    
-    <category term="selscan" scheme="https://louis-kento.github.io/tags/selscan/"/>
     
   </entry>
   

@@ -19,15 +19,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"louis-kento.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.19.2","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="用到的工具是 VCF2Dis 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题">
+    <meta name="description" content="用到的工具是 VCF2Dis VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SNP数据计算距离矩阵">
 <meta property="og:url" content="https://louis-kento.github.io/2024/06/16/SNP%E6%95%B0%E6%8D%AE%E8%AE%A1%E7%AE%97%E8%B7%9D%E7%A6%BB%E7%9F%A9%E9%98%B5/index.html">
 <meta property="og:site_name" content="kento_blog">
-<meta property="og:description" content="用到的工具是 VCF2Dis 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题">
+<meta property="og:description" content="用到的工具是 VCF2Dis VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式 工具对应的github主页 https:&#x2F;&#x2F;github.com&#x2F;BGI-shenzhen&#x2F;VCF2Dis 按照软件主页的帮助文档 下载安装，没有遇到问题">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-06-16T14:13:34.000Z">
-<meta property="article:modified_time" content="2024-07-01T11:54:22.679Z">
+<meta property="article:modified_time" content="2024-08-07T02:12:26.832Z">
 <meta property="article:author" content="liuxiao">
 <meta property="article:tag" content="distance">
 <meta name="twitter:card" content="summary">
@@ -141,7 +141,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#VCF2Dis%EF%BC%88%E8%8B%B1%E8%AF%AD%EF%BC%9AVCF2Dis%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">VCF2Dis（英语：VCF2Dis）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%EF%BC%89-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1） 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%EF%BC%89-%E6%B2%A1%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">2） 没有 boostrap 的 nj-tree 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E5%BB%BA-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%B9%E6%B3%95-1-%E5%9C%A8%E7%BA%BF"><span class="nav-number">1.2.1.</span> <span class="nav-text">其他构建 nj-tree 的方法：方法 1 在线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E9%80%A0-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95-%EF%BC%9A-%E6%96%B9%E6%B3%95-2-%EF%BC%9A-PHYLIPNEW"><span class="nav-number">1.2.2.</span> <span class="nav-text">其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9E%84%E9%80%A0-nj-tree-%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%9A%E6%96%B9%E6%B3%95-3-R-%E8%84%9A%E6%9C%AC"><span class="nav-number">1.2.3.</span> <span class="nav-text">其他构造 nj-tree 的方法：方法 3 R 脚本</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%EF%BC%89-%E5%B8%A6%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3） 带有 boostrap 的 nj-tree 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%EF%BC%89-%E5%BC%95%E8%A8%80"><span class="nav-number">1.4.</span> <span class="nav-text">4） 引言</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%B2%A1%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">2 没有 boostrap 的 nj-tree 示例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">2.1参数说明：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2%E5%88%9B%E5%BB%BAp-distance%E7%9F%A9%E9%98%B5%E5%B9%B6%E6%9E%84%E9%80%A0-nj-tree-newick-%E6%A0%91"><span class="nav-number">2.2.</span> <span class="nav-text">2.2创建p_distance矩阵并构造 nj-tree newick 树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">2.3.</span> <span class="nav-text">2.3可视化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%B8%A6%E6%9C%89-boostrap-%E7%9A%84-nj-tree-%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.</span> <span class="nav-text">3 带有 boostrap 的 nj-tree 示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E5%85%B6%E4%BB%96%E7%9A%84%E8%AE%A1%E7%AE%97"><span class="nav-number">4.</span> <span class="nav-text">4其他的计算</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -167,7 +167,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -253,7 +253,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-01 19:54:22" itemprop="dateModified" datetime="2024-07-01T19:54:22+08:00">2024-07-01</time>
+      <time title="Modified: 2024-08-07 10:12:26" itemprop="dateModified" datetime="2024-08-07T10:12:26+08:00">2024-08-07</time>
     </span>
 
   
@@ -284,14 +284,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>3.7k</span>
+      <span>2.8k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>7 mins.</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -301,101 +301,61 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>用到的工具是 <strong>VCF2Dis</strong></p>
+    <div class="post-body" itemprop="articleBody"><p>用到的工具是 VCF2Dis</p>
+<p>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</p>
 <p>工具对应的github主页 <a target="_blank" rel="noopener" href="https://github.com/BGI-shenzhen/VCF2Dis">https://github.com/BGI-shenzhen/VCF2Dis</a></p>
 <p>按照软件主页的帮助文档 下载安装，没有遇到问题</p>
 <span id="more"></span>
 
-<h2 id="VCF2Dis（英语：VCF2Dis）"><a href="#VCF2Dis（英语：VCF2Dis）" class="headerlink" title="VCF2Dis（英语：VCF2Dis）"></a>VCF2Dis（英语：VCF2Dis）</h2><p><strong>VCF2Dis：一种新的简单高效的软件，用于计算 p 距离矩阵和基于树的变体调用格式</strong></p>
-<h3 id="1）-安装"><a href="#1）-安装" class="headerlink" title="1） 安装"></a>1） 安装</h3><hr>
-<p><strong>新版本</strong>将在 <strong><a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong> 中更新和维护，请点击下方链接下载最新版本</p>
+
+
+<h3 id="1安装"><a href="#1安装" class="headerlink" title="1安装"></a>1安装</h3><hr>
+<p>点击下面跳转</p>
 <p><strong><a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis">hewm2008&#x2F;VCF2Dis</a></strong></p>
 <p><strong><a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis/archive/v1.51.tar.gz">下载</a></strong></p>
 <p>只需 [make] 或 [sh make.sh ] 来编译此软件，最终软件可以在 Dir <strong>[bin&#x2F;VCF2Dis]</strong><br>For <strong>linux &#x2F;Unix</strong> 和 <strong>macOS</strong> 中找到</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  VCF2DisXXX.tar.gz            # if Link do not work ,Try re-install [zlib]library</span><br><span class="line">cd VCF2DisXXX;                          # [zlib] and copy them to the library Dir</span><br><span class="line">sh make.sh;                             # VCF2Dis-xx/src/include/zlib</span><br><span class="line">./bin/VCF2Dis</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf  VCF2DisXXX.tar.gz            <span class="comment"># if Link do not work ,Try re-install [zlib]library</span></span><br><span class="line"><span class="built_in">cd</span> VCF2DisXXX;                          <span class="comment"># [zlib] and copy them to the library Dir</span></span><br><span class="line">sh make.sh;                             <span class="comment"># VCF2Dis-xx/src/include/zlib</span></span><br><span class="line">./bin/VCF2Dis</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：</strong>如果链接失败，请尝试<strong>重新安装</strong>库 <a target="_blank" rel="noopener" href="https://zlib.net/">*<strong>zlib*</strong></a><br><strong>注意：</strong>：建议使用 <a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/ape/index.html">ape</a> 和 <a target="_blank" rel="noopener" href="https://www.bioconductor.org/packages/release/bioc/html/ggtree.html">ggtree</a> <a target="_blank" rel="noopener" href="https://www.r-project.org/">的 R</a></p>
-<h3 id="2）-没有-boostrap-的-nj-tree-示例"><a href="#2）-没有-boostrap-的-nj-tree-示例" class="headerlink" title="2） 没有 boostrap 的 nj-tree 示例"></a>2） 没有 boostrap 的 nj-tree 示例</h3><hr>
+<p>注意：如果链接失败，请尝试重新安装库 <a target="_blank" rel="noopener" href="https://zlib.net/">*zlib*</a><br>注意：：建议使用 <a target="_blank" rel="noopener" href="https://cran.r-project.org/web/packages/ape/index.html">ape</a> 和 <a target="_blank" rel="noopener" href="https://www.bioconductor.org/packages/release/bioc/html/ggtree.html">ggtree</a> <a target="_blank" rel="noopener" href="https://www.r-project.org/">的 R</a></p>
+<h3 id="2-没有-boostrap-的-nj-tree-示例"><a href="#2-没有-boostrap-的-nj-tree-示例" class="headerlink" title="2 没有 boostrap 的 nj-tree 示例"></a>2 没有 boostrap 的 nj-tree 示例</h3><hr>
+<h4 id="2-1参数说明："><a href="#2-1参数说明：" class="headerlink" title="2.1参数说明："></a>2.1参数说明：</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Usage: VCF2Dis -InPut  &lt;in.vcf&gt;  -OutPut  &lt;p_dis.mat&gt;</span><br><span class="line"></span><br><span class="line">	-InPut     &lt;str&gt;     Input one or muti GATK VCF genotype File</span><br><span class="line">	-OutPut    &lt;str&gt;     OutPut Sample p-Distance matrix</span><br><span class="line"></span><br><span class="line">	-InList    &lt;str&gt;     Input GATK muti-chr VCF Path List</span><br><span class="line">	-SubPop    &lt;str&gt;     SubGroup SampleList of VCFFile [ALLsample]</span><br><span class="line">	-Rand      &lt;<span class="built_in">float</span>&gt;   Probability (0-1] <span class="keyword">for</span> each site to <span class="built_in">join</span> Calculation [1]</span><br><span class="line">	-KeepMF              Keep the Middle File diff &amp; Use matrix</span><br><span class="line"></span><br><span class="line">	-<span class="built_in">help</span>                Show more <span class="built_in">help</span> [hewm2008 v1.51s]</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-2创建p-distance矩阵并构造-nj-tree-newick-树"><a href="#2-2创建p-distance矩阵并构造-nj-tree-newick-树" class="headerlink" title="2.2创建p_distance矩阵并构造 nj-tree newick 树"></a>2.2创建p_distance矩阵并构造 nj-tree newick 树</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2.1) To new all the sample p_distance matrix and newick tree based VCF, run VCF2Dis directly</span></span><br><span class="line">      ./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis.mat</span><br><span class="line">      <span class="comment">#  ./bin/VCF2Dis     -InPut  in.fa.gz	-OutPut p_dis.mat -InFormat  FA</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 2.2) To new sub group sample p_distance matrix and and newick tree ; put their sample name into File sample.list</span></span><br><span class="line">      ./bin/VCF2Dis	-InPut	chr1.vcf.gz chr2.vcf.gz	-OutPut p_dis.mat  -SubPop  sample.list</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-3可视化"><a href="#2-3可视化" class="headerlink" title="2.3可视化"></a>2.3可视化</h4><p><strong>使用MEGA或ITOLS可视化</strong></p>
+<p>在 VCF2Dis 之后获得 p_dis.nwk 树文件。运行 MEGA用于显示基于此文件的系统发育树 [p_dis.nwk]<br>，您可以看到相邻连接树并将其保存为 PDF 格式。如果没有NWK文件，以下是获取树文件的方法。</p>
+<p>方法1，在线工具</p>
 <ul>
-<li><ol>
-<li>参数说明：</li>
-</ol>
+<li><p>网站1： <a target="_blank" rel="noopener" href="http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional=1">fneighbor（http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional&#x3D;1），</a>单击 Run fneighbor。那么你可以得到输出文件datafile.tree文件</p>
+</li>
+<li><p>网站2：<a target="_blank" rel="noopener" href="http://www.atgc-montpellier.fr/fastme/">fastme（http://www.atgc-montpellier.fr/fastme/）</a>网站，选择数据类型到距离矩阵，点击底部的在线执行&amp;email结果。您将获得p_dis_mat_fastme-tree.nwk，并且电子邮件不是强制性的</p>
 </li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Usage: VCF2Dis -InPut  &lt;in.vcf&gt;  -OutPut  &lt;p_dis.mat&gt;</span><br><span class="line"></span><br><span class="line">	-InPut     &lt;str&gt;     Input one or muti GATK VCF genotype File</span><br><span class="line">	-OutPut    &lt;str&gt;     OutPut Sample p-Distance matrix</span><br><span class="line"></span><br><span class="line">	-InList    &lt;str&gt;     Input GATK muti-chr VCF Path List</span><br><span class="line">	-SubPop    &lt;str&gt;     SubGroup SampleList of VCFFile [ALLsample]</span><br><span class="line">	-Rand      &lt;float&gt;   Probability (0-1] for each site to join Calculation [1]</span><br><span class="line">	-KeepMF              Keep the Middle File diff &amp; Use matrix</span><br><span class="line"></span><br><span class="line">	-help                Show more help [hewm2008 v1.51s]</span><br></pre></td></tr></table></figure>
+<p>方法2，使用 PHYLIPNEW 构建 nj-tree</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis.matrix  -outfile tree.out1.txt -matrixtype s -treetype n -outtreefile tree.out2.tre</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>方法 3 , VCF2dis的R 脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rscript  exemple/vistreecode.r    p_dis.mat</span><br></pre></td></tr></table></figure>
 
 
 
-<ul>
-<li><ol>
-<li>创建p_distance矩阵并构造 nj-tree newick 树</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 2.1) To new all the sample p_distance matrix and newick tree based VCF, run VCF2Dis directly</span><br><span class="line">      ./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis.mat</span><br><span class="line">      #  ./bin/VCF2Dis     -InPut  in.fa.gz	-OutPut p_dis.mat -InFormat  FA</span><br><span class="line"></span><br><span class="line"># 2.2) To new sub group sample p_distance matrix and and newick tree ; put their sample name into File sample.list</span><br><span class="line">      ./bin/VCF2Dis	-InPut	chr1.vcf.gz chr2.vcf.gz	-OutPut p_dis.mat  -SubPop  sample.list</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="3-带有-boostrap-的-nj-tree-示例"><a href="#3-带有-boostrap-的-nj-tree-示例" class="headerlink" title="3 带有 boostrap 的 nj-tree 示例"></a>3 带有 boostrap 的 nj-tree 示例</h3><p>使用回放采样对 nj-tree 进行多运行。 </p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> X <span class="keyword">in</span> &#123;1..20&#125;;<span class="keyword">do</span></span><br><span class="line">VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis_X.mat    -Rand     0.25</span><br><span class="line"></span><br><span class="line">PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis_X.matrix  -outfile tree.out1_X.txt -matrixtype s -treetype n -outtreefile tree.out2_X.tre </span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure>
+
+<p>合并所有回放采样 NJ-tree 并构造 boostrap nj-tree。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span>   tree.out2_*.tre   &gt;  ALLtree_merge.tre</span><br><span class="line"></span><br><span class="line">PHYLIPNEW-3.69.650/bin/fconsense   -intreefile   ALLtree_merge.tre  -outfile out  -treeprint Y</span><br><span class="line"></span><br><span class="line">perl  ./bin/percentageboostrapTree.pl    ALLtree_merge.treefile    NN    Final_boostrap.tre</span><br></pre></td></tr></table></figure>
 
 
 
-<ul>
-<li><ol>
-<li>可视化和美化它（需要处理其他软件），<br>您将在 VCF2Dis 之后获得 p_dis.nwk 树文件。<br>运行 MEGA # <a target="_blank" rel="noopener" href="http://www.megasoftware.net/">MEGA</a> 用于显示基于此文件的系统发育树 [p_dis.nwk]<br>，您可以看到相邻连接树并将其保存为 PDF 格式</li>
-</ol>
-</li>
-</ul>
-<p>如果无法获取 <strong>p_dis.nwk</strong> 树文件，以下是获取树文件的 3 种方法。</p>
-<h4 id="其他构建-nj-tree-的方法：方法-1-在线"><a href="#其他构建-nj-tree-的方法：方法-1-在线" class="headerlink" title="其他构建 nj-tree 的方法：方法 1 在线"></a>其他构建 nj-tree 的方法：方法 1 在线</h4><p>选择 <strong>A&#x2F;B</strong><br><strong>A 之一。</strong> 上传 web <a target="_blank" rel="noopener" href="http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional=1">fneighbor（http://emboss.toulouse.inra.fr/cgi-bin/emboss/fneighbor?_pref_hide_optional&#x3D;1），</a>单击 <strong>Run fneighbor</strong> 底部。那么你可以得到输出文件<strong>datafile.tree文件</strong><br><strong>B.<strong>将</strong>p_dis.mat</strong>上传到<a target="_blank" rel="noopener" href="http://www.atgc-montpellier.fr/fastme/">fastme（http://www.atgc-montpellier.fr/fastme/）</a>网站，选择<strong>数据类型</strong>到<strong>距离矩阵</strong>，点击底部的捻<strong>线执行&amp;email结果</strong>。您将获得 <strong>p_dis_mat_fastme-tree.nwk</strong> ，并且电子邮件不是强制性的;</p>
-<p>运行 MEGA # MEGA （<a target="_blank" rel="noopener" href="http://www.megasoftware.net/%EF%BC%89">http://www.megasoftware.net/）</a> 用于显示基于此文件的系统发育树 [p_dis_mat_fastme-tree.nwk]</p>
-<h4 id="其他构造-nj-tree-的方法-：-方法-2-：-PHYLIPNEW"><a href="#其他构造-nj-tree-的方法-：-方法-2-：-PHYLIPNEW" class="headerlink" title="其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW"></a>其他构造 nj-tree 的方法 ： 方法 2 ： PHYLIPNEW</h4><p>使用 PHYLIPNEW 构建 nj-tree<br>如何安装 PHYLIPNEW 请 点击**<a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis/blob/main/Install.NJ.en.md">这里</a>** 或 点击**<a target="_blank" rel="noopener" href="https://github.com/hewm2008/VCF2Dis/blob/main/Install.NJ.cn.md">这里（中文）</a>**</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#    3.1 Run  PHYLIP</span><br><span class="line">#   After p_distance done , software PHYLIPNEW 3.69 (http://evolution.genetics.washington.edu/phylip.html) ,with neighbor-joining method can was used to construct the phylogenetic tree on the basis of this  p_distance matrix;</span><br><span class="line"> </span><br><span class="line">     PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis.matrix  -outfile tree.out1.txt -matrixtype s -treetype n -outtreefile tree.out2.tre</span><br><span class="line"></span><br><span class="line">#    3.2 Run  MEGA</span><br><span class="line">#    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file [tree.out2.tre]</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="其他构造-nj-tree-的方法：方法-3-R-脚本"><a href="#其他构造-nj-tree-的方法：方法-3-R-脚本" class="headerlink" title="其他构造 nj-tree 的方法：方法 3 R 脚本"></a>其他构造 nj-tree 的方法：方法 3 R 脚本</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    #    3.1 Run  R Rscript</span><br><span class="line">Rscript  exemple/vistreecode.r    p_dis.mat</span><br><span class="line">    #    3.2 Run  MEGA</span><br><span class="line">    #    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file [tree.out2.tre]</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>您可以查看相邻连接树并将其保存为 PDF 格式</li>
-</ol>
-</li>
-</ul>
-<h3 id="3）-带有-boostrap-的-nj-tree-示例"><a href="#3）-带有-boostrap-的-nj-tree-示例" class="headerlink" title="3） 带有 boostrap 的 nj-tree 示例"></a>3） 带有 boostrap 的 nj-tree 示例</h3><ul>
-<li><ol>
-<li>使用回放采样对 nj-tree 进行多运行。 如上所述，使用站点和新的nj树部分。重复 <strong>NN</strong> 时间。X&#x3D;（1,2….NN）;</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./bin/VCF2Dis	-InPut	in.vcf.gz	-OutPut p_dis_X.mat    -Rand     0.25</span><br><span class="line">PHYLIPNEW-3.69.650/bin/fneighbor  -datafile p_dis_X.matrix  -outfile tree.out1_X.txt -matrixtype s -treetype n -outtreefile tree.out2_X.tre </span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>合并所有回放采样 NJ-tree 并构造 boostrap nj-tree。</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat   tree.out2_*.tre   &gt;  ALLtree_merge.tre</span><br><span class="line">PHYLIPNEW-3.69.650/bin/fconsense   -intreefile   ALLtree_merge.tre  -outfile out  -treeprint Y</span><br><span class="line">perl  ./bin/percentageboostrapTree.pl    ALLtree_merge.treefile    NN    Final_boostrap.tre</span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><ol>
-<li>构建 nj-tree 并呈现它（需要处理其他软件）</li>
-</ol>
-</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#    The MEGA6 (http://www.megasoftware.net/) was used to present the phylogenetic tree based this file Final_boostrap.tre] </span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h3 id="4）-引言"><a href="#4）-引言" class="headerlink" title="4） 引言"></a>4） 引言</h3><hr>
+<h3 id="4其他的计算"><a href="#4其他的计算" class="headerlink" title="4其他的计算"></a>4其他的计算</h3><hr>
 <p>要新建p_distance矩阵，请添加 VCF 文件。有关p_distance矩阵的详细信息，请参阅**<a target="_blank" rel="noopener" href="https://phylipweb.github.io/phylip/doc/distance.html">此网站。</a>**采用VCF SNPs数据集计算个体间的p距离，按照以下公式计算样本i和样本j的遗传距离：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D_ij=(1/L) * [(sum(d(l)_ij))]</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D<span class="built_in">_</span>ij=(1/L) * [(sum(d(l)<span class="built_in">_</span>ij))]</span><br></pre></td></tr></table></figure>
 
 
 <p>其中 L 是可以识别 SNP 的区域的长度，给定位置 l 处的等位基因是 A&#x2F;C：</p>
